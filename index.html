@@ -129,6 +129,7 @@
     }
 
     .nav {
+      position:relative;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -193,6 +194,12 @@
 
     .menu-toggle {
       display:none;
+      appearance:none;
+      -webkit-appearance:none;
+      border:0;
+      background:transparent;
+      font:inherit;
+      cursor:pointer;
     }
 
     /* PRIMEIRA TELA */
@@ -1068,13 +1075,49 @@
 
     /* RESPONSIVO */
     @media (max-width:900px) {
-      .links { display:none; }
+      .links {
+        display:none;
+        position:absolute;
+        top:calc(100% + 10px);
+        left:0;
+        right:0;
+        z-index:20;
+        margin:0;
+        padding:12px;
+        gap:4px;
+        flex-direction:column;
+        align-items:stretch;
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:18px;
+        background:rgba(4,17,38,.97);
+        box-shadow:0 18px 45px rgba(0,0,0,.28);
+        backdrop-filter:blur(18px);
+        -webkit-backdrop-filter:blur(18px);
+      }
+
+      .links.is-open { display:flex; }
+
+      .links a {
+        padding:13px 15px;
+        border-radius:12px;
+        font-size:.98rem;
+      }
+
+      .links a:hover,
+      .links a:focus-visible {
+        background:rgba(255,255,255,.07);
+      }
 
       .menu-toggle {
-        display:block;
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        min-height:44px;
+        padding:8px 10px;
         color:#fff;
         font-size:.86rem;
         font-weight:800;
+        letter-spacing:.02em;
       }
 
       .hero-grid,
@@ -1140,15 +1183,60 @@
       }
 
       .hero {
-        min-height:690px;
+        min-height:0;
+      }
+
+      .hero-grid {
+        gap:12px;
+        padding:135px 0 34px;
+      }
+
+      .hero-copy {
+        max-width:100%;
       }
 
       .hero-visual {
-        display:none;
+        display:flex;
+        min-height:330px;
+        margin-top:2px;
+        justify-content:center;
+        overflow:visible;
       }
 
+      .hero-phone {
+        width:min(270px,68vw);
+      }
+
+      .orbit-one {
+        width:310px;
+        height:190px;
+        right:50%;
+        top:84px;
+        transform:translateX(50%) rotate(12deg);
+      }
+
+      .orbit-two {
+        width:245px;
+        height:150px;
+        right:50%;
+        top:112px;
+        transform:translateX(50%) rotate(12deg);
+      }
+
+      .dot-one { right:auto; left:9%; top:155px; }
+      .dot-two { right:auto; left:20%; top:220px; }
+      .dot-three { right:11%; top:244px; }
+      .line-one { right:4%; top:125px; }
+      .line-two { right:8%; top:174px; }
+
       .hero h1 {
-        font-size:clamp(2.7rem,13vw,3.35rem);
+        font-size:clamp(2.65rem,12.5vw,3.3rem);
+      }
+
+      .hero p {
+        font-size:1.04rem;
+        line-height:1.62;
+        margin-bottom:25px;
       }
 
       .nav {
@@ -1218,7 +1306,7 @@
         <img src="logo.png" alt="Humanize Marketing Digital">
       </a>
 
-      <nav class="links" aria-label="Navegação principal">
+      <nav class="links" id="mainMenu" aria-label="Navegação principal">
         <a href="#solucoes">Soluções</a>
         <a href="#metodo">Como trabalhamos</a>
         <a href="#cases">Cases</a>
@@ -1226,7 +1314,14 @@
         <a href="#contato">Contato</a>
       </nav>
 
-      <span class="menu-toggle">MENU ↓</span>
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mainMenu"
+        aria-label="Abrir menu de navegação"
+      >MENU ↓</button>
     </div>
   </header>
 
@@ -1819,6 +1914,39 @@
   </a>
 
   <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mainMenu = document.getElementById('mainMenu');
+
+    function closeMobileMenu() {
+      if (!menuToggle || !mainMenu) return;
+      mainMenu.classList.remove('is-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Abrir menu de navegação');
+      menuToggle.textContent = 'MENU ↓';
+    }
+
+    if (menuToggle && mainMenu) {
+      menuToggle.addEventListener('click', () => {
+        const willOpen = !mainMenu.classList.contains('is-open');
+        mainMenu.classList.toggle('is-open', willOpen);
+        menuToggle.setAttribute('aria-expanded', String(willOpen));
+        menuToggle.setAttribute('aria-label', willOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação');
+        menuToggle.textContent = willOpen ? 'MENU ↑' : 'MENU ↓';
+      });
+
+      mainMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeMobileMenu);
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMobileMenu();
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 900) closeMobileMenu();
+      });
+    }
+
     const caseTrack = document.getElementById('caseTrack');
     const caseDots = document.querySelectorAll('[data-case-page]');
     const caseCarousel = document.querySelector('.case-carousel');
