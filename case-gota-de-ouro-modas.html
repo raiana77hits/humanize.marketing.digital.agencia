@@ -614,21 +614,61 @@
       html { scroll-behavior:auto; }
       *,*::before,*::after { transition-duration:.01ms!important; }
     }
+
+    /* ---- Painel de marca do case (substitui as fotos ainda não fornecidas) ---- */
+    .case-brand-panel {
+      position:relative;
+      display:grid;
+      place-items:center;
+      min-height:450px;
+      border-radius:28px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background:
+        radial-gradient(110% 80% at 22% 12%,rgba(0,93,252,.34),transparent 62%),
+        radial-gradient(90% 80% at 86% 92%,rgba(32,216,245,.14),transparent 64%),
+        #05101f;
+      box-shadow:0 30px 70px rgba(0,0,0,.4);
+    }
+
+    .case-brand-panel::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+      background-size:42px 42px;
+    }
+
+    .case-brand-panel img {
+      position:relative;
+      width:54%;
+      max-width:260px;
+      height:auto;
+      border-radius:50%;
+      filter:drop-shadow(0 20px 48px rgba(0,0,0,.55));
+    }
+
+    /* Grades que ficam com uma única coluna enquanto as fotos do cliente
+       não forem adicionadas (ver comentários no HTML de cada seção). */
+    .origin-grid.is-single,
+    .beyond-grid.is-single { grid-template-columns:1fr; }
   </style>
 </head>
 
 <body>
   <header>
     <div class="container nav">
-      <a class="brand" href="landing-page-humanize.html" aria-label="Voltar para a página inicial da Humanize">
-        <img src="logo.png" alt="Humanize Marketing Digital">
+      <a class="brand" href="index.html" aria-label="Voltar para a página inicial da Humanize">
+        <img src="img/logo.webp" alt="Humanize Marketing Digital">
       </a>
 
       <nav class="links" aria-label="Navegação principal">
-        <a href="landing-page-humanize.html">Início</a>
-        <a href="landing-page-humanize.html#solucoes">Soluções</a>
-        <a href="landing-page-humanize.html#cases">Cases</a>
-        <a href="landing-page-humanize.html#sobre">Quem somos</a>
+        <a href="index.html">Início</a>
+        <a href="index.html#solucoes">Soluções</a>
+        <a href="index.html#cases">Cases</a>
+        <a href="index.html#sobre">Quem somos</a>
         <a href="#contato">Contato</a>
       </nav>
 
@@ -657,21 +697,19 @@
         </div>
 
         <div class="hero-visual" aria-label="Presença digital da Gota de Ouro Modas">
-          <div class="screen screen-main">
-            <span class="image-fallback">Salve aqui uma imagem como instagram-gota-de-ouro.png</span>
-            <img src="gota de ouro modas/instagram-gota-de-ouro.png" alt="Conteúdos da Gota de Ouro Modas no Instagram">
+          <!-- Fotos oficiais da Gota de Ouro Modas ainda não fornecidas.
+               Para voltar à composição original, salve os arquivos em "gota de ouro modas/"
+               e troque este painel pelos dois blocos .screen. -->
+          <div class="case-brand-panel">
+            <img src="img/logo-gota-de-ouro.webp" alt="Logotipo da Gota de Ouro Modas">
           </div>
-
-          <div class="screen screen-small">
-            <span class="image-fallback">Salve aqui uma imagem como gota-de-ouro-principal.png</span>
-            <img src="gota de ouro modas/gota-de-ouro-principal.png" alt="Produção de moda da Gota de Ouro Modas">
-          </div>
+        
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="container origin-grid">
+      <div class="container origin-grid is-single">
         <div>
           <span class="eyebrow" style="color:#146bf5">O ponto de partida</span>
           <h2 class="section-title">A marca já tinha 35 mil seguidores. O próximo passo era transformar audiência em resultado.</h2>
@@ -690,9 +728,9 @@
           </div>
         </div>
 
-        <div class="origin-photo">
-          <img src="gota de ouro modas/loja-gota-de-ouro.png" alt="Loja física da Gota de Ouro Modas">
-        </div>
+          <!-- Bloco de foto removido: o arquivo "gota de ouro modas/" não existe no projeto.
+               Ao fornecer a imagem, recrie <div class="origin-photo"> aqui e remova
+               a classe "is-single" da .origin-grid acima. -->
       </div>
     </section>
 
@@ -802,18 +840,11 @@
     </section>
 
     <section class="section beyond">
-      <div class="container beyond-grid">
-        <div class="media-stack">
-          <div class="media-card media-instagram">
-            <span class="image-fallback">Salve como conteudo-gota-de-ouro.png</span>
-            <img src="gota de ouro modas/conteudo-gota-de-ouro.png" alt="Conteúdo produzido para a Gota de Ouro Modas">
-          </div>
+      <div class="container beyond-grid is-single">
+        <!-- Pilha de imagens removida: os arquivos "gota de ouro modas/" não existem no projeto.
+             Ao fornecê-los, recrie <div class="media-stack"> aqui e remova
+             a classe "is-single" da .beyond-grid acima. -->
 
-          <div class="media-card media-delivery">
-            <span class="image-fallback">Salve como loja-online-gota-de-ouro.png</span>
-            <img src="gota de ouro modas/loja-online-gota-de-ouro.png" alt="Loja online da Gota de Ouro Modas">
-          </div>
-        </div>
 
         <div>
           <span class="eyebrow" style="color:#146bf5">Muito além de seguidores</span>
@@ -873,7 +904,7 @@
   </footer>
 
   <a class="whatsapp" href="https://wa.me/5511914894352?text=Olá!%20Conheci%20o%20case%20da%20Gota%20de%20Ouro%20Modas%20e%20quero%20falar%20com%20a%20Humanize." target="_blank" rel="noopener" aria-label="Falar com a Humanize no WhatsApp">
-    <img src="whatsapp.png" alt="WhatsApp">
+    <img src="img/whatsapp.webp" alt="" aria-hidden="true" width="62" height="62">
   </a>
 </body>
 </html>
