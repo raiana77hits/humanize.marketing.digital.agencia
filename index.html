@@ -3,2475 +3,1451 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Humanize Marketing Digital — estratégias digitais para atrair mais clientes, vender mais e aumentar o faturamento." />
-  <title>Humanize Marketing Digital</title>
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="shortcut icon" type="image/png" href="favicon.png" />
-  <link rel="apple-touch-icon" href="favicon.png" />
+
+  <title>Humanize Marketing Digital | Estratégia digital para sua empresa vender mais</title>
+  <meta name="description" content="Agência de marketing digital em São Paulo. Estruturamos a presença digital da sua empresa — conteúdo, tráfego pago, site, Google e delivery — para atrair clientes, vender mais e aumentar o faturamento." />
+  <meta name="theme-color" content="#030914" />
+  <link rel="canonical" href="https://humanize-marketing-digital-agencia.vercel.app/" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="img/favicon-512.png" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Humanize Marketing Digital" />
+  <meta property="og:title" content="Humanize Marketing Digital | Estratégia digital para sua empresa vender mais" />
+  <meta property="og:description" content="Humanizamos sua marca e cuidamos de toda a sua presença digital para atrair mais clientes, vender mais e aumentar o faturamento." />
+  <meta property="og:url" content="https://humanize-marketing-digital-agencia.vercel.app/" />
+  <meta property="og:image" content="https://humanize-marketing-digital-agencia.vercel.app/img/og-humanize.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="image" href="img/hero-celular.webp" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+/* ============================================================
+   HUMANIZE — SISTEMA DE DESIGN
+   Paleta extraída do logotipo oficial (azul #005DFC).
+   Todas as seções usam estas variáveis — não use valores soltos.
+   ============================================================ */
+:root{
+  /* Cores da marca */
+  --blue:#005dfc;            /* azul oficial do logotipo */
+  --blue-bright:#3d86ff;
+  --blue-deep:#0040b5;
+  --cyan:#20d8f5;            /* acento secundário já usado pela marca */
+  --green:#25d366;           /* WhatsApp */
 
-    :root {
-      --navy:#071b3a;
-      --deep:#041126;
-      --blue:#146bf5;
-      --cyan:#20d8f5;
-      --ink:#10223d;
-      --muted:#63738b;
-      --line:#dce8f5;
-      --soft:#f5f9ff;
-      --white:#fff;
-      --green:#25d366;
-      --surface:#ffffff;
-      --surface-muted:#eef5ff;
-      --border-strong:#c9dcef;
-      --radius-sm:12px;
-      --radius-md:20px;
-      --radius-lg:30px;
-      --shadow-sm:0 8px 24px rgba(7,27,58,.08);
-      --shadow-md:0 20px 55px rgba(7,27,58,.13);
-      --shadow-glow:0 22px 60px rgba(20,107,245,.22);
-    }
+  /* Superfícies (tema escuro corporativo) */
+  --bg:#030914;
+  --bg-raised:#071225;
+  --bg-panel:#0b1a33;
+  --bg-panel-2:#0e2242;
+  --navy:#071b3a;
 
-    * { box-sizing:border-box; }
+  /* Texto */
+  --text:#eef3fb;
+  --text-soft:#c3d0e4;
+  --muted:#8c9dba;
+  --on-blue:#ffffff;
 
-    html { scroll-behavior:smooth; }
+  /* Traços e sombras */
+  --line:rgba(255,255,255,.10);
+  --line-strong:rgba(255,255,255,.18);
+  --shadow-sm:0 10px 30px rgba(0,0,0,.35);
+  --shadow-md:0 28px 70px rgba(0,0,0,.45);
+  --shadow-blue:0 18px 50px rgba(0,93,252,.32);
 
-    body {
-      margin:0;
-      font-family:'DM Sans',Arial,sans-serif;
-      color:var(--ink);
-      background:var(--white);
-      overflow-x:hidden;
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
-    }
+  /* Raios */
+  --r-xs:8px;
+  --r-sm:12px;
+  --r-md:18px;
+  --r-lg:28px;
+  --r-pill:999px;
 
-    ::selection {
-      color:#fff;
-      background:var(--blue);
-    }
+  /* Métrica */
+  --wrap:1200px;
+  --gutter:clamp(20px,5vw,40px);
+  --section-y:clamp(78px,9vw,136px);
+  --measure:64ch;
 
-    a:focus-visible,
-    button:focus-visible {
-      outline:3px solid var(--cyan);
-      outline-offset:4px;
-    }
-
-    .container {
-      width:min(1160px,calc(100% - 40px));
-      margin:auto;
-    }
-
-    h1,h2,h3,p { margin-top:0; }
-
-    h1,h2,h3 {
-      font-family:Manrope,Arial,sans-serif;
-    }
-
-    .eyebrow {
-      display:inline-block;
-      color:var(--cyan);
-      text-transform:uppercase;
-      letter-spacing:.14em;
-      font-size:.75rem;
-      font-weight:800;
-    }
-
-    .section {
-      padding:110px 0;
-    }
-
-    .section-title {
-      font-size:clamp(2.2rem,4vw,4rem);
-      letter-spacing:-.06em;
-      line-height:1.08;
-      margin:14px 0 20px;
-      max-width:830px;
-      text-wrap:balance;
-    }
-
-    .section-copy {
-      max-width:680px;
-      color:var(--muted);
-      font-size:1.08rem;
-      line-height:1.72;
-    }
-
-    .btn {
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:16px 25px;
-      border-radius:999px;
-      border:0;
-      background:linear-gradient(100deg,var(--cyan),var(--blue));
-      color:#fff;
-      text-decoration:none;
-      font-weight:800;
-      box-shadow:0 13px 30px #0054cb40, inset 0 1px 0 rgba(255,255,255,.3);
-      transition:transform .25s ease, box-shadow .25s ease, filter .25s ease;
-    }
-
-    .btn:hover {
-      transform:translateY(-3px);
-      box-shadow:0 17px 37px #0054cb68;
-      filter:saturate(1.12);
-    }
-
-    /* TOPO */
-    header {
-      position:absolute;
-      z-index:5;
-      inset:0 0 auto;
-      padding:24px 0;
-    }
-
-    .nav {
-      position:relative;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:28px;
-      padding:12px 18px;
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:18px;
-      background:rgba(4,17,38,.42);
-      box-shadow:0 14px 40px rgba(0,0,0,.12);
-      backdrop-filter:blur(16px);
-      -webkit-backdrop-filter:blur(16px);
-    }
-
-    .brand img {
-      width:190px;
-      max-height:75px;
-      object-fit:contain;
-      display:block;
-    }
-
-    .brand small {
-      display:block;
-      margin-top:7px;
-      font:700 .56rem 'DM Sans',sans-serif;
-      letter-spacing:.09em;
-    }
-
-    .links {
-      display:flex;
-      align-items:center;
-      gap:38px;
-      margin-right:50px;
-    }
-
-    .links a {
-      position:relative;
-      padding:9px 0;
-      color:#e7f2ff;
-      text-decoration:none;
-      font-size:1.08rem;
-      font-weight:700;
-      white-space:nowrap;
-      transition:color .25s ease;
-    }
-
-    .links a::after {
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:1px;
-      width:100%;
-      height:2px;
-      border-radius:999px;
-      background:linear-gradient(90deg,var(--cyan),var(--blue));
-      transform:scaleX(0);
-      transform-origin:left;
-      transition:transform .25s ease;
-    }
-
-    .links a:hover { color:var(--cyan); }
-    .links a:hover::after { transform:scaleX(1); }
-
-    .menu-toggle {
-      display:none;
-      appearance:none;
-      -webkit-appearance:none;
-      border:0;
-      background:transparent;
-      font:inherit;
-      cursor:pointer;
-    }
-
-    /* PRIMEIRA TELA */
-    .hero {
-      min-height:790px;
-      position:relative;
-      overflow:hidden;
-      display:grid;
-      align-items:center;
-      color:#fff;
-      background:
-        radial-gradient(circle at 78% 48%, rgba(20,107,245,.26) 0%, rgba(20,107,245,.10) 24%, rgba(7,27,58,0) 48%),
-        linear-gradient(135deg,#071b3a 0%,#08264d 58%,#071b3a 100%);
-    }
-
-    .hero::before {
-      content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      opacity:.22;
-      background-image:
-        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.045) 1px, transparent 1px);
-      background-size:54px 54px;
-      mask-image:linear-gradient(to bottom,rgba(0,0,0,.75),transparent 88%);
-    }
-
-    .hero::after {
-      content:"";
-      position:absolute;
-      right:-140px;
-      bottom:-210px;
-      width:520px;
-      height:520px;
-      border-radius:50%;
-      border:1px solid rgba(32,216,245,.18);
-      box-shadow:
-        0 0 0 60px rgba(32,216,245,.035),
-        0 0 0 120px rgba(20,107,245,.025);
-      pointer-events:none;
-    }
-
-    .hero-grid {
-      position:relative;
-      z-index:2;
-      display:grid;
-      grid-template-columns:1.12fr .88fr;
-      align-items:center;
-      gap:40px;
-      padding:160px 0 90px;
-    }
-
-    .hero-copy {
-      max-width:720px;
-    }
-
-    .hero-visual {
-  min-height:520px;
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
+  /* Movimento */
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --t-fast:.18s var(--ease);
+  --t:.32s var(--ease);
 }
 
-/* ÓRBITA MAIOR */
-.orbit {
-  position:absolute;
-  border-radius:50%;
-  pointer-events:none;
+*,*::before,*::after{box-sizing:border-box}
+
+html{scroll-behavior:smooth;scroll-padding-top:92px;-webkit-text-size-adjust:100%}
+
+body{
+  margin:0;
+  font-family:'DM Sans',system-ui,Arial,sans-serif;
+  font-size:1.02rem;
+  line-height:1.7;
+  color:var(--text-soft);
+  background:var(--bg);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+body.is-locked{overflow:hidden}
+
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+ul{margin:0;padding:0;list-style:none}
+
+h1,h2,h3,h4,p{margin:0}
+h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);line-height:1.1;letter-spacing:-.02em}
+
+::selection{background:var(--blue);color:#fff}
+
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:4px}
+
+.skip-link{
+  position:absolute;left:-9999px;top:0;z-index:999;
+  background:var(--blue);color:#fff;padding:14px 22px;border-radius:0 0 var(--r-sm) 0;font-weight:700;
+}
+.skip-link:focus{left:0}
+
+/* ---------- Layout ---------- */
+.wrap{width:min(var(--wrap),calc(100% - var(--gutter)*2));margin-inline:auto}
+.section{padding-block:var(--section-y);position:relative}
+.section--raised{background:var(--bg-raised)}
+.section--hair{border-top:1px solid var(--line)}
+
+/* ---------- Tipografia de apoio ---------- */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:.74rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--cyan);margin-bottom:18px;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--cyan);opacity:.7}
+.eyebrow--blue{color:var(--blue-bright)}
+.eyebrow--blue::before{background:var(--blue-bright)}
+
+.h-display{font-size:clamp(2.45rem,5.6vw,4.4rem);line-height:1.04;letter-spacing:-.035em}
+.h-section{font-size:clamp(1.95rem,3.9vw,3.1rem);line-height:1.08;letter-spacing:-.03em}
+.h-sub{font-size:clamp(1.1rem,1.6vw,1.3rem);line-height:1.3}
+
+.lead{font-size:clamp(1.02rem,1.35vw,1.14rem);line-height:1.75;color:var(--text-soft);max-width:var(--measure)}
+.muted{color:var(--muted)}
+
+.accent{color:var(--blue-bright)}
+.script{font-family:Caveat,cursive;font-weight:700;color:var(--cyan);font-size:1.45em;line-height:1}
+
+.section-head{max-width:760px;margin-bottom:clamp(44px,5vw,66px)}
+.section-head .lead{margin-top:20px}
+
+/* ---------- Botões ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:54px;padding:0 28px;border:1px solid transparent;border-radius:var(--r-pill);
+  font-family:Manrope,sans-serif;font-weight:800;font-size:.9rem;letter-spacing:.01em;
+  transition:transform var(--t),box-shadow var(--t),background var(--t),border-color var(--t),color var(--t);
+  text-align:center;
+}
+.btn .arrow{transition:transform var(--t)}
+.btn:hover .arrow{transform:translateX(4px)}
+
+.btn--primary{background:var(--blue);color:var(--on-blue);box-shadow:var(--shadow-blue)}
+.btn--primary:hover{background:var(--blue-bright);transform:translateY(-2px);box-shadow:0 22px 60px rgba(0,93,252,.45)}
+.btn--primary:active{transform:translateY(0)}
+
+.btn--ghost{border-color:var(--line-strong);color:var(--text);background:rgba(255,255,255,.03)}
+.btn--ghost:hover{border-color:var(--blue-bright);color:#fff;background:rgba(0,93,252,.12);transform:translateY(-2px)}
+
+.btn--light{background:#fff;color:var(--navy)}
+.btn--light:hover{transform:translateY(-2px);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+
+.btn--sm{min-height:46px;padding:0 22px;font-size:.84rem}
+
+.link-more{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:Manrope,sans-serif;font-weight:800;font-size:.88rem;color:var(--blue-bright);
+  min-height:44px;transition:color var(--t);
+}
+.link-more span.label{border-bottom:1px solid transparent;padding-bottom:3px;transition:border-color var(--t)}
+.link-more:hover{color:var(--cyan)}
+.link-more:hover span.label{border-color:var(--cyan)}
+.link-more .arrow{transition:transform var(--t)}
+.link-more:hover .arrow{transform:translateX(4px)}
+
+/* ============================================================
+   CABEÇALHO
+   ============================================================ */
+.site-header{
+  position:fixed;inset:0 0 auto;z-index:100;
+  background:rgba(3,9,20,0);
+  border-bottom:1px solid transparent;
+  transition:background var(--t),border-color var(--t),backdrop-filter var(--t);
+}
+.site-header.is-stuck{
+  background:rgba(3,9,20,.88);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom-color:var(--line);
+}
+.nav-bar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:84px;transition:height var(--t)}
+.site-header.is-stuck .nav-bar{height:72px}
+
+.brand{display:flex;align-items:center;flex-shrink:0}
+.brand img{height:40px;width:auto;transition:height var(--t)}
+.site-header.is-stuck .brand img{height:34px}
+
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{
+  font-size:.92rem;font-weight:600;color:var(--text-soft);
+  position:relative;padding-block:6px;transition:color var(--t);
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:0;width:100%;height:1.5px;
+  background:var(--cyan);transform:scaleX(0);transform-origin:left;transition:transform var(--t);
+}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-links .nav-menu-cta{display:none}
+
+.nav-cta{display:flex;align-items:center;gap:12px}
+
+.menu-toggle{
+  display:none;width:46px;height:46px;border:1px solid var(--line-strong);border-radius:var(--r-sm);
+  background:rgba(255,255,255,.04);color:#fff;align-items:center;justify-content:center;flex-direction:column;gap:5px;
+  transition:border-color var(--t),background var(--t);
+}
+.menu-toggle:hover{border-color:var(--blue-bright)}
+.menu-toggle span{display:block;width:18px;height:2px;background:currentColor;border-radius:2px;transition:transform var(--t),opacity var(--t)}
+.menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;overflow:hidden;
+  padding:clamp(130px,16vh,168px) 0 clamp(70px,8vw,104px);
+  background:
+    radial-gradient(130% 90% at 82% 8%,rgba(0,93,252,.30),transparent 56%),
+    radial-gradient(90% 70% at 10% 95%,rgba(32,216,245,.10),transparent 60%),
+    linear-gradient(170deg,#04101f 0%,#030914 58%,#050e1e 100%);
+}
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:68px 68px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 78%);
+  -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 78%);
+}
+.hero::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:160px;pointer-events:none;
+  background:linear-gradient(to bottom,transparent,var(--bg));
 }
 
-.orbit-one {
-  width:420px;
-  height:260px;
-  right:-15px;
-  top:155px;
-
-  border:2px solid rgba(32,216,245,.45);
-
-  transform:rotate(12deg);
+.hero-grid{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+  gap:clamp(40px,5vw,76px);align-items:center;
 }
 
-/* ÓRBITA MENOR */
-.orbit-two {
-  width:330px;
-  height:210px;
-  right:40px;
-  top:195px;
+.hero h1{margin-bottom:24px}
+.hero h1 strong{
+  font-weight:800;color:transparent;
+  background:linear-gradient(104deg,var(--blue-bright),var(--cyan));
+  -webkit-background-clip:text;background-clip:text;
+}
+.hero .lead{max-width:34em;margin-bottom:36px}
 
-  border:1px dashed rgba(20,107,245,.42);
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:40px}
 
-  transform:rotate(12deg);
+.hero-proof{
+  display:flex;flex-wrap:wrap;gap:12px 28px;
+  padding-top:28px;border-top:1px solid var(--line);
+}
+.hero-proof li{display:flex;align-items:center;gap:9px;font-size:.88rem;color:var(--muted)}
+.hero-proof svg{flex-shrink:0;color:var(--cyan)}
+
+/* Visual do hero */
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:380px;isolation:isolate}
+.hero-visual-ring,.hero-badge{pointer-events:none}
+.hero-visual-ring{
+  position:absolute;width:min(104%,460px);aspect-ratio:1;border-radius:50%;
+  border:1px solid rgba(61,134,255,.28);
+  box-shadow:0 0 90px rgba(0,93,252,.22) inset;
+}
+.hero-visual-ring.is-inner{width:min(78%,350px);border-color:rgba(32,216,245,.20)}
+.hero-figure{
+  position:relative;z-index:2;border-radius:var(--r-lg);overflow:hidden;
+  border:1px solid var(--line);box-shadow:var(--shadow-md);
+  background:var(--bg-panel);
+}
+.hero-figure img{width:100%;height:auto}
+.hero-badge{
+  position:absolute;z-index:3;left:-14px;bottom:26px;
+  display:flex;align-items:center;gap:12px;
+  padding:14px 20px 14px 16px;border-radius:var(--r-md);
+  background:rgba(7,18,37,.92);border:1px solid var(--line-strong);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:var(--shadow-sm);max-width:260px;
+}
+.hero-badge img{width:40px;height:40px;border-radius:50%;flex-shrink:0}
+.hero-badge b{display:block;font-family:Manrope,sans-serif;font-size:.92rem;color:#fff;line-height:1.25}
+.hero-badge small{display:block;font-size:.76rem;color:var(--muted);margin-top:2px}
+
+/* ============================================================
+   FAIXA DE MARCAS (prova social)
+   ============================================================ */
+.brandbar{padding-block:clamp(40px,5vw,60px);border-block:1px solid var(--line);background:var(--bg-raised);overflow:hidden}
+.brandbar-label{
+  text-align:center;font-size:.76rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:34px;
+}
+.marquee{display:flex;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.marquee-track{display:flex;align-items:center;gap:clamp(34px,5vw,64px);padding-right:clamp(34px,5vw,64px);animation:slide 44s linear infinite;flex-shrink:0}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-100%)}}
+.marquee img{
+  height:clamp(58px,7vw,74px);width:auto;border-radius:50%;flex-shrink:0;
+  filter:grayscale(1) opacity(.55);transition:filter var(--t),transform var(--t);
+}
+.marquee img:hover{filter:none;transform:scale(1.07)}
+
+/* ============================================================
+   DESAFIOS
+   ============================================================ */
+.split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(40px,6vw,86px)}
+.split-sticky{position:sticky;top:116px;align-self:start}
+
+.challenge-list{counter-reset:ch;border-top:1px solid var(--line)}
+.challenge-list li{
+  counter-increment:ch;
+  display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:baseline;
+  padding:22px 4px;border-bottom:1px solid var(--line);
+  transition:background var(--t),padding-left var(--t);
+}
+.challenge-list li:hover{background:rgba(255,255,255,.02);padding-left:12px}
+.challenge-list li::before{
+  content:counter(ch,decimal-leading-zero);
+  font-family:Manrope,sans-serif;font-weight:800;font-size:.84rem;
+  color:var(--blue-bright);letter-spacing:.06em;
+}
+.challenge-list p{font-size:1rem;color:var(--text-soft)}
+
+/* ============================================================
+   SOLUÇÃO
+   ============================================================ */
+.benefit-list{display:grid;gap:2px;margin-bottom:34px}
+.benefit-list li{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:14px 18px;border-radius:var(--r-sm);
+  background:rgba(255,255,255,.02);border:1px solid transparent;
+  transition:border-color var(--t),background var(--t),transform var(--t);
+}
+.benefit-list li:hover{border-color:rgba(0,93,252,.35);background:rgba(0,93,252,.07);transform:translateX(4px)}
+.benefit-list svg{flex-shrink:0;color:var(--cyan);margin-top:4px}
+.benefit-list span{font-size:.99rem;color:var(--text)}
+
+.pullquote{
+  position:relative;padding:30px 32px;border-radius:var(--r-md);
+  background:linear-gradient(135deg,rgba(0,93,252,.14),rgba(32,216,245,.06));
+  border:1px solid rgba(61,134,255,.3);
+  font-size:1.06rem;line-height:1.7;color:var(--text);
+}
+.pullquote strong{color:#fff;font-weight:700}
+
+/* ============================================================
+   SERVIÇOS — matriz editorial (sem cartões genéricos)
+   ============================================================ */
+.services{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;
+  background:var(--line);
+}
+.service{
+  position:relative;padding:clamp(28px,3vw,40px);
+  background:var(--bg-panel);
+  transition:background var(--t);
+}
+.service::after{
+  content:"";position:absolute;left:0;top:0;width:100%;height:2px;
+  background:linear-gradient(90deg,var(--blue),var(--cyan));
+  transform:scaleX(0);transform-origin:left;transition:transform var(--t);
+}
+.service:hover{background:var(--bg-panel-2)}
+.service:hover::after{transform:scaleX(1)}
+
+.service-num{
+  display:block;font-family:Manrope,sans-serif;font-weight:800;font-size:.82rem;
+  color:var(--blue-bright);letter-spacing:.1em;margin-bottom:18px;
+}
+.service h3{font-size:1.16rem;margin-bottom:12px;line-height:1.25}
+.service p{font-size:.95rem;line-height:1.68;color:var(--muted)}
+
+/* O primeiro e o último serviço ocupam duas colunas: quebra o ritmo de
+   "10 caixas iguais" e fecha a grade sem deixar célula vazia (2+8+2 = 12). */
+.service--wide{grid-column:span 2;background:linear-gradient(120deg,rgba(0,93,252,.14),transparent 62%),var(--bg-panel)}
+.service--wide h3{font-size:clamp(1.3rem,2vw,1.6rem)}
+.service--wide p{font-size:1.01rem;color:var(--text-soft);max-width:46ch}
+
+/* ============================================================
+   MÉTODO — linha do tempo
+   ============================================================ */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,2.4vw,32px);position:relative}
+.steps::before{
+  content:"";position:absolute;left:0;right:0;top:19px;height:1px;
+  background:linear-gradient(90deg,var(--blue),var(--cyan));opacity:.35;
+}
+.step{position:relative;padding-top:58px}
+.step::before{
+  content:"";position:absolute;left:0;top:12px;width:15px;height:15px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--blue-bright);
+  box-shadow:0 0 0 5px var(--bg),0 0 22px rgba(0,93,252,.6);
+  transition:background var(--t),transform var(--t);
+}
+.step:hover::before{background:var(--cyan);border-color:var(--cyan);transform:scale(1.18)}
+.step b{
+  display:block;font-family:Manrope,sans-serif;font-weight:800;font-size:.82rem;
+  color:var(--blue-bright);letter-spacing:.1em;margin-bottom:12px;
+}
+.step h3{font-size:1.14rem;margin-bottom:12px}
+.step p{font-size:.94rem;line-height:1.68;color:var(--muted)}
+
+.method-quote{
+  margin-top:clamp(50px,6vw,76px);padding-top:clamp(36px,4vw,48px);border-top:1px solid var(--line);
+  text-align:center;max-width:760px;margin-inline:auto;
+  font-size:clamp(1.12rem,2.1vw,1.46rem);line-height:1.52;color:var(--text);
+  font-family:Manrope,sans-serif;font-weight:600;letter-spacing:-.015em;
 }
 
-/* BOLINHAS */
-.dot {
-  position:absolute;
-  border-radius:50%;
-  z-index:1;
-  pointer-events:none;
+/* ============================================================
+   CASES
+   ============================================================ */
+.cases{display:grid;gap:clamp(20px,2.4vw,28px)}
+.case{
+  display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);
+  gap:clamp(28px,4vw,56px);align-items:center;
+  padding:clamp(28px,3.4vw,46px);
+  border:1px solid var(--line);border-radius:var(--r-lg);
+  background:var(--bg-panel);
+  position:relative;overflow:hidden;
+  transition:border-color var(--t),transform var(--t),box-shadow var(--t);
+}
+.case::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(to bottom,var(--case-accent,var(--blue)),transparent);
+}
+.case:hover{border-color:rgba(61,134,255,.4);transform:translateY(-3px);box-shadow:var(--shadow-md)}
+
+.case-head{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.case-logo{
+  width:56px;height:56px;border-radius:50%;flex-shrink:0;
+  border:1px solid var(--line-strong);background:var(--bg-raised);
+}
+.case-client{font-family:Manrope,sans-serif;font-weight:800;font-size:1.2rem;color:#fff;letter-spacing:-.01em;line-height:1.2}
+.case-services{display:block;font-size:.78rem;color:var(--case-accent,var(--blue-bright));letter-spacing:.04em;margin-top:5px;font-weight:600}
+
+.case h3{font-size:clamp(1.22rem,2.1vw,1.62rem);margin-bottom:14px;line-height:1.24}
+.case p{font-size:.98rem;line-height:1.72;color:var(--muted);max-width:52ch;margin-bottom:24px}
+
+.case-figures{display:grid;gap:18px;padding:26px;border-radius:var(--r-md);background:rgba(255,255,255,.03);border:1px solid var(--line)}
+.figure small{
+  display:block;font-size:.68rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:7px;
+}
+.figure b{
+  display:block;font-family:Manrope,sans-serif;font-weight:800;
+  font-size:clamp(1.3rem,2.3vw,1.75rem);line-height:1.12;letter-spacing:-.025em;
+  color:var(--case-accent,var(--blue-bright));
+}
+.figure b .unit{font-size:.62em;color:var(--text-soft);font-weight:700;display:block;margin-top:5px;letter-spacing:0}
+/* Resultados qualitativos: mesma estrutura, peso tipográfico menor */
+.figure--text b{font-size:clamp(1rem,1.5vw,1.14rem);color:var(--text);line-height:1.38}
+
+/* ============================================================
+   QUEM SOMOS
+   ============================================================ */
+.about-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:clamp(40px,5vw,78px);align-items:center}
+
+/* Composição provisória — troque .about-visual pelo <img> oficial da Ray e da Jaque
+   mantendo a mesma proporção (4/5). Nada mais precisa mudar. */
+.about-visual{
+  position:relative;aspect-ratio:4/5;border-radius:var(--r-lg);overflow:hidden;
+  border:1px solid var(--line);
+  background:
+    radial-gradient(110% 80% at 22% 10%,rgba(0,93,252,.34),transparent 62%),
+    radial-gradient(90% 80% at 88% 94%,rgba(32,216,245,.14),transparent 64%),
+    #05101f;
+  display:flex;align-items:center;justify-content:center;
+}
+.about-visual::before{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:42px 42px;
+}
+/* O monograma é azul; aqui ele é convertido em branco para contrastar com o painel. */
+.about-visual img{
+  position:relative;width:58%;height:auto;opacity:.92;
+  filter:brightness(0) invert(1) drop-shadow(0 18px 44px rgba(0,0,0,.55));
+}
+.about-initials{
+  position:absolute;left:0;right:0;bottom:0;padding:26px 28px;
+  background:linear-gradient(to top,rgba(3,9,20,.94),transparent);
+}
+.about-initials b{display:block;font-family:Caveat,cursive;font-size:2.1rem;color:var(--cyan);line-height:1}
+.about-initials small{display:block;font-size:.8rem;color:var(--muted);margin-top:4px}
+
+.people{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
+.person{padding:26px;border-radius:var(--r-md);background:var(--bg-panel);border:1px solid var(--line);transition:border-color var(--t),transform var(--t)}
+.person:hover{border-color:rgba(61,134,255,.4);transform:translateY(-3px)}
+.person b{display:block;font-family:Manrope,sans-serif;font-weight:800;font-size:1.16rem;color:#fff;letter-spacing:.04em}
+.person small{display:block;font-size:.78rem;color:var(--blue-bright);margin:8px 0 12px;line-height:1.5;font-weight:600}
+.person p{font-size:.93rem;line-height:1.65;color:var(--muted)}
+
+.about-signature{
+  margin-top:32px;padding-left:22px;border-left:2px solid var(--cyan);
+  font-size:1.05rem;line-height:1.6;color:var(--text);
 }
 
-.dot-one {
-  width:18px;
-  height:18px;
+/* ============================================================
+   DIFERENCIAIS — editorial, sem cartões
+   ============================================================ */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.why{
+  padding:clamp(30px,3.2vw,44px) clamp(26px,3vw,46px);
+  border-top:1px solid var(--line);
+  transition:background var(--t);
+}
+.why:hover{background:rgba(255,255,255,.022)}
+.why:nth-child(odd){border-right:1px solid var(--line)}
+.why-num{
+  display:block;font-family:Manrope,sans-serif;font-weight:800;
+  font-size:clamp(2.6rem,4.6vw,3.6rem);line-height:1;letter-spacing:-.04em;
+  color:transparent;-webkit-text-stroke:1.4px rgba(61,134,255,.55);
+  margin-bottom:20px;transition:color var(--t),-webkit-text-stroke-color var(--t);
+}
+.why:hover .why-num{color:rgba(0,93,252,.16);-webkit-text-stroke-color:var(--cyan)}
+.why h3{font-size:clamp(1.16rem,1.9vw,1.42rem);margin-bottom:14px}
+.why p{font-size:.97rem;line-height:1.72;color:var(--muted);max-width:46ch}
 
-  right:345px;
-  top:265px;
-
-  background:#146bf5;
-
-  box-shadow:0 0 18px rgba(20,107,245,.75);
+.closing-band{
+  margin-top:clamp(46px,5vw,64px);padding:clamp(32px,4vw,46px);
+  border-radius:var(--r-lg);text-align:center;
+  background:linear-gradient(120deg,rgba(0,93,252,.16),rgba(32,216,245,.07));
+  border:1px solid rgba(61,134,255,.3);
+  font-family:Manrope,sans-serif;font-weight:700;letter-spacing:-.02em;
+  font-size:clamp(1.14rem,2.2vw,1.6rem);line-height:1.42;color:#fff;
 }
 
-.dot-two {
-  width:11px;
-  height:11px;
+/* ============================================================
+   CITAÇÃO DE MARCAS
+   ============================================================ */
+.quote-band{padding-block:clamp(66px,8vw,104px);text-align:center;background:var(--bg-raised);border-block:1px solid var(--line)}
+.quote-band blockquote{
+  margin:0 auto;max-width:900px;
+  font-family:Manrope,sans-serif;font-weight:700;letter-spacing:-.025em;
+  font-size:clamp(1.3rem,3vw,2.2rem);line-height:1.32;color:var(--text);
+}
+.quote-band blockquote em{font-style:normal;color:var(--cyan)}
 
-  right:275px;
-  top:335px;
+/* ============================================================
+   CTA FINAL
+   ============================================================ */
+.final-cta{
+  position:relative;overflow:hidden;text-align:center;
+  padding-block:clamp(80px,10vw,140px);
+  background:
+    radial-gradient(90% 100% at 50% 0%,rgba(0,93,252,.45),transparent 62%),
+    linear-gradient(160deg,#041533,#030914 72%);
+}
+.final-cta::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:68px 68px;
+  mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent);
+  -webkit-mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent);
+}
+.final-cta .wrap{position:relative;z-index:2}
+.final-cta h2{margin-bottom:26px}
+.final-cta .lead{margin:0 auto 40px;text-align:center}
+.final-cta .fine{margin-top:22px;font-size:.86rem;color:var(--muted)}
 
-  background:#20d8f5;
-
-  box-shadow:0 0 15px rgba(32,216,245,.75);
+/* ============================================================
+   RODAPÉ
+   ============================================================ */
+.site-footer{background:var(--bg);border-top:1px solid var(--line);padding-block:clamp(54px,6vw,76px) 34px}
+.footer-grid{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(2,minmax(0,1fr));gap:clamp(32px,4vw,56px);margin-bottom:46px}
+.footer-brand img{height:44px;width:auto;margin-bottom:20px}
+.footer-brand p{font-size:.94rem;color:var(--muted);max-width:32ch}
+.footer-col h3{font-size:.76rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.footer-col li+li{margin-top:12px}
+.footer-col a,.footer-col span{font-size:.94rem;color:var(--text-soft);transition:color var(--t)}
+.footer-col a:hover{color:var(--cyan)}
+.footer-bottom{
+  display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;
+  padding-top:28px;border-top:1px solid var(--line);font-size:.84rem;color:var(--muted);
 }
 
-.dot-three {
-  width:14px;
-  height:14px;
+/* ============================================================
+   WHATSAPP FLUTUANTE
+   ============================================================ */
+.wa-float{
+  position:fixed;right:clamp(16px,3vw,26px);bottom:clamp(16px,3vw,26px);z-index:90;
+  width:62px;height:62px;border-radius:50%;overflow:hidden;
+  box-shadow:0 14px 36px rgba(37,211,102,.4);
+  transition:transform var(--t),box-shadow var(--t);
+}
+.wa-float:hover{transform:scale(1.07) translateY(-2px);box-shadow:0 20px 48px rgba(37,211,102,.55)}
+.wa-float img{width:100%;height:100%}
 
-  right:28px;
-  top:390px;
+/* ============================================================
+   ANIMAÇÃO DE ENTRADA
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .66s var(--ease),transform .66s var(--ease)}
+.reveal.is-visible{opacity:1;transform:none}
+.reveal-d1{transition-delay:.08s}
+.reveal-d2{transition-delay:.16s}
+.reveal-d3{transition-delay:.24s}
 
-  background:#146bf5;
-
-  box-shadow:0 0 16px rgba(20,107,245,.65);
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+  .marquee-track{animation:none}
 }
 
-/* TRAÇOS DIAGONAIS */
-.line-detail {
-  position:absolute;
-
-  height:2px;
-
-  background:linear-gradient(
-    90deg,
-    rgba(32,216,245,0),
-    rgba(32,216,245,.85)
-  );
-
-  transform:rotate(-48deg);
-
-  transform-origin:right center;
-
-  border-radius:999px;
-
-  pointer-events:none;
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+@media (max-width:1040px){
+  .hero-grid{grid-template-columns:1fr;gap:54px}
+  /* Tablet: a imagem abre a composição. No celular (abaixo) o texto vem primeiro. */
+  .hero-visual{order:-1;min-height:0;max-width:430px;margin-inline:auto;width:100%}
+  .services{grid-template-columns:1fr 1fr}
+  .service:nth-child(3n){border-right:1px solid var(--line)}
+  .service:nth-child(2n){border-right:0}
+  .service--wide{grid-column:span 2}
+  .steps{grid-template-columns:1fr 1fr;gap:38px 28px}
+  .steps::before{display:none}
+  .step{padding-top:50px}
+  .case{grid-template-columns:1fr;gap:30px}
+  .about-grid{grid-template-columns:1fr;gap:44px}
+  .about-visual{max-width:380px;margin-inline:auto;width:100%}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-brand{grid-column:1 / -1}
 }
 
-.line-one {
-  width:85px;
-
-  right:-25px;
-  top:235px;
+@media (max-width:900px){
+  .split{grid-template-columns:1fr;gap:38px}
+  .split-sticky{position:static}
+  .nav-links{
+    position:fixed;inset:0 0 auto;top:0;z-index:-1;
+    flex-direction:column;align-items:stretch;gap:0;
+    padding:104px var(--gutter) 34px;
+    background:rgba(3,9,20,.98);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--line);
+    transform:translateY(-102%);transition:transform .36s var(--ease);
+    max-height:100dvh;overflow-y:auto;
+  }
+  .nav-links.is-open{transform:translateY(0)}
+  .nav-links a{padding:18px 2px;border-bottom:1px solid var(--line);font-size:1.06rem;font-weight:700;color:var(--text)}
+  .nav-links a::after{display:none}
+  .nav-links .nav-menu-cta{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    margin-top:26px;border:0;
+    min-height:54px;border-radius:var(--r-pill);background:var(--blue);color:#fff;
+    font-family:Manrope,sans-serif;font-weight:800;font-size:.95rem;
+  }
+  .menu-toggle{display:flex}
+  .nav-cta .btn{display:none}
+  .why-grid{grid-template-columns:1fr}
+  .why:nth-child(odd){border-right:0}
+  .people{grid-template-columns:1fr}
 }
 
-.line-two {
-  width:58px;
-
-  right:10px;
-  top:285px;
+@media (max-width:620px){
+  :root{--section-y:clamp(62px,13vw,84px)}
+  .services{grid-template-columns:1fr;border-radius:var(--r-md)}
+  .service{border-right:0!important}
+  .service--wide{grid-column:span 1}
+  .steps{grid-template-columns:1fr;gap:30px}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .hero-actions .btn{width:100%}
+  .hero-visual{order:0;max-width:none}
+  .hero-badge{left:auto;right:10px;bottom:-16px;padding:11px 15px;max-width:230px}
+  .hero-badge img{width:34px;height:34px}
+  .hero-badge b{font-size:.85rem}
+  .case{padding:24px 20px;border-radius:var(--r-md)}
+  .case-figures{padding:20px}
+  .footer-grid{grid-template-columns:1fr;gap:34px}
+  .footer-bottom{justify-content:flex-start}
+  .wa-float{width:56px;height:56px}
+  .benefit-list li{padding:12px 14px}
 }
-
-    /* CELULAR DINÂMICO — PORTFÓLIO DE CLIENTES */
-    .hero-client-phone {
-      position:relative;
-      z-index:2;
-      width:min(330px,80%);
-      aspect-ratio:9 / 20;
-      border:9px solid #07101b;
-      border-radius:42px;
-      background:#05090f;
-      overflow:hidden;
-      box-shadow:
-        0 30px 55px rgba(0,0,0,.38),
-        0 0 0 1px rgba(255,255,255,.08),
-        0 0 46px rgba(32,216,245,.10);
-      transform:rotate(1deg);
-      isolation:isolate;
-    }
-
-    .hero-client-screen {
-      position:absolute;
-      inset:0;
-      overflow:hidden;
-      border-radius:33px;
-      background:#05090f;
-    }
-
-    .hero-client-img {
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:center top;
-      display:block;
-      opacity:0;
-      transform:scale(1.025);
-      transition:
-        opacity .72s ease,
-        transform 1.05s cubic-bezier(.22,.8,.24,1);
-      will-change:opacity,transform;
-    }
-
-    .hero-client-img.is-active {
-      opacity:1;
-      transform:scale(1);
-    }
-
-    .hero-phone-shine {
-      position:absolute;
-      z-index:4;
-      top:-18%;
-      bottom:-18%;
-      left:-52%;
-      width:38%;
-      pointer-events:none;
-      opacity:0;
-      transform:skewX(-18deg);
-      background:linear-gradient(
-        90deg,
-        rgba(32,216,245,0),
-        rgba(255,255,255,.23),
-        rgba(32,216,245,.30),
-        rgba(32,216,245,0)
-      );
-    }
-
-    .hero-phone-shine.is-shining {
-      animation:heroPhoneShine .78s ease;
-    }
-
-    @keyframes heroPhoneShine {
-      0%   { left:-52%; opacity:0; }
-      18%  { opacity:.8; }
-      100% { left:122%; opacity:0; }
-    }
-
-    .hero-phone-edge {
-      position:absolute;
-      z-index:5;
-      inset:0;
-      border-radius:33px;
-      pointer-events:none;
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,.09),
-        inset 0 0 25px rgba(0,0,0,.12);
-    }
-
-    .hero h1 {
-      max-width:720px;
-      font-size:clamp(3rem,5.4vw,5.45rem);
-      letter-spacing:-.07em;
-      line-height:.98;
-      margin:18px 0 24px;
-    }
-
-    .hero h1 strong {
-      color:var(--cyan);
-    }
-
-    .hero p {
-      max-width:610px;
-      color:#d3e4fa;
-      font-size:1.12rem;
-      line-height:1.7;
-      margin-bottom:32px;
-    }
-
-    /* CENÁRIO */
-    .pain {
-      background:var(--soft);
-    }
-
-    .split {
-      display:grid;
-      grid-template-columns:.9fr 1.1fr;
-      gap:80px;
-      align-items:start;
-    }
-
-    .list-box {
-      padding:33px;
-      border-radius:24px;
-      background:#fff;
-      border:1px solid var(--line);
-      box-shadow:var(--shadow-md);
-    }
-
-    .list-box h3 {
-      margin-bottom:19px;
-      font-size:1rem;
-    }
-
-    .check-list {
-      list-style:none;
-      padding:0;
-      margin:0;
-      display:grid;
-      gap:17px;
-    }
-
-    .check-list li {
-      display:flex;
-      gap:12px;
-      color:#4c5f79;
-      line-height:1.52;
-    }
-
-    .check-list li:before {
-      content:'×';
-      flex:0 0 25px;
-      height:25px;
-      display:grid;
-      place-items:center;
-      border-radius:50%;
-      background:#ffe9eb;
-      color:#d62c48;
-      font-weight:800;
-    }
-
-    /* SOLUÇÃO */
-    .solution {
-      color:#fff;
-      background:linear-gradient(135deg,#061831,#0b3973);
-    }
-
-    .solution .section-copy {
-      color:#c2d5ee;
-    }
-
-    .solution-list li {
-      color:#eaf5ff;
-    }
-
-    .solution-list li:before {
-      content:'✓';
-      background:#1be0d3;
-      color:#063558;
-    }
-
-    .conclusion {
-      margin-top:32px;
-      padding:26px 30px;
-      border-left:3px solid var(--cyan);
-      color:#fff;
-      font:700 1.15rem/1.6 Manrope;
-      background:#ffffff0c;
-    }
-
-    /* SERVIÇOS */
-    .services-grid {
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:17px;
-      margin-top:45px;
-    }
-
-    .service-card {
-      position:relative;
-      padding:28px 28px 27px 92px;
-      border:1px solid var(--line);
-      border-radius:20px;
-      background:#fff;
-      overflow:hidden;
-      box-shadow:var(--shadow-sm);
-      transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-    }
-
-    .service-card::after {
-      content:"";
-      position:absolute;
-      inset:0 auto 0 0;
-      width:3px;
-      background:linear-gradient(var(--cyan),var(--blue));
-      opacity:0;
-      transition:opacity .25s ease;
-    }
-
-    .service-card:hover {
-      transform:translateY(-5px);
-      border-color:#6dcfff;
-      box-shadow:var(--shadow-md);
-    }
-
-    .service-card:hover::after { opacity:1; }
-
-    .service-number {
-      position:absolute;
-      left:25px;
-      top:27px;
-      color:var(--blue);
-      font:800 1.05rem Manrope;
-    }
-
-    .service-card h3 {
-      margin-bottom:8px;
-      font-size:1.12rem;
-    }
-
-    .service-card p {
-      margin:0;
-      color:var(--muted);
-      line-height:1.58;
-    }
-
-    /* MÉTODO */
-    .process {
-      background:#eef7ff;
-    }
-
-    .steps {
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:17px;
-      margin-top:47px;
-    }
-
-    .step {
-      padding:28px 23px;
-      border-radius:20px;
-      color:#fff;
-      background:linear-gradient(145deg,#0a346a,#061c3d);
-      border:1px solid rgba(104,206,255,.18);
-      box-shadow:var(--shadow-sm);
-      transition:transform .25s ease, border-color .25s ease;
-    }
-
-    .step:hover {
-      transform:translateY(-5px);
-      border-color:rgba(32,216,245,.55);
-    }
-
-    .step b {
-      color:var(--cyan);
-      display:block;
-      margin-bottom:19px;
-      font:800 .83rem Manrope;
-      letter-spacing:.08em;
-    }
-
-    .step h3 {
-      font-size:1.08rem;
-      margin-bottom:10px;
-    }
-
-    .step p {
-      margin:0;
-      color:#c8d9ef;
-      line-height:1.58;
-      font-size:.94rem;
-    }
-
-    .quote {
-      max-width:850px;
-      margin:45px auto 0;
-      color:var(--blue);
-      text-align:center;
-      font:800 clamp(1.3rem,2.1vw,2rem)/1.42 Manrope;
-    }
-
-    /* CASES */
-    .cases {
-      background:var(--navy);
-      color:#fff;
-    }
-
-    .cases .section-copy {
-      color:#bfd1e9;
-    }
-
-    .case-carousel {
-      position:relative;
-      overflow:hidden;
-      margin-top:46px;
-    }
-
-    .case-track {
-      display:flex;
-      width:200%;
-      transition:transform .75s cubic-bezier(.22,.8,.24,1);
-    }
-
-    .case-track.show-second-pair {
-      transform:translateX(-50%);
-    }
-
-    .case-slide {
-      width:50%;
-      flex:0 0 50%;
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:23px;
-    }
-
-    .case-slide:first-child { padding-right:12px; }
-    .case-slide:last-child { padding-left:12px; }
-
-    .case-controls {
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:12px;
-      margin-top:30px;
-    }
-
-    .case-dot {
-      width:11px;
-      height:11px;
-      padding:0;
-      border:0;
-      border-radius:50%;
-      background:rgba(255,255,255,.28);
-      cursor:pointer;
-      transition:.25s ease;
-    }
-
-    .case-dot.active {
-      width:35px;
-      border-radius:999px;
-      background:var(--cyan);
-    }
-
-    .case {
-      padding:38px;
-      min-height:420px;
-      border-radius:26px;
-      background:linear-gradient(145deg,#0f417b,#0a234a);
-      border:1px solid #68ceff55;
-      display:flex;
-      flex-direction:column;
-      box-shadow:0 25px 65px rgba(0,0,0,.2);
-      transition:transform .3s ease, border-color .3s ease;
-    }
-
-    .case:hover {
-      transform:translateY(-6px);
-      border-color:rgba(32,216,245,.72);
-    }
-
-    .case-purple {
-      background:linear-gradient(145deg,#103d78,#361275);
-    }
-
-    .case-cyan {
-      background:linear-gradient(145deg,#07526b,#0a234a);
-    }
-
-    .case-blue {
-      background:linear-gradient(145deg,#123f83,#0a234a);
-    }
-
-    .case-tag {
-      color:var(--cyan);
-      font-size:.78rem;
-      font-weight:800;
-      letter-spacing:.1em;
-      text-transform:uppercase;
-    }
-
-    .case h3 {
-      font-size:1.6rem;
-      margin:16px 0 12px;
-    }
-
-    .case h4 {
-      margin:0 0 14px;
-      font:700 1.15rem/1.35 Manrope;
-    }
-
-    .case p {
-      color:#c7d9f1;
-      line-height:1.65;
-    }
-
-    .results {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px;
-      margin:18px 0 28px;
-    }
-
-    .result {
-      padding:15px;
-      border-radius:14px;
-      background:#ffffff10;
-      color:#fff;
-      font:800 1rem/1.35 Manrope;
-    }
-
-    .result small {
-      display:block;
-      color:#9fcaed;
-      font:700 .67rem 'DM Sans';
-      letter-spacing:.08em;
-      margin-bottom:5px;
-    }
-
-    .case .btn {
-      margin-top:auto;
-      align-self:flex-start;
-      background:#fff;
-      color:#0a3972;
-      box-shadow:none;
-    }
-
-    .case .btn-disabled {
-      cursor:default;
-      color:#b9cee4;
-      background:rgba(255,255,255,.1);
-      border:1px solid rgba(255,255,255,.16);
-    }
-
-    .case .btn-disabled:hover {
-      transform:none;
-      filter:none;
-    }
-
-    /* SOBRE */
-    .about {
-      background:var(--soft);
-    }
-
-    .about-grid {
-      display:grid;
-      grid-template-columns:.9fr 1.1fr;
-      gap:65px;
-      align-items:center;
-    }
-
-    .photo-placeholder {
-      min-height:490px;
-      border-radius:30px;
-      display:grid;
-      place-items:center;
-      text-align:center;
-      padding:30px;
-      background:linear-gradient(145deg,#16cfe8,#155fdd 58%,#6936ed);
-      color:#fff;
-      box-shadow:0 24px 55px #1257a544;
-    }
-
-    .photo-placeholder span {
-      display:block;
-      margin-bottom:12px;
-      font:800 4rem Manrope;
-      letter-spacing:-.17em;
-    }
-
-    .photo-placeholder p {
-      max-width:240px;
-      margin:0;
-      line-height:1.5;
-      opacity:.9;
-    }
-
-    .people {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:16px;
-      margin-top:28px;
-    }
-
-    .person {
-      padding:23px;
-      border-radius:18px;
-      border:1px solid var(--line);
-      background:#fff;
-      box-shadow:var(--shadow-sm);
-    }
-
-    .person b {
-      display:block;
-      color:var(--blue);
-      font:800 1.05rem Manrope;
-      letter-spacing:.03em;
-      margin-bottom:7px;
-    }
-
-    .person small {
-      color:#42617f;
-      display:block;
-      font-weight:700;
-      line-height:1.5;
-    }
-
-    .person p {
-      margin:13px 0 0;
-      color:var(--muted);
-      line-height:1.55;
-      font-size:.93rem;
-    }
-
-    /* DIFERENCIAIS */
-    .why-grid {
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:0;
-      margin-top:45px;
-      border:1px solid var(--line);
-      border-radius:25px;
-      overflow:hidden;
-    }
-
-    .why {
-      padding:34px;
-      min-height:235px;
-      background:#fff;
-      border-right:1px solid var(--line);
-      border-bottom:1px solid var(--line);
-      transition:background .25s ease, transform .25s ease;
-    }
-
-    .why:hover {
-      position:relative;
-      z-index:1;
-      background:#f8fbff;
-      transform:translateY(-3px);
-    }
-
-    .why:nth-child(even) {
-      border-right:0;
-    }
-
-    .why:nth-child(n+3) {
-      border-bottom:0;
-    }
-
-    .why b {
-      color:var(--blue);
-      font:800 .78rem Manrope;
-      letter-spacing:.09em;
-    }
-
-    .why h3 {
-      margin:14px 0 10px;
-      font-size:1.18rem;
-    }
-
-    .why p {
-      margin:0;
-      color:var(--muted);
-      line-height:1.62;
-    }
-
-    .closing {
-      margin-top:45px;
-      padding:32px;
-      border-radius:22px;
-      color:#fff;
-      text-align:center;
-      background:linear-gradient(105deg,#0c4aa1,#1a9bdc);
-      font:800 clamp(1.3rem,2.2vw,2rem)/1.35 Manrope;
-    }
-
-    /* MARCAS */
-    .brands {
-      overflow:hidden;
-      padding:65px 0;
-      background:#fff;
-      text-align:center;
-    }
-
-    .brands h2 {
-      max-width:840px;
-      margin:0 auto 35px;
-      color:var(--blue);
-      font:800 clamp(1.45rem,2.6vw,2.3rem)/1.32 Manrope;
-      letter-spacing:-.04em;
-    }
-
-    .marquee {
-      display:flex;
-      width:max-content;
-      gap:18px;
-      animation:scroll 24s linear infinite;
-    }
-
-    .brand-pill {
-      width:210px;
-      height:115px;
-      flex:0 0 210px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:22px 25px;
-      overflow:hidden;
-      border:1px solid var(--line);
-      border-radius:18px;
-      background:#f8fbff;
-      box-shadow:var(--shadow-sm);
-    }
-
-    .brand-pill img {
-      display:block;
-      width:100%;
-      height:100%;
-      max-width:160px;
-      max-height:75px;
-      object-fit:contain;
-    }
-
-    @keyframes scroll {
-      to { transform:translateX(-50%); }
-    }
-
-    /* CTA FINAL */
-    .final-cta {
-      color:#fff;
-      text-align:center;
-      background:radial-gradient(circle at 50% 20%,#207ecb,#0a3268 43%,#06152d 84%);
-    }
-
-    .final-cta .section-title {
-      max-width:790px;
-      margin:16px auto 20px;
-    }
-
-    .final-cta .section-copy {
-      margin:0 auto 28px;
-      color:#cbdcf1;
-    }
-
-    .final-cta .btn {
-      background:#fff;
-      color:#0a478e;
-    }
-
-    .fine {
-      margin-top:16px;
-      color:#afd0ec;
-      font-size:.88rem;
-    }
-
-    /* RODAPÉ */
-    footer {
-      padding:35px 0;
-      background:#030d1e;
-      color:#9db0c8;
-    }
-
-    .footer {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:30px;
-    }
-
-    .footer-brand {
-      color:#fff;
-      font:800 1.3rem Manrope;
-      letter-spacing:-.07em;
-    }
-
-    .footer-brand small {
-      display:block;
-      margin-top:5px;
-      font:700 .55rem 'DM Sans';
-      letter-spacing:.08em;
-    }
-
-    .contact {
-      display:flex;
-      flex-wrap:wrap;
-      gap:19px;
-      justify-content:flex-end;
-      font-size:.9rem;
-    }
-
-    .contact a {
-      color:#c8d8eb;
-      text-decoration:none;
-    }
-
-    .contact a:hover {
-      color:var(--cyan);
-    }
-
-    .rights {
-      margin:22px 0 0;
-      padding-top:20px;
-      border-top:1px solid #ffffff15;
-      text-align:center;
-      font-size:.78rem;
-    }
-
-    /* BOTÃO FLUTUANTE WHATSAPP */
-    .whatsapp {
-      position:fixed;
-      right:25px;
-      bottom:25px;
-      width:72px;
-      height:72px;
-      z-index:9999;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-decoration:none;
-      transition:transform .25s ease;
-      filter:drop-shadow(0 10px 22px rgba(0,0,0,.35));
-    }
-
-    .whatsapp img {
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      display:block;
-      position:relative;
-      z-index:2;
-    }
-
-    .whatsapp::before,
-    .whatsapp::after {
-      content:"";
-      position:absolute;
-      inset:4px;
-      border-radius:50%;
-      border:2px solid #25D366;
-      animation:whatsappPulse 1.8s infinite;
-      z-index:1;
-    }
-
-    .whatsapp::after {
-      animation-delay:.9s;
-    }
-
-    .whatsapp:hover {
-      transform:scale(1.08);
-    }
-
-    @keyframes whatsappPulse {
-      0% { transform:scale(.9); opacity:.8; }
-      70% { transform:scale(1.45); opacity:0; }
-      100% { transform:scale(1.45); opacity:0; }
-    }
-
-    /* RESPONSIVO */
-    @media (max-width:900px) {
-      .links {
-        display:none;
-        position:absolute;
-        top:calc(100% + 10px);
-        left:0;
-        right:0;
-        z-index:20;
-        margin:0;
-        padding:12px;
-        gap:4px;
-        flex-direction:column;
-        align-items:stretch;
-        border:1px solid rgba(255,255,255,.14);
-        border-radius:18px;
-        background:rgba(4,17,38,.97);
-        box-shadow:0 18px 45px rgba(0,0,0,.28);
-        backdrop-filter:blur(18px);
-        -webkit-backdrop-filter:blur(18px);
-      }
-
-      .links.is-open { display:flex; }
-
-      .links a {
-        padding:13px 15px;
-        border-radius:12px;
-        font-size:.98rem;
-      }
-
-      .links a:hover,
-      .links a:focus-visible {
-        background:rgba(255,255,255,.07);
-      }
-
-      .menu-toggle {
-        display:inline-flex;
-        align-items:center;
-        justify-content:center;
-        min-height:44px;
-        padding:8px 10px;
-        color:#fff;
-        font-size:.86rem;
-        font-weight:800;
-        letter-spacing:.02em;
-      }
-
-      .hero-grid,
-      .split,
-      .about-grid {
-        grid-template-columns:1fr;
-      }
-
-      .hero-grid {
-        padding-top:140px;
-      }
-
-      .hero {
-        min-height:760px;
-      }
-
-      .hero-visual {
-        min-height:430px;
-        justify-content:center;
-      }
-
-      .hero-client-phone {
-        width:min(310px,70vw);
-      }
-
-      .steps {
-        grid-template-columns:1fr 1fr;
-      }
-
-      .case-slide {
-        grid-template-columns:1fr;
-      }
-
-      .case {
-        min-height:390px;
-      }
-
-      .about-grid {
-        gap:35px;
-      }
-
-      .photo-placeholder {
-        min-height:270px;
-      }
-
-      .footer {
-        display:block;
-      }
-
-      .contact {
-        justify-content:flex-start;
-        margin-top:24px;
-      }
-    }
-
-    @media (max-width:600px) {
-      .section {
-        padding:76px 0;
-      }
-
-      .container {
-        width:min(100% - 32px,1160px);
-      }
-
-      .hero {
-        min-height:0;
-      }
-
-      .hero-grid {
-        gap:12px;
-        padding:135px 0 34px;
-      }
-
-      .hero-copy {
-        max-width:100%;
-      }
-
-      .hero-visual {
-        display:flex;
-        min-height:330px;
-        margin-top:2px;
-        justify-content:center;
-        overflow:visible;
-      }
-
-      .hero-client-phone {
-        width:min(270px,67vw);
-      }
-
-      .orbit-one {
-        width:310px;
-        height:190px;
-        right:50%;
-        top:84px;
-        transform:translateX(50%) rotate(12deg);
-      }
-
-      .orbit-two {
-        width:245px;
-        height:150px;
-        right:50%;
-        top:112px;
-        transform:translateX(50%) rotate(12deg);
-      }
-
-      .dot-one { right:auto; left:9%; top:155px; }
-      .dot-two { right:auto; left:20%; top:220px; }
-      .dot-three { right:11%; top:244px; }
-      .line-one { right:4%; top:125px; }
-      .line-two { right:8%; top:174px; }
-
-      .hero h1 {
-        font-size:clamp(2.65rem,12.5vw,3.3rem);
-      }
-
-      .hero p {
-        font-size:1.04rem;
-        line-height:1.62;
-        margin-bottom:25px;
-      }
-
-      .nav {
-        padding:10px 13px;
-      }
-
-      .brand img {
-        width:158px;
-      }
-
-      .services-grid,
-      .people,
-      .why-grid,
-      .steps,
-      .results {
-        grid-template-columns:1fr;
-      }
-
-      .why {
-        border-right:0!important;
-        border-bottom:1px solid var(--line)!important;
-      }
-
-      .why:last-child {
-        border-bottom:0!important;
-      }
-
-      .service-card {
-        padding-left:76px;
-      }
-
-      .service-number {
-        left:20px;
-      }
-
-      .case {
-        padding:28px;
-      }
-
-      .list-box {
-        padding:24px;
-      }
-
-      .footer {
-        padding-bottom:80px;
-      }
-
-      .whatsapp { width:62px; height:62px; right:18px; bottom:18px; }
-    }
-
-    @media (prefers-reduced-motion:reduce) {
-      html { scroll-behavior:auto; }
-
-      *,*::before,*::after {
-        animation-duration:.01ms!important;
-        animation-iteration-count:1!important;
-        transition-duration:.01ms!important;
-      }
-    }
-
-
-    /* ===== HUMANIZE HERO 2.0 ===== */
-    .hero{
-      min-height:860px;
-      isolation:isolate;
-      background:
-        radial-gradient(circle at 74% 43%, rgba(0,160,255,.24), transparent 22%),
-        radial-gradient(circle at 54% 100%, rgba(10,103,245,.18), transparent 35%),
-        linear-gradient(118deg,#031126 0%,#061d3d 52%,#071b38 100%);
-    }
-
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      z-index:0;
-      pointer-events:none;
-      opacity:1;
-      background:
-        linear-gradient(rgba(31,161,255,.07) 1px, transparent 1px),
-        linear-gradient(90deg,rgba(31,161,255,.07) 1px, transparent 1px);
-      background-size:72px 72px;
-      mask-image:linear-gradient(to bottom,rgba(0,0,0,.95),rgba(0,0,0,.3) 78%,transparent 100%);
-    }
-
-    .hero::after{
-      content:"";
-      position:absolute;
-      left:-10%;
-      right:-10%;
-      bottom:-105px;
-      height:260px;
-      z-index:0;
-      pointer-events:none;
-      border-radius:50% 50% 0 0 / 40% 40% 0 0;
-      background:
-        radial-gradient(ellipse at center,rgba(15,104,255,.16),transparent 55%),
-        linear-gradient(180deg,rgba(7,29,61,0),rgba(3,15,34,.72));
-      box-shadow:inset 0 1px 0 rgba(0,189,255,.12);
-    }
-
-    .hero-grid-overlay{
-      position:absolute;
-      inset:0;
-      z-index:0;
-      pointer-events:none;
-      background:linear-gradient(112deg,rgba(255,255,255,.018),transparent 36%,rgba(12,120,255,.025));
-    }
-
-    .hero-watermark{
-      position:absolute;
-      z-index:0;
-      top:92px;
-      left:43%;
-      color:rgba(23,103,224,.105);
-      font:700 clamp(7rem,13vw,13rem)/1 Caveat,cursive;
-      transform:rotate(-5deg);
-      user-select:none;
-      pointer-events:none;
-      white-space:nowrap;
-      filter:blur(.2px);
-    }
-
-    .hero-dots{
-      position:absolute;
-      z-index:1;
-      width:94px;
-      height:94px;
-      opacity:.62;
-      pointer-events:none;
-      background-image:radial-gradient(circle,#1689ff 2px,transparent 2.2px);
-      background-size:17px 17px;
-      mask-image:linear-gradient(135deg,#000,transparent);
-    }
-    .hero-dots-one{left:20px;top:106px;}
-    .hero-dots-two{left:45%;bottom:108px;transform:scale(.8);}
-
-    .hero .hero-grid{
-      min-height:860px;
-      padding:145px 0 70px;
-      grid-template-columns:1.08fr .92fr;
-      gap:28px;
-    }
-
-    .hero-copy{
-      position:relative;
-      z-index:6;
-      padding-top:12px;
-    }
-
-    .hero .eyebrow{
-      color:#20d8f5;
-      letter-spacing:.22em;
-      text-shadow:0 0 18px rgba(32,216,245,.22);
-    }
-
-    .hero h1{
-      max-width:760px;
-      font-size:clamp(3.25rem,5.25vw,5.25rem);
-      line-height:1.01;
-      margin:23px 0 26px;
-      text-shadow:0 8px 34px rgba(0,0,0,.16);
-    }
-
-    .hero h1 strong{
-      background:linear-gradient(100deg,#1ae2f4,#16a6ff 75%);
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-      filter:drop-shadow(0 0 22px rgba(23,192,250,.13));
-    }
-
-    .hero p{
-      max-width:650px;
-      color:#d9e7f8;
-      font-size:1.13rem;
-      line-height:1.75;
-      margin-bottom:30px;
-    }
-
-    .hero-main-cta{
-      min-height:65px;
-      padding:0 29px;
-      font-size:1.02rem;
-      background:linear-gradient(100deg,#14cef3,#1472ff 68%,#0e63f3);
-      border:1px solid rgba(255,255,255,.35);
-      box-shadow:0 0 0 1px rgba(15,131,255,.18),0 15px 40px rgba(0,111,255,.28),0 0 42px rgba(32,216,245,.10);
-    }
-    .hero-main-cta:hover{
-      transform:translateY(-4px) scale(1.012);
-      box-shadow:0 19px 48px rgba(0,111,255,.4),0 0 55px rgba(32,216,245,.18);
-    }
-    .hero-main-cta-icon,.header-cta-icon{
-      width:31px;
-      height:31px;
-      display:grid;
-      place-items:center;
-      border:2px solid currentColor;
-      border-radius:50%;
-      font-size:.9rem;
-      transform:rotate(-12deg);
-    }
-
-    .header-cta{
-      display:inline-flex;
-      align-items:center;
-      gap:9px;
-      padding:12px 18px;
-      border-radius:999px;
-      color:#fff;
-      text-decoration:none;
-      font-weight:800;
-      white-space:nowrap;
-      border:1px solid rgba(255,255,255,.18);
-      background:linear-gradient(100deg,#0c9cf5,#146bf5);
-      box-shadow:0 8px 28px rgba(20,107,245,.2);
-      transition:.25s ease;
-    }
-    .header-cta:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(20,107,245,.32);}
-    .header-cta-icon{width:23px;height:23px;font-size:.68rem;}
-
-    .hero-visual{
-      min-height:625px;
-      justify-content:center;
-      overflow:visible;
-      perspective:1100px;
-      isolation:isolate;
-    }
-
-    .hero-neon-orbit{
-      position:absolute;
-      z-index:0;
-      pointer-events:none;
-      border-radius:50%;
-      border:1.5px solid rgba(31,191,255,.42);
-      filter:drop-shadow(0 0 11px rgba(11,165,255,.24));
-    }
-    .orbit-main{
-      width:520px;
-      height:365px;
-      left:50%;
-      top:135px;
-      transform:translateX(-48%) rotate(-12deg);
-      border-color:rgba(19,202,255,.65);
-      box-shadow:0 0 32px rgba(21,139,255,.12),inset 0 0 32px rgba(0,160,255,.04);
-      animation:orbitPulse 5.5s ease-in-out infinite;
-    }
-    .orbit-secondary{
-      width:620px;
-      height:455px;
-      left:50%;
-      top:90px;
-      transform:translateX(-49%) rotate(20deg);
-      border-color:rgba(22,110,255,.25);
-    }
-    @keyframes orbitPulse{
-      0%,100%{filter:drop-shadow(0 0 9px rgba(11,165,255,.18));opacity:.78}
-      50%{filter:drop-shadow(0 0 20px rgba(11,165,255,.48));opacity:1}
-    }
-
-    .hero-neon-flare{
-      position:absolute;
-      z-index:0;
-      width:310px;
-      height:310px;
-      left:44%;
-      top:170px;
-      transform:translateX(-50%);
-      border-radius:50%;
-      background:radial-gradient(circle,rgba(0,173,255,.26),rgba(14,91,236,.08) 38%,transparent 70%);
-      filter:blur(12px);
-      animation:flareBreath 4s ease-in-out infinite;
-    }
-    @keyframes flareBreath{50%{transform:translateX(-50%) scale(1.1);opacity:.75}}
-
-    .hero-phone-wrap{
-      position:absolute;
-      z-index:4;
-      left:48%;
-      top:47px;
-      transform:translateX(-50%) rotateY(-6deg) rotateZ(1.6deg);
-      transform-style:preserve-3d;
-      animation:phoneFloat 5.3s ease-in-out infinite;
-    }
-    @keyframes phoneFloat{
-      0%,100%{transform:translateX(-50%) translateY(0) rotateY(-6deg) rotateZ(1.6deg)}
-      50%{transform:translateX(-50%) translateY(-9px) rotateY(-4deg) rotateZ(.8deg)}
-    }
-
-    .hero-client-phone{
-      width:272px;
-      border:8px solid #050b14;
-      border-radius:43px;
-      box-shadow:
-        0 32px 70px rgba(0,0,0,.52),
-        -4px 0 0 rgba(255,255,255,.07),
-        3px 0 0 rgba(10,105,230,.25),
-        0 0 50px rgba(0,176,255,.12);
-      transform:none;
-      background:#03070c;
-    }
-
-    .hero-client-screen{border-radius:34px;}
-
-    .hero-pedestal{
-      position:absolute;
-      z-index:2;
-      left:48%;
-      bottom:54px;
-      width:355px;
-      height:70px;
-      transform:translateX(-50%);
-      border-radius:50%;
-      background:linear-gradient(180deg,#102e63 0%,#071a36 48%,#030b17 100%);
-      border:1px solid rgba(41,152,255,.55);
-      box-shadow:
-        0 0 0 7px rgba(11,103,239,.08),
-        0 0 28px rgba(0,174,255,.34),
-        inset 0 7px 17px rgba(48,150,255,.23),
-        0 30px 55px rgba(0,0,0,.34);
-    }
-    .hero-pedestal::before{
-      content:"";
-      position:absolute;
-      inset:5px 17px 30px;
-      border-radius:50%;
-      border:1px solid rgba(58,198,255,.48);
-      background:radial-gradient(ellipse,rgba(33,159,255,.21),rgba(0,25,64,.55));
-      box-shadow:inset 0 0 28px rgba(0,186,255,.2);
-    }
-    .hero-pedestal::after{
-      content:"";
-      position:absolute;
-      left:7%;right:7%;bottom:7px;height:3px;
-      border-radius:999px;
-      background:linear-gradient(90deg,transparent,#12d7ff 25%,#1689ff 70%,transparent);
-      box-shadow:0 0 13px #11bfff,0 0 26px rgba(20,107,245,.7);
-    }
-    .hero-pedestal-glow{
-      position:absolute;
-      left:50%;top:-70px;width:230px;height:110px;
-      transform:translateX(-50%);
-      background:radial-gradient(ellipse,rgba(14,176,255,.24),transparent 70%);
-      filter:blur(6px);
-    }
-
-    .hero-metric{
-      position:absolute;
-      z-index:6;
-      right:-35px;
-      width:182px;
-      min-height:82px;
-      padding:16px 17px;
-      display:flex;
-      align-items:center;
-      gap:14px;
-      color:#dcecff;
-      line-height:1.15;
-      border-radius:17px;
-      border:1px solid rgba(42,169,255,.48);
-      background:linear-gradient(135deg,rgba(6,44,92,.8),rgba(4,21,49,.78));
-      box-shadow:0 13px 34px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.06),0 0 25px rgba(0,135,255,.08);
-      backdrop-filter:blur(15px);
-      -webkit-backdrop-filter:blur(15px);
-      animation:metricFloat 4.4s ease-in-out infinite;
-    }
-    .metric-one{top:145px;}
-    .metric-two{top:262px;animation-delay:.45s;}
-    .metric-three{top:379px;animation-delay:.9s;}
-    @keyframes metricFloat{50%{transform:translateY(-6px)}}
-
-    .hero-metric strong{color:#fff;font-weight:800;}
-    .metric-icon{
-      flex:0 0 44px;
-      width:44px;height:44px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:#1bdcff;
-      text-shadow:0 0 15px rgba(27,220,255,.55);
-    }
-    .metric-icon.bars{align-items:flex-end;gap:4px;padding-bottom:7px;}
-    .metric-icon.bars i{display:block;width:7px;border-radius:2px 2px 0 0;background:#1bdcff;box-shadow:0 0 10px rgba(27,220,255,.5);}
-    .metric-icon.bars i:nth-child(1){height:14px}.metric-icon.bars i:nth-child(2){height:23px}.metric-icon.bars i:nth-child(3){height:33px}
-    .people-icon{font-size:1.05rem;letter-spacing:-4px;transform:scaleX(1.28);}
-    .money-icon{border:3px solid #1bdcff;border-radius:50%;font:800 1.45rem Manrope;}
-
-    @media(max-width:1120px){
-      .header-cta{display:none;}
-      .links{margin-right:0;}
-      .hero-metric{right:-5px;width:160px;}
-    }
-
-    @media(max-width:900px){
-      .hero{min-height:auto;}
-      .hero .hero-grid{min-height:auto;padding:145px 0 70px;gap:18px;}
-      .hero-copy{text-align:left;}
-      .hero-visual{min-height:650px;margin-top:10px;}
-      .hero-phone-wrap{left:50%;top:30px;}
-      .hero-pedestal{left:50%;bottom:45px;}
-      .orbit-main{left:50%;top:130px;}
-      .orbit-secondary{left:50%;}
-      .hero-metric{right:4%;}
-      .hero-watermark{left:15%;top:47%;font-size:8rem;}
-    }
-
-    @media(max-width:600px){
-      .hero .hero-grid{padding:125px 0 45px;gap:8px;}
-      .hero h1{font-size:clamp(2.65rem,12vw,3.35rem);}
-      .hero p{font-size:1rem;line-height:1.65;}
-      .hero-main-cta{min-height:58px;padding:0 22px;font-size:.93rem;}
-      .hero-main-cta-icon{width:27px;height:27px;}
-      .hero-visual{min-height:590px;margin-top:2px;}
-      .hero-phone-wrap{top:42px;}
-      .hero-client-phone{width:225px;}
-      .hero-pedestal{width:285px;height:58px;bottom:58px;}
-      .orbit-main{width:390px;height:280px;top:155px;}
-      .orbit-secondary{width:455px;height:345px;top:116px;}
-      .hero-metric{width:132px;min-height:65px;padding:10px 11px;gap:8px;font-size:.78rem;right:0;}
-      .metric-one{top:146px}.metric-two{top:235px}.metric-three{top:324px}
-      .metric-icon{flex-basis:32px;width:32px;height:32px;}
-      .metric-icon.bars i{width:5px}.metric-icon.bars i:nth-child(1){height:10px}.metric-icon.bars i:nth-child(2){height:17px}.metric-icon.bars i:nth-child(3){height:24px}
-      .money-icon{font-size:1rem;border-width:2px;}
-      .hero-watermark{top:56%;left:7%;font-size:6.6rem;}
-      .hero-dots-one{left:5px;top:98px}.hero-dots-two{left:10%;bottom:20px;}
-    }
-
-  </style>
+</style>
 </head>
 <body>
 
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#inicio">
-        <img src="logo.png" alt="Humanize Marketing Digital">
-      </a>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-      <nav class="links" id="mainMenu" aria-label="Navegação principal">
-        <a href="#solucoes">Soluções</a>
-        <a href="#metodo">Como trabalhamos</a>
-        <a href="#cases">Cases</a>
-        <a href="#sobre">Quem somos</a>
-        <a href="#contato">Contato</a>
-      </nav>
+<!-- ============================ CABEÇALHO ============================ -->
+<header class="site-header" id="siteHeader">
+  <div class="wrap nav-bar">
+    <a class="brand" href="#inicio" aria-label="Humanize Marketing Digital — início">
+      <img src="img/logo.webp" alt="Humanize Marketing Digital" width="105" height="40" />
+    </a>
 
-      <a class="header-cta" href="#contato"><span class="header-cta-icon">✆</span> Falar com a gente</a>
+    <nav class="nav-links" id="mainMenu" aria-label="Navegação principal">
+      <a href="#solucoes">Soluções</a>
+      <a href="#metodo">Como trabalhamos</a>
+      <a href="#cases">Cases</a>
+      <a href="#sobre">Quem somos</a>
+      <a href="#contato">Contato</a>
+      <a class="nav-menu-cta" href="#contato">Falar com a gente</a>
+    </nav>
 
-      <button
-        class="menu-toggle"
-        id="menuToggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="mainMenu"
-        aria-label="Abrir menu de navegação"
-      >MENU ↓</button>
+    <div class="nav-cta">
+      <a class="btn btn--primary btn--sm" href="#contato">Falar com a gente</a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mainMenu" aria-label="Abrir menu de navegação">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main>
+<main id="conteudo">
 
-    <section class="hero" id="inicio">
-      <div class="hero-grid-overlay" aria-hidden="true"></div>
-      <div class="hero-watermark" aria-hidden="true">Humanize</div>
-      <div class="hero-dots hero-dots-one" aria-hidden="true"></div>
-      <div class="hero-dots hero-dots-two" aria-hidden="true"></div>
+  <!-- ============================ HERO ============================ -->
+  <section class="hero" id="inicio">
+    <div class="wrap hero-grid">
 
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow">Humanize Marketing Digital</span>
+      <div class="hero-copy">
+        <span class="eyebrow">Humanize Marketing Digital</span>
 
-          <h1>
-            Soluções digitais para a <strong>sua empresa.</strong>
-          </h1>
+        <h1 class="h-display">
+          Soluções digitais<br />
+          para a <strong>sua empresa.</strong>
+        </h1>
 
-          <p>
-            Humanizamos sua marca e cuidamos de toda a sua presença digital
-            para atrair mais clientes, vender mais e aumentar o faturamento
-            da sua empresa.
-          </p>
+        <p class="lead">
+          Humanizamos sua marca e cuidamos de toda a sua presença digital
+          para atrair mais clientes, vender mais e aumentar o faturamento
+          da sua empresa.
+        </p>
 
-          <a class="btn hero-main-cta" href="#contato">
-            <span class="hero-main-cta-icon">✆</span> Quero crescer no digital <span>→</span>
+        <div class="hero-actions">
+          <a class="btn btn--primary" href="#contato">
+            Quero crescer no digital <span class="arrow" aria-hidden="true">&#8594;</span>
           </a>
+          <a class="btn btn--ghost" href="#cases">Ver cases e resultados</a>
         </div>
 
-        <div class="hero-visual">
-          <div class="hero-neon-orbit orbit-main" aria-hidden="true"></div>
-          <div class="hero-neon-orbit orbit-secondary" aria-hidden="true"></div>
-          <div class="hero-neon-flare" aria-hidden="true"></div>
+        <ul class="hero-proof">
+          <li>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Estratégia feita para o seu negócio
+          </li>
+          <li>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Conteúdo, tráfego, site e Google
+          </li>
+          <li>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Acompanhamento próximo
+          </li>
+        </ul>
+      </div>
 
-          <div class="hero-pedestal" aria-hidden="true">
-            <span class="hero-pedestal-glow"></span>
+      <div class="hero-visual">
+        <div class="hero-visual-ring" aria-hidden="true"></div>
+        <div class="hero-visual-ring is-inner" aria-hidden="true"></div>
+
+        <div class="hero-figure">
+          <img src="img/hero-celular.webp" alt="Marca da Humanize Marketing Digital aplicada em um celular" width="1200" height="800" fetchpriority="high" />
+        </div>
+
+        <div class="hero-badge">
+          <img src="img/logo-gota-de-ouro.webp" alt="" aria-hidden="true" width="40" height="40" />
+          <div>
+            <b>3x mais faturamento</b>
+            <small>Gota de Ouro Modas</small>
           </div>
-
-          <div class="hero-phone-wrap">
-            <div class="hero-client-phone" aria-label="Perfis de clientes atendidos pela Humanize">
-              <div class="hero-client-screen">
-                <img class="hero-client-img is-active" src="hero-clientes/adega-do-bruninho.jpeg" alt="Instagram da Adega do Bruninho">
-                <img class="hero-client-img" src="hero-clientes/casa-de-embalagens-cangaiba.jpeg" alt="Instagram da Casa de Embalagens Cangaíba">
-                <img class="hero-client-img" src="hero-clientes/tomo-xapo.jpeg" alt="Instagram da Tomo Xapo">
-                <img class="hero-client-img" src="hero-clientes/gota-de-ouro-modas.jpeg" alt="Instagram da Gota de Ouro Modas">
-                <img class="hero-client-img" src="hero-clientes/boteco-do-maskara.jpeg" alt="Instagram do Boteco do Máskara">
-                <img class="hero-client-img" src="hero-clientes/restaurante-vivendo.jpeg" alt="Instagram do Restaurante Vivendo">
-                <img class="hero-client-img" src="hero-clientes/doggie-dogg-dogueria.jpeg" alt="Instagram da Doggie Dogg">
-                <img class="hero-client-img" src="hero-clientes/adega-marchezin.jpeg" alt="Instagram da Adega Marchezin">
-                <img class="hero-client-img" src="hero-clientes/marchezin-grill.jpeg" alt="Instagram da Marchezin Grill">
-                <span class="hero-phone-shine" aria-hidden="true"></span>
-                <span class="hero-phone-edge" aria-hidden="true"></span>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
-    </section>
 
-    <section class="section pain" id="dor">
-      <div class="container split">
-        <div>
-          <span class="eyebrow" style="color:#146bf5">O cenário de hoje</span>
-          <h2 class="section-title">
-            Estar presente no digital não é mais um diferencial — é uma obrigação.
-          </h2>
-        </div>
+    </div>
+  </section>
 
-        <div class="list-box">
-          <h3>Se sua empresa passa por isso…</h3>
+  <!-- ============================ MARCAS ATENDIDAS ============================ -->
+  <section class="brandbar" aria-label="Marcas atendidas pela Humanize">
+    <p class="brandbar-label">Marcas que já confiam na Humanize</p>
 
-          <ul class="check-list">
-            <li>Sua empresa está no digital, mas não consegue transformar isso em vendas.</li>
-            <li>Você posta nas redes sociais, mas não vê resultado no faturamento.</li>
-            <li>Novos clientes não encontram sua empresa com facilidade.</li>
-            <li>Você não sabe quais estratégias realmente podem atrair novos clientes.</li>
-            <li>Seu negócio depende muito de indicação e não consegue gerar uma demanda constante pelo digital.</li>
-            <li>Falta tempo, estratégia ou uma equipe para cuidar de toda a presença digital da empresa.</li>
-            <li>Você sabe que poderia vender mais, mas não sabe como usar o digital para aumentar o faturamento.</li>
-          </ul>
-        </div>
+    <div class="marquee">
+      <div class="marquee-track">
+        <img src="img/logo-gota-de-ouro.webp" alt="Gota de Ouro Modas" width="74" height="74" loading="lazy" />
+        <img src="img/logo-adega-do-bruninho.webp" alt="Adega do Bruninho" width="74" height="74" loading="lazy" />
+        <img src="img/logo-boteco-do-maskara.webp" alt="Boteco do Máskara" width="74" height="74" loading="lazy" />
+        <img src="img/logo-casa-de-embalagens-cangaiba.webp" alt="Casa de Embalagens Cangaíba" width="74" height="74" loading="lazy" />
+        <img src="img/logo-doggie-dogg-gourmet.webp" alt="Doggie Dogg Gourmet" width="74" height="74" loading="lazy" />
+        <img src="img/logo-gelo-vida-boa.webp" alt="Gelo Vida Boa" width="74" height="74" loading="lazy" />
+        <img src="img/logo-restaurante-vivendo.webp" alt="Restaurante Vivendo" width="74" height="74" loading="lazy" />
+        <img src="img/logo-tomo-xapo.webp" alt="Tomo Xapo" width="74" height="74" loading="lazy" />
       </div>
-    </section>
-
-    <section class="section solution" id="solucoes">
-      <div class="container split">
-        <div>
-          <span class="eyebrow">A solução</span>
-
-          <h2 class="section-title">
-            Agora imagine o digital trabalhando a favor da sua empresa.
-          </h2>
-
-          <p class="section-copy">
-            Uma presença digital bem estruturada não serve apenas para aparecer.
-            Ela aproxima sua marca das pessoas certas e cria novas oportunidades
-            para o seu negócio crescer.
-          </p>
-        </div>
-
-        <div>
-          <ul class="check-list solution-list">
-            <li>Sua marca mais conhecida.</li>
-            <li>Mais pessoas encontrando o seu negócio.</li>
-            <li>Conteúdos que aproximam sua empresa dos clientes.</li>
-            <li>Uma presença digital profissional e organizada.</li>
-            <li>Estratégias para alcançar as pessoas certas.</li>
-            <li>Mais oportunidades de venda.</li>
-            <li>Mais clientes chegando até você.</li>
-            <li>E, principalmente, mais vendas e mais faturamento.</li>
-          </ul>
-
-          <p class="conclusion">
-            É isso que a Humanize faz: humanizamos sua marca e estruturamos
-            o seu digital para transformar presença em clientes, vendas e faturamento.
-          </p>
-        </div>
+      <!-- Cópia apenas para o laço contínuo da animação -->
+      <div class="marquee-track" aria-hidden="true">
+        <img src="img/logo-gota-de-ouro.webp" alt="" width="74" height="74" loading="lazy" />
+        <img src="img/logo-adega-do-bruninho.webp" alt="" width="74" height="74" loading="lazy" />
+        <img src="img/logo-boteco-do-maskara.webp" alt="" width="74" height="74" loading="lazy" />
+        <img src="img/logo-casa-de-embalagens-cangaiba.webp" alt="" width="74" height="74" loading="lazy" />
+        <img src="img/logo-doggie-dogg-gourmet.webp" alt="" width="74" height="74" loading="lazy" />
+        <img src="img/logo-gelo-vida-boa.webp" alt="" width="74" height="74" loading="lazy" />
+        <img src="img/logo-restaurante-vivendo.webp" alt="" width="74" height="74" loading="lazy" />
+        <img src="img/logo-tomo-xapo.webp" alt="" width="74" height="74" loading="lazy" />
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section" id="servicos">
-      <div class="container">
+  <!-- ============================ DESAFIOS ============================ -->
+  <section class="section" id="dor">
+    <div class="wrap split">
 
-        <span class="eyebrow" style="color:#146bf5">Nossas soluções</span>
-
-        <h2 class="section-title">
-          Tudo o que sua empresa precisa para crescer no digital.
+      <div class="split-sticky reveal">
+        <span class="eyebrow eyebrow--blue">O cenário de hoje</span>
+        <h2 class="h-section">
+          Estar presente no digital não é mais um diferencial — é uma obrigação.
         </h2>
+        <p class="lead" style="margin-top:22px">
+          Se a sua empresa se reconhece em alguma dessas situações,
+          o problema não é falta de esforço. É falta de estratégia.
+        </p>
+      </div>
 
-        <p class="section-copy">
+      <div class="reveal reveal-d1">
+        <ul class="challenge-list">
+          <li><p>Sua empresa está no digital, mas não consegue transformar isso em vendas.</p></li>
+          <li><p>Você posta nas redes sociais, mas não vê resultado no faturamento.</p></li>
+          <li><p>Novos clientes não encontram sua empresa com facilidade.</p></li>
+          <li><p>Você não sabe quais estratégias realmente podem atrair novos clientes.</p></li>
+          <li><p>Seu negócio depende muito de indicação e não consegue gerar uma demanda constante pelo digital.</p></li>
+          <li><p>Falta tempo, estratégia ou uma equipe para cuidar de toda a presença digital da empresa.</p></li>
+          <li><p>Você sabe que poderia vender mais, mas não sabe como usar o digital para aumentar o faturamento.</p></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================ SOLUÇÃO ============================ -->
+  <section class="section section--raised section--hair" id="solucoes">
+    <div class="wrap split">
+
+      <div class="reveal">
+        <span class="eyebrow">A solução</span>
+        <h2 class="h-section">
+          Agora imagine o digital trabalhando a favor da sua empresa.
+        </h2>
+        <p class="lead" style="margin-top:22px">
+          Uma presença digital bem estruturada não serve apenas para aparecer.
+          Ela aproxima sua marca das pessoas certas e cria novas oportunidades
+          para o seu negócio crescer.
+        </p>
+      </div>
+
+      <div class="reveal reveal-d1">
+        <ul class="benefit-list">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Sua marca mais conhecida.</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Mais pessoas encontrando o seu negócio.</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Conteúdos que aproximam sua empresa dos clientes.</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Uma presença digital profissional e organizada.</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Estratégias para alcançar as pessoas certas.</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Mais oportunidades de venda.</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Mais clientes chegando até você.</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>E, principalmente, mais vendas e mais faturamento.</span></li>
+        </ul>
+
+        <p class="pullquote">
+          É isso que a Humanize faz: <strong>humanizamos sua marca e estruturamos
+          o seu digital</strong> para transformar presença em clientes, vendas e faturamento.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================ SERVIÇOS ============================ -->
+  <section class="section" id="servicos">
+    <div class="wrap">
+
+      <div class="section-head reveal">
+        <span class="eyebrow eyebrow--blue">Nossas soluções</span>
+        <h2 class="h-section">Tudo o que sua empresa precisa para crescer no digital.</h2>
+        <p class="lead">
           Estratégia, conteúdo, presença e estrutura reunidos para o seu negócio
           se comunicar melhor, ser encontrado e vender mais.
         </p>
-
-        <div class="services-grid">
-
-          <article class="service-card">
-            <span class="service-number">01</span>
-            <h3>Gestão de Redes Sociais</h3>
-            <p>Estratégia, planejamento e gestão para manter sua marca ativa, profissional e próxima do público.</p>
-          </article>
-
-          <article class="service-card">
-            <span class="service-number">02</span>
-            <h3>Criação de Conteúdo Humanizado</h3>
-            <p>Roteiros, captação, vídeos, fotos e conteúdos que mostram quem está por trás da sua empresa e criam conexão.</p>
-          </article>
-
-          <article class="service-card">
-            <span class="service-number">03</span>
-            <h3>Tráfego Pago</h3>
-            <p>Campanhas estratégicas para alcançar as pessoas certas, gerar oportunidades e aumentar as vendas.</p>
-          </article>
-
-          <article class="service-card">
-            <span class="service-number">04</span>
-            <h3>Sites e Landing Pages</h3>
-            <p>Criamos e gerenciamos páginas profissionais para apresentar sua empresa e transformar acessos em clientes.</p>
-          </article>
-
-          <article class="service-card">
-            <span class="service-number">05</span>
-            <h3>Presença no Google</h3>
-            <p>Estruturamos e otimizamos sua empresa no Google para que novos clientes encontrem você com facilidade.</p>
-          </article>
-
-          <article class="service-card">
-            <span class="service-number">06</span>
-            <h3>Estruturação Digital</h3>
-            <p>Organizamos os canais e ferramentas digitais que sua empresa precisa para funcionar e vender melhor.</p>
-          </article>
-
-          <article class="service-card">
-            <span class="service-number">07</span>
-            <h3>Delivery e Catálogo Digital</h3>
-            <p>Implantação, organização e gestão de cardápios, catálogos e plataformas de delivery.</p>
-          </article>
-
-          <article class="service-card">
-            <span class="service-number">08</span>
-            <h3>Branding e Posicionamento</h3>
-            <p>Construímos uma comunicação mais forte e coerente para sua empresa ser reconhecida e lembrada.</p>
-          </article>
-
-          <article class="service-card">
-            <span class="service-number">09</span>
-            <h3>Campanhas e Lançamentos</h3>
-            <p>Planejamento de campanhas promocionais, divulgações, eventos e lançamentos para movimentar o seu negócio.</p>
-          </article>
-
-          <article class="service-card">
-            <span class="service-number">10</span>
-            <h3>Análise e Estratégia</h3>
-            <p>Acompanhamos os resultados e ajustamos as estratégias para buscar mais alcance, clientes e faturamento.</p>
-          </article>
-
-        </div>
       </div>
-    </section>
 
-    <section class="section process" id="metodo">
-      <div class="container">
+      <div class="services reveal reveal-d1">
 
-        <span class="eyebrow" style="color:#146bf5">Nosso jeito de trabalhar</span>
+        <article class="service service--wide">
+          <span class="service-num">01</span>
+          <h3>Gestão de Redes Sociais</h3>
+          <p>Estratégia, planejamento e gestão para manter sua marca ativa, profissional e próxima do público.</p>
+        </article>
 
-        <h2 class="section-title">
-          Estratégia com proximidade, do começo ao resultado.
-        </h2>
+        <article class="service">
+          <span class="service-num">02</span>
+          <h3>Criação de Conteúdo Humanizado</h3>
+          <p>Roteiros, captação, vídeos, fotos e conteúdos que mostram quem está por trás da sua empresa e criam conexão.</p>
+        </article>
 
-        <p class="section-copy">
+        <article class="service">
+          <span class="service-num">03</span>
+          <h3>Tráfego Pago</h3>
+          <p>Campanhas estratégicas para alcançar as pessoas certas, gerar oportunidades e aumentar as vendas.</p>
+        </article>
+
+        <article class="service">
+          <span class="service-num">04</span>
+          <h3>Sites e Landing Pages</h3>
+          <p>Criamos e gerenciamos páginas profissionais para apresentar sua empresa e transformar acessos em clientes.</p>
+        </article>
+
+        <article class="service">
+          <span class="service-num">05</span>
+          <h3>Presença no Google</h3>
+          <p>Estruturamos e otimizamos sua empresa no Google para que novos clientes encontrem você com facilidade.</p>
+        </article>
+
+        <article class="service">
+          <span class="service-num">06</span>
+          <h3>Estruturação Digital</h3>
+          <p>Organizamos os canais e ferramentas digitais que sua empresa precisa para funcionar e vender melhor.</p>
+        </article>
+
+        <article class="service">
+          <span class="service-num">07</span>
+          <h3>Delivery e Catálogo Digital</h3>
+          <p>Implantação, organização e gestão de cardápios, catálogos e plataformas de delivery.</p>
+        </article>
+
+        <article class="service">
+          <span class="service-num">08</span>
+          <h3>Branding e Posicionamento</h3>
+          <p>Construímos uma comunicação mais forte e coerente para sua empresa ser reconhecida e lembrada.</p>
+        </article>
+
+        <article class="service">
+          <span class="service-num">09</span>
+          <h3>Campanhas e Lançamentos</h3>
+          <p>Planejamento de campanhas promocionais, divulgações, eventos e lançamentos para movimentar o seu negócio.</p>
+        </article>
+
+        <article class="service service--wide">
+          <span class="service-num">10</span>
+          <h3>Análise e Estratégia</h3>
+          <p>Acompanhamos os resultados e ajustamos as estratégias para buscar mais alcance, clientes e faturamento.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ MÉTODO ============================ -->
+  <section class="section section--raised section--hair" id="metodo">
+    <div class="wrap">
+
+      <div class="section-head reveal">
+        <span class="eyebrow eyebrow--blue">Nosso jeito de trabalhar</span>
+        <h2 class="h-section">Estratégia com proximidade, do começo ao resultado.</h2>
+        <p class="lead">
           Cada empresa tem uma realidade, um público e um objetivo.
           Por isso, antes de fazer qualquer coisa, a gente entende o seu negócio
           para construir uma estratégia que realmente faça sentido.
         </p>
+      </div>
 
-        <div class="steps">
+      <div class="steps reveal reveal-d1">
 
-          <article class="step">
-            <b>01 —</b>
-            <h3>Entendemos seu negócio</h3>
-            <p>Conhecemos sua empresa, seu público, seus objetivos e entendemos onde você quer chegar.</p>
-          </article>
+        <article class="step">
+          <b>01 &#8212;</b>
+          <h3>Entendemos seu negócio</h3>
+          <p>Conhecemos sua empresa, seu público, seus objetivos e entendemos onde você quer chegar.</p>
+        </article>
 
-          <article class="step">
-            <b>02 —</b>
-            <h3>Criamos a estratégia</h3>
-            <p>Identificamos o que precisa ser feito e definimos os melhores caminhos para sua empresa crescer no digital.</p>
-          </article>
+        <article class="step">
+          <b>02 &#8212;</b>
+          <h3>Criamos a estratégia</h3>
+          <p>Identificamos o que precisa ser feito e definimos os melhores caminhos para sua empresa crescer no digital.</p>
+        </article>
 
-          <article class="step">
-            <b>03 —</b>
-            <h3>Colocamos em prática</h3>
-            <p>Transformamos estratégia em ação: criamos, publicamos, anunciamos, estruturamos e cuidamos do seu digital.</p>
-          </article>
+        <article class="step">
+          <b>03 &#8212;</b>
+          <h3>Colocamos em prática</h3>
+          <p>Transformamos estratégia em ação: criamos, publicamos, anunciamos, estruturamos e cuidamos do seu digital.</p>
+        </article>
 
-          <article class="step">
-            <b>04 —</b>
-            <h3>Analisamos e evoluímos</h3>
-            <p>Acompanhamos os resultados, identificamos oportunidades e ajustamos a estratégia para buscar cada vez mais vendas e faturamento.</p>
-          </article>
-
-        </div>
-
-        <p class="quote">
-          “Aqui, sua empresa não é só mais um perfil.
-          A gente entende o seu negócio para fazer o digital trabalhar por ele.”
-        </p>
+        <article class="step">
+          <b>04 &#8212;</b>
+          <h3>Analisamos e evoluímos</h3>
+          <p>Acompanhamos os resultados, identificamos oportunidades e ajustamos a estratégia para buscar cada vez mais vendas e faturamento.</p>
+        </article>
 
       </div>
-    </section>
 
-    <section class="section cases" id="cases">
-      <div class="container">
+      <p class="method-quote reveal">
+        &#8220;Aqui, sua empresa não é só mais um perfil.
+        A gente entende o seu negócio para fazer o digital trabalhar por ele.&#8221;
+      </p>
 
+    </div>
+  </section>
+
+  <!-- ============================ CASES ============================ -->
+  <section class="section" id="cases">
+    <div class="wrap">
+
+      <div class="section-head reveal">
         <span class="eyebrow">Cases</span>
-
-        <h2 class="section-title">Resultados na prática.</h2>
-
-        <p class="section-copy">
+        <h2 class="h-section">Resultados na prática.</h2>
+        <p class="lead">
           Estratégias diferentes. Um objetivo em comum: fazer empresas crescerem.
-          <br><br>
+        </p>
+        <p class="lead" style="margin-top:14px">
           Cada negócio chega até a Humanize com um desafio diferente.
           Conheça algumas das estratégias que já colocamos em prática e os resultados
           que construímos junto aos nossos clientes.
         </p>
-
-        <div class="case-carousel" aria-label="Carrossel de cases da Humanize">
-          <div class="case-track" id="caseTrack">
-
-            <!-- PRIMEIRO PAR -->
-            <div class="case-slide">
-              <article class="case">
-                <span class="case-tag">Adega do Bruninho</span>
-                <h3>Conteúdo • Tráfego Pago • Delivery • Estrutura Digital</h3>
-                <h4>Do conteúdo à venda: uma estratégia construída em vários canais.</h4>
-
-                <p>
-                  Humanizamos a comunicação, fortalecemos a presença da marca,
-                  estruturamos canais digitais e transformamos o conteúdo
-                  em uma ferramenta constante de alcance e venda.
-                </p>
-
-                <div class="results">
-                  <div class="result">
-                    <small>RESULTADO</small>
-                    +150,7% de faturamento no site
-                  </div>
-
-                  <div class="result">
-                    <small>RESULTADO</small>
-                    +75,3% no número de pedidos
-                  </div>
-                </div>
-
-                <a class="btn" href="case-adega-do-bruninho.html" aria-label="Ver case completo da Adega do Bruninho">
-                  Ver case completo →
-                </a>
-              </article>
-
-              <article class="case case-cyan">
-                <span class="case-tag">Casa de Embalagens Cangaíba</span>
-                <h3>Conteúdo • Branding • Site • Delivery • Tráfego Pago</h3>
-                <h4>Da loja física para uma presença digital completa.</h4>
-
-                <p>
-                  Criamos novos canais de venda, estruturamos a comunicação da marca
-                  e desenvolvemos um site com mais de 1.800 produtos organizados.
-                </p>
-
-                <div class="results">
-                  <div class="result">
-                    <small>ESTRUTURA</small>
-                    +1.800 produtos no site
-                  </div>
-
-                  <div class="result">
-                    <small>EXPERIÊNCIA</small>
-                    Entrega em até 45 minutos
-                  </div>
-                </div>
-
-                <a class="btn" href="case-casa-de-embalagens.html" aria-label="Ver case completo da Casa de Embalagens Cangaíba">
-                  Ver case completo →
-                </a>
-              </article>
-            </div>
-
-            <!-- SEGUNDO PAR -->
-            <div class="case-slide">
-              <article class="case case-purple">
-                <span class="case-tag">Tomo Xapo</span>
-                <h3>Conteúdo • Posicionamento • Comunicação Digital</h3>
-                <h4>Uma comunicação criada para fortalecer a marca e aproximar o público.</h4>
-
-                <p>
-                  Organizamos a presença digital da empresa com uma comunicação mais
-                  consistente, conteúdos estratégicos e uma identidade reconhecível.
-                </p>
-
-                <div class="results">
-                  <div class="result">
-                    <small>ESTRATÉGIA</small>
-                    Marca mais presente no digital
-                  </div>
-
-                  <div class="result">
-                    <small>COMUNICAÇÃO</small>
-                    Conteúdo mais próximo do público
-                  </div>
-                </div>
-
-                <a class="btn" href="case-tomo-xapo.html" aria-label="Ver case completo da Tomo Xapo">
-                  Ver case completo →
-                </a>
-              </article>
-
-              <article class="case case-blue">
-                <span class="case-tag">Gota de Ouro Modas</span>
-                <h3>Humanização • Conteúdo • Tráfego Pago</h3>
-                <h4>De 35 mil seguidores a uma comunidade que compra.</h4>
-
-                <p>
-                  Estruturamos a comunicação da marca para gerar confiança,
-                  aproximar o público e transformar o digital em um verdadeiro canal de vendas.
-                </p>
-
-                <div class="results">
-                  <div class="result">
-                    <small>RESULTADO</small>
-                    3x mais faturamento no site
-                  </div>
-
-                  <div class="result">
-                    <small>RESULTADO</small>
-                    2x mais vendas na loja física
-                  </div>
-                </div>
-
-                <a class="btn" href="case-gota-de-ouro-modas.html" aria-label="Ver case completo da Gota de Ouro Modas">
-                  Ver case completo →
-                </a>
-              </article>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="case-controls" aria-label="Escolher par de cases">
-          <button class="case-dot active" type="button" aria-label="Mostrar Adega do Bruninho e Casa de Embalagens" data-case-page="0"></button>
-          <button class="case-dot" type="button" aria-label="Mostrar Tomo Xapo e Gota de Ouro Modas" data-case-page="1"></button>
-        </div>
       </div>
-    </section>
 
-    <section class="section about" id="sobre">
-      <div class="container about-grid">
+      <div class="cases">
 
-        <div class="photo-placeholder">
+        <article class="case reveal" style="--case-accent:#3d86ff">
           <div>
-            <span>R + J</span>
-            <p>Substitua este espaço por uma foto bonita de vocês duas juntas.</p>
-          </div>
-        </div>
+            <div class="case-head">
+              <img class="case-logo" src="img/logo-adega-do-bruninho.webp" alt="Logotipo da Adega do Bruninho" width="56" height="56" loading="lazy" />
+              <div>
+                <span class="case-client">Adega do Bruninho</span>
+                <span class="case-services">Conteúdo &#8226; Tráfego Pago &#8226; Delivery &#8226; Estrutura Digital</span>
+              </div>
+            </div>
 
-        <div>
-          <span class="eyebrow" style="color:#146bf5">Por trás da Humanize</span>
+            <h3>Do conteúdo à venda: uma estratégia construída em vários canais.</h3>
 
-          <h2 class="section-title">Nós somos Ray e Jaque.</h2>
+            <p>
+              Humanizamos a comunicação, fortalecemos a presença da marca,
+              estruturamos canais digitais e transformamos o conteúdo
+              em uma ferramenta constante de alcance e venda.
+            </p>
 
-          <p class="section-copy">
-            A Humanize nasceu da ideia de que empresas não precisam apenas aparecer no digital —
-            precisam criar conexão, ser lembradas e transformar essa presença em vendas.
-            <br><br>
-            Unimos estratégia, criatividade e humanização para cuidar do digital de cada negócio
-            de forma próxima e personalizada. Aqui, não trabalhamos com fórmulas prontas:
-            entendemos a realidade de cada empresa para construir estratégias que façam sentido
-            para o seu público e para os seus objetivos.
-          </p>
-
-          <div class="people">
-
-            <article class="person">
-              <b>RAY</b>
-              <small>Estratégia • Marketing • Tráfego • Estrutura Digital</small>
-              <p>Estratégia e visão de crescimento para transformar o digital em resultado.</p>
-            </article>
-
-            <article class="person">
-              <b>JAQUE</b>
-              <small>Conteúdo • Criação • Atendimento • Comunicação</small>
-              <p>Criatividade e proximidade para aproximar empresas e pessoas.</p>
-            </article>
-
+            <a class="link-more" href="case-adega-do-bruninho.html" aria-label="Ver case completo da Adega do Bruninho">
+              <span class="label">Ver case completo</span> <span class="arrow" aria-hidden="true">&#8594;</span>
+            </a>
           </div>
 
-          <p class="quote" style="text-align:left;margin:28px 0 0">
-            Por trás de cada estratégia existem pessoas.
-            E é justamente por isso que escolhemos Humanize.
+          <div class="case-figures">
+            <div class="figure">
+              <small>Resultado</small>
+              <b>+150,7%<span class="unit">de faturamento no site</span></b>
+            </div>
+            <div class="figure">
+              <small>Resultado</small>
+              <b>+75,3%<span class="unit">no número de pedidos</span></b>
+            </div>
+          </div>
+        </article>
+
+        <article class="case reveal" style="--case-accent:#20d8f5">
+          <div>
+            <div class="case-head">
+              <img class="case-logo" src="img/logo-casa-de-embalagens-cangaiba.webp" alt="Logotipo da Casa de Embalagens Cangaíba" width="56" height="56" loading="lazy" />
+              <div>
+                <span class="case-client">Casa de Embalagens Cangaíba</span>
+                <span class="case-services">Conteúdo &#8226; Branding &#8226; Site &#8226; Delivery &#8226; Tráfego Pago</span>
+              </div>
+            </div>
+
+            <h3>Da loja física para uma presença digital completa.</h3>
+
+            <p>
+              Criamos novos canais de venda, estruturamos a comunicação da marca
+              e desenvolvemos um site com mais de 1.800 produtos organizados.
+            </p>
+
+            <a class="link-more" href="case-casa-de-embalagens.html" aria-label="Ver case completo da Casa de Embalagens Cangaíba">
+              <span class="label">Ver case completo</span> <span class="arrow" aria-hidden="true">&#8594;</span>
+            </a>
+          </div>
+
+          <div class="case-figures">
+            <div class="figure">
+              <small>Estrutura</small>
+              <b>+1.800<span class="unit">produtos no site</span></b>
+            </div>
+            <div class="figure">
+              <small>Experiência</small>
+              <b>45 min<span class="unit">prazo de entrega</span></b>
+            </div>
+          </div>
+        </article>
+
+        <article class="case reveal" style="--case-accent:#8b7cff">
+          <div>
+            <div class="case-head">
+              <img class="case-logo" src="img/logo-tomo-xapo.webp" alt="Logotipo da Tomo Xapo" width="56" height="56" loading="lazy" />
+              <div>
+                <span class="case-client">Tomo Xapo</span>
+                <span class="case-services">Conteúdo &#8226; Posicionamento &#8226; Comunicação Digital</span>
+              </div>
+            </div>
+
+            <h3>Uma comunicação criada para fortalecer a marca e aproximar o público.</h3>
+
+            <p>
+              Organizamos a presença digital da empresa com uma comunicação mais
+              consistente, conteúdos estratégicos e uma identidade reconhecível.
+            </p>
+
+            <a class="link-more" href="case-tomo-xapo.html" aria-label="Ver case completo da Tomo Xapo">
+              <span class="label">Ver case completo</span> <span class="arrow" aria-hidden="true">&#8594;</span>
+            </a>
+          </div>
+
+          <div class="case-figures">
+            <div class="figure figure--text">
+              <small>Estratégia</small>
+              <b>Marca mais presente no digital</b>
+            </div>
+            <div class="figure figure--text">
+              <small>Comunicação</small>
+              <b>Conteúdo mais próximo do público</b>
+            </div>
+          </div>
+        </article>
+
+        <article class="case reveal" style="--case-accent:#f0b429">
+          <div>
+            <div class="case-head">
+              <img class="case-logo" src="img/logo-gota-de-ouro.webp" alt="Logotipo da Gota de Ouro Modas" width="56" height="56" loading="lazy" />
+              <div>
+                <span class="case-client">Gota de Ouro Modas</span>
+                <span class="case-services">Humanização &#8226; Conteúdo &#8226; Tráfego Pago</span>
+              </div>
+            </div>
+
+            <h3>De 35 mil seguidores a uma comunidade que compra.</h3>
+
+            <p>
+              Estruturamos a comunicação da marca para gerar confiança,
+              aproximar o público e transformar o digital em um verdadeiro canal de vendas.
+            </p>
+
+            <a class="link-more" href="case-gota-de-ouro-modas.html" aria-label="Ver case completo da Gota de Ouro Modas">
+              <span class="label">Ver case completo</span> <span class="arrow" aria-hidden="true">&#8594;</span>
+            </a>
+          </div>
+
+          <div class="case-figures">
+            <div class="figure">
+              <small>Resultado</small>
+              <b>3x<span class="unit">mais faturamento no site</span></b>
+            </div>
+            <div class="figure">
+              <small>Resultado</small>
+              <b>2x<span class="unit">mais vendas na loja física</span></b>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ QUEM SOMOS ============================ -->
+  <section class="section section--raised section--hair" id="sobre">
+    <div class="wrap about-grid">
+
+      <!-- Espaço reservado para a foto oficial da Ray e da Jaque (proporção 4/5).
+           Para trocar: substitua esta <div class="about-visual"> por
+           <img class="about-visual" src="img/ray-e-jaque.webp" alt="Ray e Jaque, fundadoras da Humanize"> -->
+      <div class="about-visual reveal" role="img" aria-label="Marca da Humanize Marketing Digital">
+        <img src="img/monograma.webp" alt="" aria-hidden="true" width="420" height="389" loading="lazy" />
+        <div class="about-initials">
+          <b>Ray &amp; Jaque</b>
+          <small>Fundadoras da Humanize</small>
+        </div>
+      </div>
+
+      <div class="reveal reveal-d1">
+        <span class="eyebrow eyebrow--blue">Por trás da Humanize</span>
+
+        <h2 class="h-section">Nós somos Ray e Jaque.</h2>
+
+        <p class="lead" style="margin-top:22px">
+          A Humanize nasceu da ideia de que empresas não precisam apenas aparecer no digital &#8212;
+          precisam criar conexão, ser lembradas e transformar essa presença em vendas.
+        </p>
+
+        <p class="lead" style="margin-top:16px">
+          Unimos estratégia, criatividade e humanização para cuidar do digital de cada negócio
+          de forma próxima e personalizada. Aqui, não trabalhamos com fórmulas prontas:
+          entendemos a realidade de cada empresa para construir estratégias que façam sentido
+          para o seu público e para os seus objetivos.
+        </p>
+
+        <div class="people">
+          <article class="person">
+            <b>RAY</b>
+            <small>Estratégia &#8226; Marketing &#8226; Tráfego &#8226; Estrutura Digital</small>
+            <p>Estratégia e visão de crescimento para transformar o digital em resultado.</p>
+          </article>
+
+          <article class="person">
+            <b>JAQUE</b>
+            <small>Conteúdo &#8226; Criação &#8226; Atendimento &#8226; Comunicação</small>
+            <p>Criatividade e proximidade para aproximar empresas e pessoas.</p>
+          </article>
+        </div>
+
+        <p class="about-signature">
+          Por trás de cada estratégia existem pessoas.
+          E é justamente por isso que escolhemos <span class="script">Humanize</span>.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================ DIFERENCIAIS ============================ -->
+  <section class="section" id="diferencial">
+    <div class="wrap">
+
+      <div class="section-head reveal">
+        <span class="eyebrow eyebrow--blue">Por que escolher a Humanize?</span>
+        <h2 class="h-section">Porque estratégia de verdade começa entendendo o seu negócio.</h2>
+      </div>
+
+      <div class="why-grid reveal reveal-d1">
+
+        <article class="why">
+          <span class="why-num" aria-hidden="true">01</span>
+          <h3>Estudamos a sua empresa</h3>
+          <p>
+            Antes de criar qualquer estratégia, entendemos sua marca,
+            seu público, seus objetivos e o momento atual do seu negócio.
+            Não existe estratégia pronta para empresas diferentes.
           </p>
-        </div>
+        </article>
+
+        <article class="why">
+          <span class="why-num" aria-hidden="true">02</span>
+          <h3>Criamos conexões reais</h3>
+          <p>
+            Humanizar não é simplesmente aparecer em vídeos.
+            É fazer o cliente conhecer, confiar e se identificar com a sua empresa.
+            Criamos uma comunicação que aproxima pessoas e marcas.
+          </p>
+        </article>
+
+        <article class="why">
+          <span class="why-num" aria-hidden="true">03</span>
+          <h3>Não nos contentamos com o básico</h3>
+          <p>
+            Não estamos aqui apenas para postar, anunciar ou manter sua empresa
+            presente no digital. Integramos conteúdo, tráfego, site, Google
+            e outros canais com um objetivo claro: atrair clientes,
+            aumentar vendas e faturamento.
+          </p>
+        </article>
+
+        <article class="why">
+          <span class="why-num" aria-hidden="true">04</span>
+          <h3>Crescemos junto com a sua empresa</h3>
+          <p>
+            Analisamos o que está funcionando, identificamos novas oportunidades
+            e adaptamos a estratégia conforme o seu negócio evolui.
+          </p>
+        </article>
 
       </div>
-    </section>
 
-    <section class="section" id="diferencial">
-      <div class="container">
-
-        <span class="eyebrow" style="color:#146bf5">Por que escolher a Humanize?</span>
-
-        <h2 class="section-title">
-          Porque estratégia de verdade começa entendendo o seu negócio.
-        </h2>
-
-        <div class="why-grid">
-
-          <article class="why">
-            <b>01 —</b>
-            <h3>Estudamos a sua empresa</h3>
-            <p>
-              Antes de criar qualquer estratégia, entendemos sua marca,
-              seu público, seus objetivos e o momento atual do seu negócio.
-              Não existe estratégia pronta para empresas diferentes.
-            </p>
-          </article>
-
-          <article class="why">
-            <b>02 —</b>
-            <h3>Criamos conexões reais</h3>
-            <p>
-              Humanizar não é simplesmente aparecer em vídeos.
-              É fazer o cliente conhecer, confiar e se identificar com a sua empresa.
-              Criamos uma comunicação que aproxima pessoas e marcas.
-            </p>
-          </article>
-
-          <article class="why">
-            <b>03 —</b>
-            <h3>Não nos contentamos com o básico</h3>
-            <p>
-              Não estamos aqui apenas para postar, anunciar ou manter sua empresa
-              presente no digital. Integramos conteúdo, tráfego, site, Google
-              e outros canais com um objetivo claro: atrair clientes,
-              aumentar vendas e faturamento.
-            </p>
-          </article>
-
-          <article class="why">
-            <b>04 —</b>
-            <h3>Crescemos junto com a sua empresa</h3>
-            <p>
-              Analisamos o que está funcionando, identificamos novas oportunidades
-              e adaptamos a estratégia conforme o seu negócio evolui.
-            </p>
-          </article>
-
-        </div>
-
-        <div class="closing">
-          Não queremos ser apenas a empresa que cuida do seu marketing.
-          Queremos ser parceiros no crescimento do seu negócio.
-        </div>
-
-      </div>
-    </section>
-
-    <section class="brands">
-      <div class="container">
-        <h2>
-          “Cada marca tem uma história, nosso trabalho é encontrar a melhor estratégia para fazê-la crescer!”
-        </h2>
-      </div>
-
-      <div class="marquee" aria-label="Marcas atendidas">
-        <div class="brand-pill"><img src="logos/gota-de-ouro.png" alt="Gota de Ouro Modas"></div>
-        <div class="brand-pill"><img src="logos/adega-do-bruninho.png" alt="Adega do Bruninho"></div>
-        <div class="brand-pill"><img src="logos/boteco-do-maskara.png" alt="Boteco do Máskara"></div>
-        <div class="brand-pill"><img src="logos/casa-de-embalagens-cangaiba.png" alt="Casa de Embalagens Cangaíba"></div>
-        <div class="brand-pill"><img src="logos/doggie-dogg-gourmet.png" alt="Doggie Dogg Gourmet"></div>
-        <div class="brand-pill"><img src="logos/gelo-vida-boa.png" alt="Gelo Vida Boa"></div>
-        <div class="brand-pill"><img src="logos/restaurante-vivendo.png" alt="Restaurante Vivendo"></div>
-        <div class="brand-pill"><img src="logos/tomo-xapo.png" alt="Tomo Xapo"></div>
-
-        <div class="brand-pill" aria-hidden="true"><img src="logos/gota-de-ouro.png" alt=""></div>
-        <div class="brand-pill" aria-hidden="true"><img src="logos/adega-do-bruninho.png" alt=""></div>
-        <div class="brand-pill" aria-hidden="true"><img src="logos/boteco-do-maskara.png" alt=""></div>
-        <div class="brand-pill" aria-hidden="true"><img src="logos/casa-de-embalagens-cangaiba.png" alt=""></div>
-        <div class="brand-pill" aria-hidden="true"><img src="logos/doggie-dogg-gourmet.png" alt=""></div>
-        <div class="brand-pill" aria-hidden="true"><img src="logos/gelo-vida-boa.png" alt=""></div>
-        <div class="brand-pill" aria-hidden="true"><img src="logos/restaurante-vivendo.png" alt=""></div>
-        <div class="brand-pill" aria-hidden="true"><img src="logos/tomo-xapo.png" alt=""></div>
-      </div>
-    </section>
-
-    <section class="section final-cta" id="contato">
-      <div class="container">
-
-        <span class="eyebrow">Prontos para crescer?</span>
-
-        <h2 class="section-title">
-          Sua empresa pode vender mais.
-          <br>
-          E o digital pode ajudar você a chegar lá.
-        </h2>
-
-        <p class="section-copy">
-          Vamos entender o momento do seu negócio e construir uma estratégia
-          para atrair mais clientes, aumentar suas vendas e o seu faturamento.
-          <br><br>
-          Vamos humanizar e fazer sua empresa crescer?
-        </p>
-
-        <a
-          class="btn"
-          href="https://wa.me/5511914894352?text=Olá!%20Quero%20falar%20com%20a%20Humanize."
-          target="_blank"
-          rel="noopener"
-        >
-          Quero falar com a Humanize →
-        </a>
-
-        <p class="fine">
-          Fale diretamente com a nossa equipe pelo WhatsApp.
-        </p>
-
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container">
-
-      <div class="footer">
-        <div class="footer-brand">
-          Humanize
-          <small>MARKETING DIGITAL</small>
-        </div>
-
-        <div class="contact">
-          <span>São Paulo, Brasil</span>
-          <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
-          <a href="tel:+5511914894352">(11) 91489-4352</a>
-          <a href="mailto:humanizemktdigital@gmail.com">humanizemktdigital@gmail.com</a>
-        </div>
-      </div>
-
-      <p class="rights">
-        © 2026 Humanize Marketing Digital. Todos os direitos reservados.
+      <p class="closing-band reveal">
+        Não queremos ser apenas a empresa que cuida do seu marketing.
+        Queremos ser parceiros no crescimento do seu negócio.
       </p>
 
     </div>
-  </footer>
+  </section>
 
-  <a
-    class="whatsapp"
-    href="https://wa.me/5511914894352?text=Olá!%20Quero%20falar%20com%20a%20Humanize."
-    target="_blank"
-    rel="noopener"
-    aria-label="Falar com a Humanize no WhatsApp"
-  >
-    <img src="botao-whatsapp.png" alt="WhatsApp">
-  </a>
+  <!-- ============================ CITAÇÃO ============================ -->
+  <section class="quote-band">
+    <div class="wrap">
+      <blockquote class="reveal">
+        &#8220;Cada marca tem uma história, nosso trabalho é encontrar
+        a melhor <em>estratégia</em> para fazê-la crescer!&#8221;
+      </blockquote>
+    </div>
+  </section>
 
-  <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const mainMenu = document.getElementById('mainMenu');
+  <!-- ============================ CTA FINAL ============================ -->
+  <section class="final-cta" id="contato">
+    <div class="wrap">
+      <span class="eyebrow" style="justify-content:center">Prontos para crescer?</span>
 
-    function closeMobileMenu() {
-      if (!menuToggle || !mainMenu) return;
-      mainMenu.classList.remove('is-open');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      menuToggle.setAttribute('aria-label', 'Abrir menu de navegação');
-      menuToggle.textContent = 'MENU ↓';
-    }
+      <h2 class="h-section reveal">
+        Sua empresa pode vender mais.<br />
+        E o digital pode ajudar você a chegar lá.
+      </h2>
 
-    if (menuToggle && mainMenu) {
-      menuToggle.addEventListener('click', () => {
-        const willOpen = !mainMenu.classList.contains('is-open');
-        mainMenu.classList.toggle('is-open', willOpen);
-        menuToggle.setAttribute('aria-expanded', String(willOpen));
-        menuToggle.setAttribute('aria-label', willOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação');
-        menuToggle.textContent = willOpen ? 'MENU ↑' : 'MENU ↓';
+      <p class="lead reveal reveal-d1">
+        Vamos entender o momento do seu negócio e construir uma estratégia
+        para atrair mais clientes, aumentar suas vendas e o seu faturamento.
+        Vamos humanizar e fazer sua empresa crescer?
+      </p>
+
+      <div class="reveal reveal-d2">
+        <a class="btn btn--primary" href="https://wa.me/5511914894352?text=Olá!%20Quero%20falar%20com%20a%20Humanize." target="_blank" rel="noopener">
+          Quero falar com a Humanize <span class="arrow" aria-hidden="true">&#8594;</span>
+        </a>
+        <p class="fine">Fale diretamente com a nossa equipe pelo WhatsApp.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================ RODAPÉ ============================ -->
+<footer class="site-footer">
+  <div class="wrap">
+
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="img/logo.webp" alt="Humanize Marketing Digital" width="116" height="44" loading="lazy" />
+        <p>Estratégia, conteúdo e estrutura digital para empresas que querem ser lembradas e vender mais.</p>
+      </div>
+
+      <nav class="footer-col" aria-label="Navegação do rodapé">
+        <h3>Navegação</h3>
+        <ul>
+          <li><a href="#solucoes">Soluções</a></li>
+          <li><a href="#metodo">Como trabalhamos</a></li>
+          <li><a href="#cases">Cases</a></li>
+          <li><a href="#sobre">Quem somos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-col">
+        <h3>Contato</h3>
+        <ul>
+          <li><span>São Paulo, Brasil</span></li>
+          <li><a href="tel:+5511914894352">(11) 91489-4352</a></li>
+          <li><a href="mailto:humanizemktdigital@gmail.com">humanizemktdigital@gmail.com</a></li>
+          <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&#169; 2026 Humanize Marketing Digital. Todos os direitos reservados.</span>
+      <span>São Paulo &#8226; Brasil</span>
+    </div>
+
+  </div>
+</footer>
+
+<a class="wa-float"
+   href="https://wa.me/5511914894352?text=Olá!%20Quero%20falar%20com%20a%20Humanize."
+   target="_blank" rel="noopener"
+   aria-label="Falar com a Humanize no WhatsApp">
+  <img src="img/whatsapp.webp" alt="" aria-hidden="true" width="62" height="62" />
+</a>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"Humanize Marketing Digital",
+  "url":"https://humanize-marketing-digital-agencia.vercel.app/",
+  "logo":"https://humanize-marketing-digital-agencia.vercel.app/img/logo.webp",
+  "email":"humanizemktdigital@gmail.com",
+  "telephone":"+55-11-91489-4352",
+  "address":{"@type":"PostalAddress","addressLocality":"São Paulo","addressCountry":"BR"}
+}
+</script>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---------- Cabeçalho fixo ---------- */
+  var header = document.getElementById('siteHeader');
+  var onScroll = function () {
+    header.classList.toggle('is-stuck', window.scrollY > 24);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- Menu mobile ---------- */
+  var toggle = document.getElementById('menuToggle');
+  var menu = document.getElementById('mainMenu');
+
+  function closeMenu() {
+    menu.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Abrir menu de navegação');
+    document.body.classList.remove('is-locked');
+  }
+
+  toggle.addEventListener('click', function () {
+    var willOpen = !menu.classList.contains('is-open');
+    menu.classList.toggle('is-open', willOpen);
+    toggle.setAttribute('aria-expanded', String(willOpen));
+    toggle.setAttribute('aria-label', willOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação');
+    document.body.classList.toggle('is-locked', willOpen);
+  });
+
+  menu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 900) closeMenu();
+  });
+
+  /* ---------- Entrada suave ao rolar ---------- */
+  var items = document.querySelectorAll('.reveal');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reduced || !('IntersectionObserver' in window)) {
+    items.forEach(function (el) { el.classList.add('is-visible'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
       });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
 
-      mainMenu.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', closeMobileMenu);
-      });
-
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') closeMobileMenu();
-      });
-
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 900) closeMobileMenu();
-      });
-    }
-
-    // HERO — troca automática dos Instagrams dos clientes
-    const heroClientImages = Array.from(document.querySelectorAll('.hero-client-img'));
-    const heroPhoneShine = document.querySelector('.hero-phone-shine');
-    let currentHeroClient = 0;
-    let heroClientTimer;
-
-    function showHeroClient(index) {
-      heroClientImages.forEach((image, imageIndex) => {
-        image.classList.toggle('is-active', imageIndex === index);
-      });
-
-      if (heroPhoneShine) {
-        heroPhoneShine.classList.remove('is-shining');
-        void heroPhoneShine.offsetWidth;
-        heroPhoneShine.classList.add('is-shining');
-      }
-    }
-
-    function startHeroClientRotation() {
-      if (heroClientImages.length < 2) return;
-      clearInterval(heroClientTimer);
-      heroClientTimer = setInterval(() => {
-        currentHeroClient = (currentHeroClient + 1) % heroClientImages.length;
-        showHeroClient(currentHeroClient);
-      }, 3200);
-    }
-
-    showHeroClient(0);
-    startHeroClientRotation();
-
-    const caseTrack = document.getElementById('caseTrack');
-    const caseDots = document.querySelectorAll('[data-case-page]');
-    const caseCarousel = document.querySelector('.case-carousel');
-    let currentCasePage = 0;
-    let caseTimer;
-
-    function showCasePage(page) {
-      currentCasePage = page;
-      caseTrack.classList.toggle('show-second-pair', page === 1);
-
-      caseDots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === page);
-      });
-    }
-
-    function startCaseRotation() {
-      clearInterval(caseTimer);
-      caseTimer = setInterval(() => {
-        showCasePage(currentCasePage === 0 ? 1 : 0);
-      }, 6000);
-    }
-
-    caseDots.forEach((dot) => {
-      dot.addEventListener('click', () => {
-        showCasePage(Number(dot.dataset.casePage));
-        startCaseRotation();
-      });
-    });
-
-    caseCarousel.addEventListener('mouseenter', () => clearInterval(caseTimer));
-    caseCarousel.addEventListener('mouseleave', startCaseRotation);
-
-    showCasePage(0);
-    startCaseRotation();
-  </script>
+    items.forEach(function (el) { io.observe(el); });
+  }
+})();
+</script>
 
 </body>
 </html>
