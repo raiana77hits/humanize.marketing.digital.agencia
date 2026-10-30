@@ -7,21 +7,27 @@
   <title>Case Adega do Bruninho | Humanize</title>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap');
 
     :root {
-      --navy:#071b3a;
-      --deep:#041126;
-      --blue:#146bf5;
-      --cyan:#20d8f5;
-      --ink:#10223d;
-      --muted:#63738b;
-      --line:#dce8f5;
-      --soft:#f5f9ff;
+      /* IDENTIDADE VISUAL NOVA DA HUMANIZE
+         Manual: https://claude.ai/artifact/GYXpBU9U6yDcHrWYhU4ybR
+         Céu #36A6DE · Azul #2A84C3 · Profundo #1B4E9B · Navy #03106A
+         Noite #020A3F · Névoa #EEF5FB · Tinta #0B1640 */
+      --navy:#03106a;
+      --deep:#020a3f;
+      --blue:#2a84c3;
+      --cyan:#36a6de;
+      --profundo:#1b4e9b;
+      --ink:#0b1640;
+      --muted:#44557a;
+      --line:#d7e6f5;
+      --soft:#eef5fb;
       --white:#ffffff;
       --green:#25d366;
-      --shadow-sm:0 8px 24px rgba(7,27,58,.08);
-      --shadow-md:0 22px 55px rgba(7,27,58,.15);
+      --grad:linear-gradient(135deg,#36a6de 0%,#2a84c3 48%,#03106a 100%);
+      --shadow-sm:0 8px 24px rgba(3,16,106,.09);
+      --shadow-md:0 22px 55px rgba(3,16,106,.16);
     }
 
     * { box-sizing:border-box; }
@@ -284,7 +290,7 @@
       padding:25px;
       text-align:center;
       color:#bcd8f5;
-      background:linear-gradient(145deg,#0d3d78,#071b3a);
+      background:linear-gradient(145deg,#1b4e9b,#03106a);
       font-weight:700;
     }
 
@@ -369,7 +375,7 @@
       margin-bottom:22px;
       border-radius:14px;
       color:#fff;
-      background:linear-gradient(145deg,#20d8f5,var(--blue));
+      background:var(--grad);
       font:800 1rem 'Manrope',sans-serif;
     }
 
@@ -381,7 +387,7 @@
     .results-section {
       padding:76px 0;
       color:#fff;
-      background:linear-gradient(120deg,#041126,#0b3973);
+      background:linear-gradient(120deg,#020a3f,#1b4e9b);
     }
 
     .results-title {
@@ -654,21 +660,66 @@
        não forem adicionadas (ver comentários no HTML de cada seção). */
     .origin-grid.is-single,
     .beyond-grid.is-single { grid-template-columns:1fr; }
+
+    /* ---------- IDENTIDADE NOVA: tipografia e grafismo ---------- */
+    .hero h1 {
+      font-family:'Bebas Neue',Impact,sans-serif;
+      font-weight:400;
+      text-transform:uppercase;
+      line-height:.94;
+      letter-spacing:.012em;
+    }
+    .results-title, .section-title { font-family:'Manrope',Arial,sans-serif; font-weight:800; letter-spacing:-.025em; }
+    .result strong { font-family:'Bebas Neue',Impact,sans-serif; font-weight:400; letter-spacing:.01em; }
+    .brand-lockup { display:inline-flex; align-items:center; gap:11px; }
+    .brand-mark {
+      width:40px; height:40px; border-radius:11px; background:var(--grad);
+      display:grid; place-items:center; flex:0 0 auto; position:relative;
+      font-family:'Manrope',Arial,sans-serif; font-weight:800; font-size:1.02rem; color:#fff;
+      box-shadow:0 8px 22px rgba(42,132,195,.4);
+    }
+    .brand-mark::after { content:""; position:absolute; top:7px; right:8px; width:5px; height:5px; border-radius:50%; background:#fff; }
+    .brand-word { font-family:'Manrope',Arial,sans-serif; font-weight:800; font-size:1.18rem; letter-spacing:-.03em; color:#fff; }
+    .source-note {
+      margin-top:26px; font-size:.84rem; line-height:1.6; color:rgba(255,255,255,.72);
+      border-top:1px solid rgba(255,255,255,.16); padding-top:16px;
+    }
+    .result strong.is-todo { font-family:'DM Sans',Arial,sans-serif; font-weight:700; font-size:1.2rem; opacity:.75; }
   </style>
+
+  <!-- ============================================================
+       GOOGLE ANALYTICS 4
+       Troque G-XXXXXXXXXX pelo ID de medição da Humanize. [preencher]
+       ============================================================ -->
+  <script>
+    window.HUMANIZE_GA_ID = 'G-XXXXXXXXXX'; /* [preencher] */
+    (function () {
+      var id = window.HUMANIZE_GA_ID;
+      if (!id || id.indexOf('X') > -1) return;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', id);
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
+      document.head.appendChild(s);
+    })();
+  </script>
 </head>
 
-<body>
+<body data-pagina="case-adega-do-bruninho">
   <header>
     <div class="container nav">
       <a class="brand" href="index.html" aria-label="Voltar para a página inicial da Humanize">
-        <img src="img/logo.webp" alt="Humanize Marketing Digital">
+        <span class="brand-lockup"><span class="brand-mark" aria-hidden="true">Hi</span><span class="brand-word">Humanize</span></span>
       </a>
 
       <nav class="links" aria-label="Navegação principal">
         <a href="index.html">Início</a>
-        <a href="index.html#solucoes">Soluções</a>
+        <a href="index.html#servicos">Serviços</a>
         <a href="index.html#cases">Cases</a>
-        <a href="index.html#sobre">Quem somos</a>
+        <a href="index.html#por-dentro">Por dentro</a>
         <a href="#contato">Contato</a>
       </nav>
 
@@ -710,8 +761,8 @@
     <section class="section">
       <div class="container origin-grid is-single">
         <div>
-          <span class="eyebrow" style="color:#146bf5">O ponto de partida</span>
-          <h2 class="section-title">O delivery faturava cerca de R$ 40 mil por mês.</h2>
+          <span class="eyebrow" style="color:var(--profundo)">O ponto de partida</span>
+          <h2 class="section-title">O delivery já vendia, mas dependia de quem passava na porta.</h2>
           <p class="section-copy">
             A Adega do Bruninho já realizava entregas, mas precisava aumentar seu
             reconhecimento, fortalecer a comunicação e criar uma estratégia capaz
@@ -736,7 +787,7 @@
 
     <section class="section strategy">
       <div class="container">
-        <span class="eyebrow" style="color:#146bf5">A estratégia construída pela Humanize</span>
+        <span class="eyebrow" style="color:var(--profundo)">A estratégia construída pela Humanize</span>
         <h2 class="section-title">Personalidade, conteúdo e estrutura trabalhando para transformar atenção em pedidos.</h2>
 
         <div class="cards">
@@ -785,26 +836,27 @@
 
         <div class="results">
           <div class="result">
-            <strong>R$ 40 mil → R$ 180 mil</strong>
+            <strong class="is-todo">[preencher]</strong>
             <span>evolução do faturamento mensal</span>
           </div>
 
           <div class="result">
-            <strong>+150,7%</strong>
+            <strong class="is-todo">[preencher]</strong>
             <span>de faturamento no site</span>
           </div>
 
           <div class="result">
-            <strong>+75,3%</strong>
+            <strong class="is-todo">[preencher]</strong>
             <span>no número de pedidos</span>
           </div>
         </div>
       </div>
+        <p class="source-note">Fonte: [preencher]. Adega do Bruninho não é cliente ativo e os números ainda não foram confirmados em relatório.</p>
     </section>
 
     <section class="section">
       <div class="container">
-        <span class="eyebrow" style="color:#146bf5">Do conteúdo ao pedido</span>
+        <span class="eyebrow" style="color:var(--profundo)">Do conteúdo ao pedido</span>
         <h2 class="section-title">Uma jornada simples que transforma comunicação em resultado.</h2>
         <p class="section-copy">
           Cada conteúdo aproxima o público da marca, apresenta uma oportunidade
@@ -847,7 +899,7 @@
 
 
         <div>
-          <span class="eyebrow" style="color:#146bf5">Uma marca que virou referência na região</span>
+          <span class="eyebrow" style="color:var(--profundo)">Uma marca que virou referência na região</span>
           <h2 class="section-title">A personalidade do Bruninho se transformou em força para a marca.</h2>
           <p class="section-copy">
             O jeito de se comunicar do Bruninho criou proximidade, reconhecimento
@@ -907,5 +959,26 @@
   <a class="whatsapp" href="https://wa.me/5511914894352?text=Olá!%20Conheci%20o%20case%20da%20Adega%20do%20Bruninho%20e%20quero%20falar%20com%20a%20Humanize." target="_blank" rel="noopener" aria-label="Falar com a Humanize no WhatsApp">
     <img src="img/whatsapp.webp" alt="" aria-hidden="true" width="62" height="62">
   </a>
+
+<script>
+(function () {
+  'use strict';
+  var secao = document.body.getAttribute('data-pagina') || 'case';
+  document.querySelectorAll('a[href*="wa.me"]').forEach(function (el, i) {
+    el.addEventListener('click', function () {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'clique_whatsapp', { secao: secao, posicao: i + 1 });
+      }
+    });
+  });
+  document.querySelectorAll('a[href*="instagram.com"]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'clique_instagram', { secao: secao });
+      }
+    });
+  });
+})();
+</script>
 </body>
 </html>
