@@ -45,8 +45,13 @@
   /* Acento do elemento 3D do hero — troque aqui para mudar a cor do cubo.
      Opções testadas: lilás #A855F7 (168,85,247) ou verde-limão #B8FF01 (184,255,1).
      Atualize as duas linhas juntas. */
-  --accent-3d:#a855f7;
-  --accent-3d-rgb:168,85,247;
+  --accent-3d:#ff5500;
+  --accent-3d-rgb:255,85,0;
+
+  /* Laranja vibrante: acento complementar (regra 60-30-10).
+     Azul segue como cor principal; o laranja entra só em destaques. */
+  --orange:#ff5500;
+  --orange-glow:rgba(255,85,0,.28);
 
   /* Superfícies (tema escuro corporativo) */
   --bg:#030914;
@@ -268,7 +273,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 }
 
 .hero h1{margin-bottom:24px}
-.hero h1 strong{font-weight:800;color:var(--blue-bright)}
+.hero h1 strong{font-weight:800;color:var(--orange)}
 .hero .lead{max-width:34em;margin-bottom:36px}
 
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:40px}
@@ -401,8 +406,8 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 .glass-card b{display:block;font-family:Manrope,sans-serif;font-weight:800;font-size:.84rem;color:#fff;line-height:1.2}
 .glass-card svg.gc-line{display:block;width:100%;height:30px;margin-top:8px;overflow:visible}
 
-.gc-1{--gc:#20d8f5;left:-8px;top:8%}
-.gc-2{--gc:#c4a5ff;right:-12px;top:42%;animation-duration:11s;animation-delay:-4s}
+.gc-1{--gc:#ff7a33;left:-8px;top:8%}
+.gc-2{--gc:#20d8f5;right:-12px;top:42%;animation-duration:11s;animation-delay:-4s}
 .gc-3{--gc:#5f9dff;left:4%;bottom:6%;animation-duration:10s;animation-delay:-7s}
 
 @keyframes cardDepth{
@@ -467,7 +472,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 .vk-col--com .vk-list li{border-top-color:rgba(255,255,255,.14);color:#fff}
 .vk-list svg{flex-shrink:0;margin-top:3px}
 .vk-col--sem .vk-list svg{color:var(--muted)}
-.vk-col--com .vk-list svg{color:#20d8f5}
+.vk-col--com .vk-list svg{color:#ff7a33}
 .vk-arrow{
   align-self:center;width:54px;height:54px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
@@ -578,14 +583,17 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 .case p{font-size:.98rem;line-height:1.72;color:var(--muted);max-width:52ch;margin-bottom:24px}
 
 .case-figures{display:grid;gap:18px;padding:26px;border-radius:var(--r-md);background:var(--tint);border:1px solid var(--line)}
+/* Etiqueta em laranja ("Resultado", "Estrutura"…) */
 .figure small{
-  display:block;font-size:.68rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:7px;
+  display:inline-flex;align-items:center;gap:6px;font-size:.64rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--orange-ink,var(--orange));margin-bottom:8px;
+  padding:4px 10px;border-radius:var(--r-pill);background:var(--orange-glow);opacity:.95;
 }
+.figure small::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 .figure b{
   display:block;font-family:Manrope,sans-serif;font-weight:800;
   font-size:clamp(1.3rem,2.3vw,1.75rem);line-height:1.12;letter-spacing:-.025em;
-  color:var(--case-ink,var(--case-accent,var(--blue-bright)));
+  color:var(--orange-ink,var(--orange));
 }
 .figure b .unit{font-size:.62em;color:var(--text-soft);font-weight:700;display:block;margin-top:5px;letter-spacing:0}
 /* Resultados qualitativos: mesma estrutura, peso tipográfico menor */
@@ -729,6 +737,8 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 
 .theme-light,
 .theme-sky{
+  --orange-ink:#d94600;          /* laranja um tom mais fechado para ler bem no claro */
+  --orange-glow:rgba(255,85,0,.12);
   --text:#0b1640;
   --text-soft:#34466b;
   --muted:#586a8c;
@@ -847,9 +857,10 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
    ============================================================ */
 .carousel-dots{display:none}
 @media (hover:hover){
-  .case:hover{transform:translateY(-4px);border-color:var(--blue-bright);box-shadow:var(--shadow-md),0 0 0 1px rgba(32,216,245,.22)}
-  .person:hover{transform:translateY(-4px);border-color:var(--cyan);box-shadow:var(--shadow-sm)}
-  .service:hover{box-shadow:inset 0 0 0 1px var(--blue-bright)}
+  .case:hover{transform:translateY(-4px);border-color:var(--orange);box-shadow:var(--shadow-md),0 0 0 4px var(--orange-glow)}
+  .person:hover{transform:translateY(-4px);border-color:var(--orange);box-shadow:var(--shadow-sm),0 0 0 4px var(--orange-glow)}
+  .service:hover{box-shadow:inset 0 0 0 1px var(--orange),0 0 24px var(--orange-glow)}
+  .vk-col--com:hover{border-color:var(--orange)}
   .glass-card:hover{border-color:rgba(32,216,245,.55)}
 }
 
@@ -930,7 +941,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
     content:"";width:8px;height:8px;border-radius:var(--r-pill);background:var(--line-strong);
     transition:width var(--t),background var(--t);
   }
-  .carousel-dots button.is-active::before{width:22px;background:var(--blue-bright)}
+  .carousel-dots button.is-active::before{width:22px;background:var(--orange)}
 
   /* Soluções em cartões */
   .services{border:0;border-radius:0;background:none}
