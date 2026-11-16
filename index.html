@@ -392,42 +392,19 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 
 .pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 
-/* LIQUID GLASS — vidro líquido: desfoque forte com saturação,
-   reflexo de luz no topo, borda que refrata e brilho que segue o cursor */
+/* GLASSMORPHISM — vidro fosco clássico: fundo branco translúcido,
+   desfoque do que está atrás, borda fina clara e sombra suave */
 .pillar{
-  --mx:30%;--my:0%;
-  position:relative;overflow:hidden;isolation:isolate;
-  padding:18px 20px 14px;border-radius:24px;text-align:left;
-  background:
-    radial-gradient(160px circle at var(--mx) var(--my),rgba(255,255,255,.16),transparent 70%),
-    linear-gradient(160deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.05) 45%,rgba(255,255,255,.08) 100%);
-  border:1px solid rgba(255,255,255,.22);
-  backdrop-filter:blur(22px) saturate(190%) brightness(1.08);
-  -webkit-backdrop-filter:blur(22px) saturate(190%) brightness(1.08);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.55),
-    inset 0 -1px 0 rgba(255,255,255,.12),
-    inset 1px 0 0 rgba(255,255,255,.14),
-    inset -1px 0 0 rgba(255,255,255,.08),
-    inset 0 0 22px rgba(255,255,255,.05),
-    0 20px 44px rgba(0,0,0,.35);
-  transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow var(--t);
-}
-/* reflexo especular (a "gota" de luz no alto do vidro) */
-.pillar::before{
-  content:"";position:absolute;z-index:-1;left:-20%;top:-60%;width:140%;height:95%;
-  border-radius:50%;pointer-events:none;
-  background:radial-gradient(ellipse at 50% 100%,rgba(255,255,255,.22),rgba(255,255,255,0) 62%);
-}
-/* borda que refrata: anel de luz mais forte nos cantos */
-.pillar::after{
-  content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;
-  background:linear-gradient(135deg,rgba(255,255,255,.7),rgba(255,255,255,0) 30%,rgba(255,255,255,0) 70%,rgba(32,216,245,.55));
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;mask-composite:exclude;
+  position:relative;
+  padding:18px 20px 14px;border-radius:20px;text-align:left;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  box-shadow:0 8px 32px rgba(0,0,0,.30);
+  transition:transform var(--t),border-color var(--t),background var(--t);
 }
 @media (hover:hover){
-  .pillar:hover{transform:translateY(-5px) scale(1.02);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),inset 0 -1px 0 rgba(255,255,255,.14),inset 0 0 26px rgba(255,255,255,.08),0 26px 56px rgba(0,0,0,.42)}
+  .pillar:hover{transform:translateY(-4px);background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3)}
 }
 .gc-top{display:flex;align-items:center;gap:10px}
 .gc-ico{width:30px;height:30px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(0,93,252,.16);border:1px solid rgba(61,134,255,.35);color:var(--cyan)}
@@ -1748,17 +1725,6 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
     });
   }
 
-
-  /* ---------- Liquid glass: luz segue o cursor nos pilares ---------- */
-  if (window.matchMedia('(hover: hover)').matches) {
-    document.querySelectorAll('.pillar').forEach(function (card) {
-      card.addEventListener('pointermove', function (e) {
-        var r = card.getBoundingClientRect();
-        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-      }, { passive: true });
-    });
-  }
 
   /* ---------- Carrosséis do celular: indicadores ---------- */
   document.querySelectorAll('[data-carousel]').forEach(function (track) {
