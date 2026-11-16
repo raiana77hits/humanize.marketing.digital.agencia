@@ -386,26 +386,24 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 /* Cards de vidro fosco que chegam mais perto e se afastam (profundidade real,
    usando a perspectiva do .hero-visual). Os gráficos são ilustrativos: sem números. */
 .glass-card{
-  position:absolute;z-index:3;width:196px;
-  padding:14px 16px 12px;border-radius:var(--r-md);
+  position:absolute;z-index:3;width:150px;
+  padding:11px 13px 9px;border-radius:14px;
   background:linear-gradient(140deg,rgba(255,255,255,.13),rgba(255,255,255,.04));
   border:1px solid rgba(255,255,255,.15);
   backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  box-shadow:0 22px 50px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.12);
-  color:#fff;line-height:1.25;
+  box-shadow:0 18px 40px rgba(0,0,0,.36),inset 0 1px 0 rgba(255,255,255,.12);
+  color:#fff;line-height:1.2;
   animation:cardDepth 9s ease-in-out infinite;will-change:transform;
 }
-.gc-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
-.gc-ico{width:28px;height:28px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:var(--gc,#20d8f5)}
-.gc-ico svg{width:15px;height:15px}
-.gc-trend{font-size:.64rem;font-weight:800;letter-spacing:.08em;color:var(--gc,#20d8f5)}
-.glass-card b{display:block;font-family:Manrope,sans-serif;font-weight:800;font-size:.98rem;color:#fff;line-height:1.22}
-.glass-card small{display:block;font-size:.72rem;color:#c3d0e4;margin-top:3px}
-.glass-card svg.gc-line{display:block;width:100%;height:40px;margin-top:8px;overflow:visible}
+.gc-top{display:flex;align-items:center;gap:9px}
+.gc-ico{width:26px;height:26px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:var(--gc,#20d8f5)}
+.gc-ico svg{width:14px;height:14px}
+.glass-card b{display:block;font-family:Manrope,sans-serif;font-weight:800;font-size:.84rem;color:#fff;line-height:1.2}
+.glass-card svg.gc-line{display:block;width:100%;height:30px;margin-top:8px;overflow:visible}
 
-.gc-1{--gc:#20d8f5;left:-34px;top:2%}
-.gc-2{--gc:#c4a5ff;right:-40px;top:40%;animation-duration:11s;animation-delay:-4s}
-.gc-3{--gc:#5f9dff;left:-14px;bottom:0;animation-duration:10s;animation-delay:-7s}
+.gc-1{--gc:#20d8f5;left:-8px;top:8%}
+.gc-2{--gc:#c4a5ff;right:-12px;top:42%;animation-duration:11s;animation-delay:-4s}
+.gc-3{--gc:#5f9dff;left:4%;bottom:6%;animation-duration:10s;animation-delay:-7s}
 
 @keyframes cardDepth{
   0%,100%{transform:translate3d(0,0,-70px);opacity:.82}
@@ -881,18 +879,15 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   .hero-visual{--cube:136px;order:0;min-height:318px;max-width:none}
   .hero-visual-ring{width:min(92%,320px)}
   .hero-visual{min-height:380px}
-  .glass-card{width:136px;padding:9px 10px 7px;border-radius:var(--r-sm)}
-  .glass-card small{display:none}
-  .gc-top{margin-bottom:5px}
-  .gc-ico{width:22px;height:22px;border-radius:7px}
-  .gc-ico svg{width:12px;height:12px}
-  .gc-trend{font-size:.54rem;letter-spacing:.03em;white-space:nowrap}
-  .glass-card b{font-size:.78rem}
-  .glass-card small{font-size:.62rem}
-  .glass-card svg.gc-line{height:24px;margin-top:5px}
-  .gc-1{left:-4px;top:0}
-  .gc-2{right:-4px;top:38%}
-  .gc-3{left:-4px;bottom:0}
+  .glass-card{width:122px;padding:8px 9px 6px;border-radius:11px}
+  .gc-top{gap:7px}
+  .gc-ico{width:20px;height:20px;border-radius:6px}
+  .gc-ico svg{width:11px;height:11px}
+  .glass-card b{font-size:.7rem}
+  .glass-card svg.gc-line{height:20px;margin-top:5px}
+  .gc-1{left:0;top:4%}
+  .gc-2{right:0;top:42%}
+  .gc-3{left:2%;bottom:4%}
 
   /* Faixa de marcas */
   .brandbar{padding-block:26px}
@@ -1071,11 +1066,9 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
         <!-- Cards flutuantes (benefícios; gráficos ilustrativos, sem números) -->
         <div class="glass-card gc-1">
           <div class="gc-top">
-            <span class="gc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M5 12v9h14v-9"/></svg></span>
-            <span class="gc-trend">&#9650; VENDAS</span>
+            <span class="gc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg></span>
+            <b>Aumente seu faturamento</b>
           </div>
-          <b>Sua loja vendendo mais</b>
-          <small>Mais pedidos, todos os dias</small>
           <svg class="gc-line" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true">
             <defs><linearGradient id="gcA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".4"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
             <g style="color:var(--gc)">
@@ -1086,11 +1079,9 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
         </div>
         <div class="glass-card gc-2">
           <div class="gc-top">
-            <span class="gc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.1 8.3 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.3 12 2"/></svg></span>
-            <span class="gc-trend">&#9733; AUTORIDADE</span>
+            <span class="gc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></span>
+            <b>Fortaleça seu branding</b>
           </div>
-          <b>Seja referência no ramo</b>
-          <small>A marca que o bairro lembra</small>
           <svg class="gc-line" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true">
             <defs><linearGradient id="gcB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".4"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
             <g style="color:var(--gc)">
@@ -1101,11 +1092,9 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
         </div>
         <div class="glass-card gc-3">
           <div class="gc-top">
-            <span class="gc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16" y2="16"/></svg></span>
-            <span class="gc-trend">&#9650; ENCONTRADA</span>
+            <span class="gc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.1 8.3 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.3 12 2"/></svg></span>
+            <b>Seja referência</b>
           </div>
-          <b>Pare de perder vendas por não ser encontrado</b>
-          <small>No Google, no Instagram e no delivery</small>
           <svg class="gc-line" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true">
             <defs><linearGradient id="gcC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".4"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
             <g style="color:var(--gc)">
