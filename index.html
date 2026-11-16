@@ -48,10 +48,14 @@
   --accent-3d:#3d86ff;
   --accent-3d-rgb:61,134,255;
 
-  /* Laranja vibrante: acento complementar (regra 60-30-10).
-     Azul segue como cor principal; o laranja entra só em destaques. */
-  --orange:#ff5500;
-  --orange-glow:rgba(255,85,0,.28);
+  /* TESTE 60 / 30 / 10
+     60% azul escuro (fundos) · 30% azul #005DFC + ciano #20D8F5 (apoio)
+     10% MAGENTA — só nos botões de contato, na palavra-chave, nos números e nos detalhes ativos.
+     (As variáveis --orange foram mantidas por nome para não mexer no resto do CSS.) */
+  --magenta:#ff2e88;
+  --magenta-hover:#ff4f9d;
+  --orange:var(--magenta);
+  --orange-glow:rgba(255,46,136,.28);
 
   /* Superfícies (tema escuro corporativo) */
   --bg:#030914;
@@ -170,8 +174,11 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 .btn .arrow{transition:transform var(--t)}
 .btn:hover .arrow{transform:translateX(4px)}
 
-.btn--primary{background:var(--blue);color:var(--on-blue);box-shadow:var(--shadow-blue)}
-.btn--primary:hover{background:var(--blue-bright);transform:translateY(-2px);box-shadow:0 22px 60px rgba(0,93,252,.45)}
+.btn--primary{position:relative;overflow:hidden;isolation:isolate;background:var(--magenta);color:#fff;box-shadow:0 16px 44px rgba(255,46,136,.38)}
+/* brilho que atravessa o botão no hover */
+.btn--primary::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.4) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s var(--ease)}
+.btn--primary:hover::after{transform:translateX(120%)}
+.btn--primary:hover{background:var(--magenta-hover);transform:translateY(-2px);box-shadow:0 22px 56px rgba(255,46,136,.5)}
 .btn--primary:active{transform:translateY(0)}
 
 .btn--ghost{border-color:var(--line-strong);color:var(--text);background:rgba(255,255,255,.03)}
@@ -273,12 +280,18 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 }
 
 .hero h1{margin-bottom:24px}
-.hero h1 strong{font-weight:800;color:var(--blue-bright)}
+.hero h1 strong{font-weight:800;color:var(--magenta)}
 
 /* Traço laranja feito à mão (SVG) — desenhado sob a palavra ao carregar.
    box-decoration-break faz o traço acompanhar cada linha quando a frase quebra. */
 .brush{
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 26' preserveAspectRatio='none'%3E%3Cpath d='M4 17 C60 8 128 6 186 9 S268 15 296 8' fill='none' stroke='%23ff5500' stroke-width='7' stroke-linecap='round'/%3E%3Cpath d='M34 22 C104 15 190 14 282 17' fill='none' stroke='%23ff5500' stroke-width='3' stroke-linecap='round' opacity='.55'/%3E%3C/svg%3E") left 0 bottom -.04em / 0% .3em no-repeat;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 26' preserveAspectRatio='none'%3E%3Cpath d='M4 17 C60 8 128 6 186 9 S268 15 296 8' fill='none' stroke='%23ff2e88' stroke-width='7' stroke-linecap='round'/%3E%3Cpath d='M34 22 C104 15 190 14 282 17' fill='none' stroke='%23ff2e88' stroke-width='3' stroke-linecap='round' opacity='.55'/%3E%3C/svg%3E") left 0 bottom -.04em / 0% .3em no-repeat;
+  padding-bottom:.06em;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;
+  animation:brushIn .9s .55s var(--ease) forwards;
+}
+.brush--cyan{
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 26' preserveAspectRatio='none'%3E%3Cpath d='M4 17 C60 8 128 6 186 9 S268 15 296 8' fill='none' stroke='%2320d8f5' stroke-width='7' stroke-linecap='round'/%3E%3Cpath d='M34 22 C104 15 190 14 282 17' fill='none' stroke='%2320d8f5' stroke-width='3' stroke-linecap='round' opacity='.55'/%3E%3C/svg%3E") left 0 bottom -.04em / 0% .3em no-repeat;
   padding-bottom:.06em;
   -webkit-box-decoration-break:clone;box-decoration-break:clone;
   animation:brushIn .9s .55s var(--ease) forwards;
@@ -620,7 +633,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   content:"";position:absolute;z-index:0;pointer-events:none;
   left:-8%;top:4%;width:52%;height:92%;
   background:
-    radial-gradient(circle at 34% 34%,rgba(255,85,0,.95),transparent 58%),
+    radial-gradient(circle at 34% 34%,rgba(255,46,136,.95),transparent 58%),
     radial-gradient(circle at 70% 72%,rgba(0,93,252,.95),transparent 60%);
   filter:blur(90px);opacity:.2;
 }
@@ -712,7 +725,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   content:"";position:absolute;z-index:1;pointer-events:none;
   left:50%;bottom:-30%;width:min(900px,110%);height:80%;transform:translateX(-50%);
   background:
-    radial-gradient(circle at 30% 50%,rgba(255,85,0,.95),transparent 58%),
+    radial-gradient(circle at 30% 50%,rgba(255,46,136,.95),transparent 58%),
     radial-gradient(circle at 70% 50%,rgba(0,93,252,.95),transparent 60%);
   filter:blur(90px);opacity:.16;
 }
@@ -773,8 +786,8 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 
 .theme-light,
 .theme-sky{
-  --orange-ink:#d94600;          /* laranja um tom mais fechado para ler bem no claro */
-  --orange-glow:rgba(255,85,0,.12);
+  --orange-ink:#e0136f;          /* magenta um tom mais fechado para ler bem no claro */
+  --orange-glow:rgba(255,46,136,.12);
   --text:#0b1640;
   --text-soft:#34466b;
   --muted:#586a8c;
@@ -864,7 +877,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   .nav-links .nav-menu-cta{
     display:inline-flex;align-items:center;justify-content:center;gap:10px;
     margin-top:26px;border:0;
-    min-height:54px;border-radius:var(--r-pill);background:var(--blue);color:#fff;
+    min-height:54px;border-radius:var(--r-pill);background:var(--magenta);color:#fff;
     font-family:Manrope,sans-serif;font-weight:800;font-size:.95rem;
   }
   .menu-toggle{display:flex}
@@ -1059,7 +1072,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 
         <h1 class="h-display">
           Soluções digitais<br />
-          para a <strong class="brush">sua empresa.</strong>
+          para a <strong class="brush brush--cyan">sua empresa.</strong>
         </h1>
 
         <p class="lead">
@@ -1117,7 +1130,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
             <b>Aumente seu faturamento</b>
           </div>
           <svg class="gc-line" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true">
-            <defs><linearGradient id="gcSA" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3d86ff"/><stop offset=".55" stop-color="#20d8f5"/><stop offset="1" stop-color="#ff5500"/></linearGradient><linearGradient id="gcA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".4"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
+            <defs><linearGradient id="gcSA" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3d86ff"/><stop offset=".55" stop-color="#20d8f5"/><stop offset="1" stop-color="#ff2e88"/></linearGradient><linearGradient id="gcA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".4"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
             <g style="color:var(--gc)">
               <path d="M0 40 L28 36 L56 38 L84 28 L112 26 L140 17 L168 12 L200 3 L200 46 L0 46 Z" fill="url(#gcA)"/>
               <polyline points="0,40 28,36 56,38 84,28 112,26 140,17 168,12 200,3" fill="none" stroke="url(#gcSA)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
@@ -1130,7 +1143,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
             <b>Fortaleça seu branding</b>
           </div>
           <svg class="gc-line" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true">
-            <defs><linearGradient id="gcSB" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3d86ff"/><stop offset=".55" stop-color="#20d8f5"/><stop offset="1" stop-color="#ff5500"/></linearGradient><linearGradient id="gcB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".4"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
+            <defs><linearGradient id="gcSB" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3d86ff"/><stop offset=".55" stop-color="#20d8f5"/><stop offset="1" stop-color="#ff2e88"/></linearGradient><linearGradient id="gcB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".4"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
             <g style="color:var(--gc)">
               <path d="M0 42 L30 38 L60 30 L90 32 L120 20 L150 16 L175 9 L200 5 L200 46 L0 46 Z" fill="url(#gcB)"/>
               <polyline points="0,42 30,38 60,30 90,32 120,20 150,16 175,9 200,5" fill="none" stroke="url(#gcSB)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
@@ -1143,7 +1156,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
             <b>Seja referência</b>
           </div>
           <svg class="gc-line" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true">
-            <defs><linearGradient id="gcSC" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3d86ff"/><stop offset=".55" stop-color="#20d8f5"/><stop offset="1" stop-color="#ff5500"/></linearGradient><linearGradient id="gcC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".4"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
+            <defs><linearGradient id="gcSC" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3d86ff"/><stop offset=".55" stop-color="#20d8f5"/><stop offset="1" stop-color="#ff2e88"/></linearGradient><linearGradient id="gcC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".4"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
             <g style="color:var(--gc)">
               <path d="M0 38 L25 40 L50 33 L80 34 L110 24 L140 21 L170 11 L200 6 L200 46 L0 46 Z" fill="url(#gcC)"/>
               <polyline points="0,38 25,40 50,33 80,34 110,24 140,21 170,11 200,6" fill="none" stroke="url(#gcSC)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
