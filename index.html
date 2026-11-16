@@ -324,17 +324,37 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 .cube-face:nth-child(4){transform:rotateY(-90deg) translateZ(calc(var(--cube) / 2))}
 .cube-face:nth-child(5){transform:rotateX(90deg) translateZ(calc(var(--cube) / 2))}
 .cube-face:nth-child(6){transform:rotateX(-90deg) translateZ(calc(var(--cube) / 2))}
-/* Núcleo: cubo menor, sólido e brilhante, girando ao contrário */
+/* Núcleo: cubo menor com o monograma da Humanize em cada face.
+   O logo é uma máscara (não uma imagem colada): ganha o degradê da marca,
+   brilho e um reflexo que passa pela face enquanto o cubo gira. */
 .cube-core{
-  --core:calc(var(--cube) * .38);
+  --core:calc(var(--cube) * .5);
   position:absolute;left:50%;top:50%;width:var(--core);height:var(--core);
   margin:calc(var(--core) / -2) 0 0 calc(var(--core) / -2);
-  transform-style:preserve-3d;animation:cubeSpinRev 12s linear infinite;
+  transform-style:preserve-3d;animation:cubeSpinRev 16s linear infinite;
 }
 .cube-core .cube-face{
-  border-radius:8px;border-color:rgba(255,255,255,.55);
-  background:linear-gradient(140deg,rgba(var(--accent-3d-rgb),.95),rgba(0,93,252,.85));
-  box-shadow:0 0 26px rgba(var(--accent-3d-rgb),.7);
+  border-radius:10px;border:1.5px solid rgba(255,255,255,.55);
+  background:
+    radial-gradient(120% 120% at 30% 20%,rgba(var(--accent-3d-rgb),.55),transparent 60%),
+    linear-gradient(150deg,#0a2a6e,#06133a 70%);
+  box-shadow:inset 0 0 22px rgba(var(--accent-3d-rgb),.55),0 0 26px rgba(var(--accent-3d-rgb),.55);
+  overflow:hidden;
+}
+.cube-core .cube-face::before{
+  content:"";position:absolute;inset:14%;
+  background:linear-gradient(115deg,#ffffff 0%,#bfefff 35%,#20d8f5 50%,#ffffff 65%,#d9c6ff 100%);
+  background-size:260% 100%;
+  -webkit-mask:url(img/monograma.webp) center/contain no-repeat;
+          mask:url(img/monograma.webp) center/contain no-repeat;
+  filter:drop-shadow(0 0 6px rgba(32,216,245,.9));
+  animation:logoShine 4.5s ease-in-out infinite;
+}
+/* reflexo de vidro passando pela face */
+.cube-core .cube-face::after{
+  content:"";position:absolute;inset:-40%;
+  background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.35) 50%,transparent 58%);
+  transform:translateX(-60%);animation:faceGlint 4.5s ease-in-out infinite;
 }
 .cube-core .cube-face:nth-child(1){transform:translateZ(calc(var(--core) / 2))}
 .cube-core .cube-face:nth-child(2){transform:rotateY(180deg) translateZ(calc(var(--core) / 2))}
@@ -342,46 +362,55 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 .cube-core .cube-face:nth-child(4){transform:rotateY(-90deg) translateZ(calc(var(--core) / 2))}
 .cube-core .cube-face:nth-child(5){transform:rotateX(90deg) translateZ(calc(var(--core) / 2))}
 .cube-core .cube-face:nth-child(6){transform:rotateX(-90deg) translateZ(calc(var(--core) / 2))}
+.cube-core .cube-face:nth-child(2)::before,.cube-core .cube-face:nth-child(2)::after{animation-delay:-1.5s}
+.cube-core .cube-face:nth-child(3)::before,.cube-core .cube-face:nth-child(3)::after{animation-delay:-.75s}
+.cube-core .cube-face:nth-child(4)::before,.cube-core .cube-face:nth-child(4)::after{animation-delay:-2.25s}
+.cube-core .cube-face:nth-child(5)::before,.cube-core .cube-face:nth-child(5)::after{animation-delay:-3s}
+.cube-core .cube-face:nth-child(6)::before,.cube-core .cube-face:nth-child(6)::after{animation-delay:-3.75s}
+
+@keyframes logoShine{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+@keyframes faceGlint{0%,55%{transform:translateX(-60%)}85%,100%{transform:translateX(60%)}}
 
 @keyframes cubeSpin{to{transform:rotateY(360deg) rotateX(360deg)}}
 @keyframes cubeSpinRev{to{transform:rotateY(-360deg) rotateZ(180deg)}}
 @keyframes cubeFloat{0%,100%{transform:translateY(-10px)}50%{transform:translateY(10px)}}
-@keyframes cardFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 9px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 
 .hero.is-offscreen .cube,
 .hero.is-offscreen .cube-core,
 .hero.is-offscreen .cube-float,
-.hero.is-offscreen .glass-card{animation-play-state:paused}
+.hero.is-offscreen .glass-card,
+.hero.is-offscreen .cube-core .cube-face::before,
+.hero.is-offscreen .cube-core .cube-face::after{animation-play-state:paused}
 
-/* Cards de vidro fosco com métricas reais */
+/* Cards de vidro fosco que chegam mais perto e se afastam (profundidade real,
+   usando a perspectiva do .hero-visual). Os gráficos são ilustrativos: sem números. */
 .glass-card{
-  position:absolute;z-index:3;
-  padding:14px 18px;border-radius:var(--r-md);
-  background:linear-gradient(140deg,rgba(255,255,255,.12),rgba(255,255,255,.04));
+  position:absolute;z-index:3;width:196px;
+  padding:14px 16px 12px;border-radius:var(--r-md);
+  background:linear-gradient(140deg,rgba(255,255,255,.13),rgba(255,255,255,.04));
   border:1px solid rgba(255,255,255,.15);
   backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   box-shadow:0 22px 50px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.12);
   color:#fff;line-height:1.25;
-  animation:cardFloat 7s ease-in-out infinite;
+  animation:cardDepth 9s ease-in-out infinite;will-change:transform;
 }
-.glass-card small{display:block;font-size:.72rem;color:#c3d0e4;letter-spacing:.02em}
-.glass-card b{display:block;font-family:Manrope,sans-serif;font-weight:800;color:#fff}
+.gc-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+.gc-ico{width:28px;height:28px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:var(--gc,#20d8f5)}
+.gc-ico svg{width:15px;height:15px}
+.gc-trend{font-size:.64rem;font-weight:800;letter-spacing:.08em;color:var(--gc,#20d8f5)}
+.glass-card b{display:block;font-family:Manrope,sans-serif;font-weight:800;font-size:.98rem;color:#fff;line-height:1.22}
+.glass-card small{display:block;font-size:.72rem;color:#c3d0e4;margin-top:3px}
+.glass-card svg.gc-line{display:block;width:100%;height:40px;margin-top:8px;overflow:visible}
 
-.gc-revenue{left:-4px;top:13%;display:flex;align-items:center;gap:12px;max-width:250px}
-.gc-revenue img{width:42px;height:42px;border-radius:50%;flex-shrink:0;border:1px solid rgba(255,255,255,.25)}
-.gc-revenue b{font-size:.98rem}
+.gc-1{--gc:#20d8f5;left:-34px;top:2%}
+.gc-2{--gc:#c4a5ff;right:-40px;top:40%;animation-duration:11s;animation-delay:-4s}
+.gc-3{--gc:#5f9dff;left:-14px;bottom:0;animation-duration:10s;animation-delay:-7s}
 
-.gc-chart{right:-4px;bottom:9%;width:220px;animation-delay:-3.2s}
-.gc-chart .gc-label{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.gc-chart b{font-size:1.7rem;letter-spacing:-.03em;margin-top:6px;
-  background:linear-gradient(100deg,#fff,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
-.gc-chart svg{display:block;width:100%;height:46px;margin-top:8px}
-.gc-trend{font-size:.68rem;font-weight:800;color:var(--cyan);letter-spacing:.06em}
-
-.gc-status{right:9%;top:5%;padding:9px 14px 9px 12px;border-radius:var(--r-pill);display:flex;align-items:center;gap:9px;animation-delay:-1.6s}
-.gc-status b{font-size:.78rem;letter-spacing:.04em}
-.gc-dot{width:9px;height:9px;border-radius:50%;background:var(--green);animation:pulse 1.8s ease-out infinite}
+@keyframes cardDepth{
+  0%,100%{transform:translate3d(0,0,-70px);opacity:.82}
+  50%{transform:translate3d(0,-12px,70px);opacity:1}
+}
 
 /* ============================================================
    FAIXA DE MARCAS (prova social)
@@ -823,7 +852,6 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   .case:hover{transform:translateY(-4px);border-color:var(--blue-bright);box-shadow:var(--shadow-md),0 0 0 1px rgba(32,216,245,.22)}
   .person:hover{transform:translateY(-4px);border-color:var(--cyan);box-shadow:var(--shadow-sm)}
   .service:hover{box-shadow:inset 0 0 0 1px var(--blue-bright)}
-  .glass-card{transition:border-color var(--t)}
   .glass-card:hover{border-color:rgba(32,216,245,.55)}
 }
 
@@ -852,15 +880,19 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   .hero-proof{padding-top:18px;gap:8px 18px}
   .hero-visual{--cube:136px;order:0;min-height:318px;max-width:none}
   .hero-visual-ring{width:min(92%,320px)}
-  .glass-card{padding:10px 13px;border-radius:var(--r-sm)}
-  .gc-revenue{left:0;top:3%;max-width:205px;gap:10px}
-  .gc-revenue img{width:34px;height:34px}
-  .gc-revenue b{font-size:.86rem}
-  .gc-chart{right:0;bottom:2%;width:172px}
-  .gc-chart b{font-size:1.32rem;margin-top:3px}
-  .gc-chart svg{height:32px;margin-top:6px}
-  .gc-status{right:auto;left:2%;top:auto;bottom:8%;padding:7px 12px 7px 10px}
-  .gc-status b{font-size:.7rem}
+  .hero-visual{min-height:380px}
+  .glass-card{width:136px;padding:9px 10px 7px;border-radius:var(--r-sm)}
+  .glass-card small{display:none}
+  .gc-top{margin-bottom:5px}
+  .gc-ico{width:22px;height:22px;border-radius:7px}
+  .gc-ico svg{width:12px;height:12px}
+  .gc-trend{font-size:.54rem;letter-spacing:.03em;white-space:nowrap}
+  .glass-card b{font-size:.78rem}
+  .glass-card small{font-size:.62rem}
+  .glass-card svg.gc-line{height:24px;margin-top:5px}
+  .gc-1{left:-4px;top:0}
+  .gc-2{right:-4px;top:38%}
+  .gc-3{left:-4px;bottom:0}
 
   /* Faixa de marcas */
   .brandbar{padding-block:26px}
@@ -1017,7 +1049,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
         </ul>
       </div>
 
-      <div class="hero-visual" aria-label="Resultados de clientes da Humanize" role="group">
+      <div class="hero-visual" aria-label="O que a Humanize faz pela sua empresa" role="group">
         <div class="hero-glow" aria-hidden="true"></div>
         <div class="hero-visual-ring" aria-hidden="true"></div>
         <div class="hero-visual-ring is-inner" aria-hidden="true"></div>
@@ -1036,36 +1068,50 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
           </div>
         </div>
 
-        <!-- Cards com resultados reais de clientes -->
-        <div class="glass-card gc-status">
-          <span class="gc-dot" aria-hidden="true"></span>
-          <b>Estratégia ativa</b>
-        </div>
-
-        <div class="glass-card gc-revenue">
-          <img src="img/logo-gota-de-ouro.webp" alt="" aria-hidden="true" width="42" height="42" />
-          <div>
-            <b>3x mais faturamento</b>
-            <small>Gota de Ouro Modas</small>
+        <!-- Cards flutuantes (benefícios; gráficos ilustrativos, sem números) -->
+        <div class="glass-card gc-1">
+          <div class="gc-top">
+            <span class="gc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M5 12v9h14v-9"/></svg></span>
+            <span class="gc-trend">&#9650; VENDAS</span>
           </div>
+          <b>Sua loja vendendo mais</b>
+          <small>Mais pedidos, todos os dias</small>
+          <svg class="gc-line" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true">
+            <defs><linearGradient id="gcA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".4"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
+            <g style="color:var(--gc)">
+              <path d="M0 40 L28 36 L56 38 L84 28 L112 26 L140 17 L168 12 L200 3 L200 46 L0 46 Z" fill="url(#gcA)"/>
+              <polyline points="0,40 28,36 56,38 84,28 112,26 140,17 168,12 200,3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+            </g>
+          </svg>
         </div>
-
-        <div class="glass-card gc-chart">
-          <div class="gc-label">
-            <small>Adega do Bruninho</small>
-            <span class="gc-trend">&#9650; ALTA</span>
+        <div class="glass-card gc-2">
+          <div class="gc-top">
+            <span class="gc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.1 8.3 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.3 12 2"/></svg></span>
+            <span class="gc-trend">&#9733; AUTORIDADE</span>
           </div>
-          <b>+150,7%</b>
-          <small>de faturamento no site</small>
-          <svg viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true">
-            <defs>
-              <linearGradient id="gcArea" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#20d8f5" stop-opacity=".45"/>
-                <stop offset="1" stop-color="#20d8f5" stop-opacity="0"/>
-              </linearGradient>
-            </defs>
-            <path d="M0 40 L28 36 L56 38 L84 28 L112 26 L140 17 L168 12 L200 3 L200 46 L0 46 Z" fill="url(#gcArea)"/>
-            <polyline points="0,40 28,36 56,38 84,28 112,26 140,17 168,12 200,3" fill="none" stroke="#20d8f5" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+          <b>Seja referência no ramo</b>
+          <small>A marca que o bairro lembra</small>
+          <svg class="gc-line" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true">
+            <defs><linearGradient id="gcB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".4"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
+            <g style="color:var(--gc)">
+              <path d="M0 42 L30 38 L60 30 L90 32 L120 20 L150 16 L175 9 L200 5 L200 46 L0 46 Z" fill="url(#gcB)"/>
+              <polyline points="0,42 30,38 60,30 90,32 120,20 150,16 175,9 200,5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+            </g>
+          </svg>
+        </div>
+        <div class="glass-card gc-3">
+          <div class="gc-top">
+            <span class="gc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16" y2="16"/></svg></span>
+            <span class="gc-trend">&#9650; ENCONTRADA</span>
+          </div>
+          <b>Pare de perder vendas por não ser encontrado</b>
+          <small>No Google, no Instagram e no delivery</small>
+          <svg class="gc-line" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true">
+            <defs><linearGradient id="gcC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".4"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
+            <g style="color:var(--gc)">
+              <path d="M0 38 L25 40 L50 33 L80 34 L110 24 L140 21 L170 11 L200 6 L200 46 L0 46 Z" fill="url(#gcC)"/>
+              <polyline points="0,38 25,40 50,33 80,34 110,24 140,21 170,11 200,6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+            </g>
           </svg>
         </div>
       </div>
