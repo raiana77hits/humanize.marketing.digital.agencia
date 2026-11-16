@@ -6,7 +6,7 @@
 
   <title>Humanize Marketing Digital | Estratégia digital para sua empresa vender mais</title>
   <meta name="description" content="Agência de marketing digital em São Paulo. Estruturamos a presença digital da sua empresa — conteúdo, tráfego pago, site, Google e delivery — para atrair clientes, vender mais e aumentar o faturamento." />
-  <meta name="theme-color" content="#030914" />
+  <meta name="theme-color" content="#03203d" />
   <link rel="canonical" href="https://humanize-marketing-digital-agencia.vercel.app/" />
 
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png" />
@@ -26,7 +26,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
 
 <style>
 /* ============================================================
@@ -36,34 +36,36 @@
    ============================================================ */
 :root{
   /* Cores da marca */
-  --blue:#005dfc;            /* azul oficial do logotipo */
-  --blue-bright:#3d86ff;
-  --blue-deep:#0040b5;
-  --cyan:#20d8f5;            /* acento secundário já usado pela marca */
-  --green:#25d366;           /* WhatsApp */
+  /* NOVA PALETA (teste) — regra 60 / 30 / 10
+     60% Egyptian Blue (base) · 30% Stone Blue (apoio) · 10% Scarlet Red (acento) */
+  --egyptian:#03203d;
+  --stone:#639cc5;
+  --scarlet:#eb2f33;
+  --scarlet-hover:#ff474b;
 
-  /* Acento do elemento 3D do hero — troque aqui para mudar a cor do cubo.
-     Opções testadas: lilás #A855F7 (168,85,247) ou verde-limão #B8FF01 (184,255,1).
-     Atualize as duas linhas juntas. */
-  --accent-3d:#3d86ff;
-  --accent-3d-rgb:61,134,255;
+  /* Variáveis antigas apontando para a nova paleta (o resto do CSS se adapta) */
+  --blue:var(--stone);
+  --blue-bright:#7fb0d4;
+  --blue-deep:#2c5d85;
+  --cyan:#8cb8d9;
+  --green:#25d366;           /* só no botão do WhatsApp */
 
-  /* Laranja vibrante: acento complementar (regra 60-30-10).
-     Azul segue como cor principal; o laranja entra só em destaques. */
-  --orange:#ff5500;
-  --orange-glow:rgba(255,85,0,.28);
+  --accent-3d:#639cc5;
+  --accent-3d-rgb:99,156,197;
+  --orange:var(--scarlet);
+  --orange-glow:rgba(235,47,51,.22);
 
   /* Superfícies (tema escuro corporativo) */
-  --bg:#030914;
-  --bg-raised:#071225;
-  --bg-panel:#0b1a33;
-  --bg-panel-2:#0e2242;
-  --navy:#071b3a;
+  --bg:#03203d;
+  --bg-raised:#062847;
+  --bg-panel:#0a3053;
+  --bg-panel-2:#0e3a63;
+  --navy:#03203d;
 
   /* Texto */
-  --text:#eef3fb;
-  --text-soft:#c3d0e4;
-  --muted:#8c9dba;
+  --text:#eef4fa;
+  --text-soft:#c6d8e8;
+  --muted:#8fb3d0;
   --on-blue:#ffffff;
   --strong:#ffffff;            /* texto de maior destaque (títulos de cartão etc.) */
   --tint:rgba(255,255,255,.03);/* véu sutil sobre a superfície */
@@ -74,7 +76,8 @@
   --line-strong:rgba(255,255,255,.18);
   --shadow-sm:0 10px 30px rgba(0,0,0,.35);
   --shadow-md:0 28px 70px rgba(0,0,0,.45);
-  --shadow-blue:0 18px 50px rgba(0,93,252,.32);
+  --shadow-blue:0 18px 50px rgba(99,156,197,.25);
+  --shadow-scarlet:0 16px 44px rgba(235,47,51,.38);
 
   /* Raios */
   --r-xs:8px;
@@ -170,12 +173,15 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 .btn .arrow{transition:transform var(--t)}
 .btn:hover .arrow{transform:translateX(4px)}
 
-.btn--primary{background:var(--blue);color:var(--on-blue);box-shadow:var(--shadow-blue)}
-.btn--primary:hover{background:var(--blue-bright);transform:translateY(-2px);box-shadow:0 22px 60px rgba(0,93,252,.45)}
+.btn--primary{position:relative;overflow:hidden;background:var(--scarlet);color:#fff;box-shadow:var(--shadow-scarlet)}
+/* brilho que atravessa o botão no hover */
+.btn--primary::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.38) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s var(--ease)}
+.btn--primary:hover::after{transform:translateX(120%)}
+.btn--primary:hover{background:var(--scarlet-hover);transform:translateY(-2px);box-shadow:0 22px 56px rgba(235,47,51,.5)}
 .btn--primary:active{transform:translateY(0)}
 
-.btn--ghost{border-color:var(--line-strong);color:var(--text);background:rgba(255,255,255,.03)}
-.btn--ghost:hover{border-color:var(--blue-bright);color:#fff;background:rgba(0,93,252,.12);transform:translateY(-2px)}
+.btn--ghost{border-color:rgba(99,156,197,.55);color:var(--text);background:rgba(255,255,255,.05);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.btn--ghost:hover{border-color:var(--blue-bright);color:#fff;background:rgba(99,156,197,.12);transform:translateY(-2px)}
 
 .btn--light{background:#fff;color:var(--navy)}
 .btn--light:hover{transform:translateY(-2px);box-shadow:0 20px 50px rgba(0,0,0,.3)}
@@ -198,12 +204,12 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
    ============================================================ */
 .site-header{
   position:fixed;inset:0 0 auto;z-index:100;
-  background:rgba(3,9,20,0);
+  background:rgba(2,26,51,0);
   border-bottom:1px solid transparent;
   transition:background var(--t),border-color var(--t),backdrop-filter var(--t);
 }
 .site-header.is-stuck{
-  background:rgba(3,9,20,.88);
+  background:rgba(2,26,51,.88);
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
   border-bottom-color:var(--line);
@@ -242,98 +248,86 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 .menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* ============================================================
-   HERO
+   HERO — composição central e editorial (100svh)
+   O cubo 3D fica atrás da palavra-chave, sutil, sem atrapalhar a leitura.
+   Só transform/opacity animam (GPU, 60fps); pausa quando sai da tela.
    ============================================================ */
 .hero{
-  position:relative;overflow:hidden;
-  padding:clamp(130px,16vh,168px) 0 clamp(70px,8vw,104px);
+  position:relative;overflow:hidden;isolation:isolate;
+  min-height:100vh;min-height:100svh;
+  display:flex;align-items:center;
+  padding:112px 0 56px;text-align:center;
   background:
-    radial-gradient(130% 90% at 82% 8%,rgba(0,93,252,.30),transparent 56%),
-    radial-gradient(90% 70% at 10% 95%,rgba(32,216,245,.10),transparent 60%),
-    linear-gradient(170deg,#04101f 0%,#030914 58%,#050e1e 100%);
+    radial-gradient(60% 55% at 50% 42%,rgba(99,156,197,.22),transparent 70%),
+    radial-gradient(40% 35% at 68% 30%,rgba(235,47,51,.10),transparent 70%),
+    linear-gradient(180deg,#03203d 0%,#021a33 70%,#03203d 100%);
 }
 .hero::before{
-  content:"";position:absolute;inset:0;pointer-events:none;
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;
   background-image:
-    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+    linear-gradient(rgba(140,184,217,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(140,184,217,.06) 1px,transparent 1px);
   background-size:68px 68px;
-  mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 78%);
-  -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 78%);
+  mask-image:radial-gradient(70% 70% at 50% 45%,#000,transparent 80%);
+  -webkit-mask-image:radial-gradient(70% 70% at 50% 45%,#000,transparent 80%);
 }
-.hero::after{
-  content:"";position:absolute;left:0;right:0;bottom:0;height:160px;pointer-events:none;
-  background:linear-gradient(to bottom,transparent,var(--bg));
+.hero-inner{position:relative;display:flex;flex-direction:column;align-items:center}
+.hero .eyebrow{justify-content:center}
+.hero .eyebrow::after{content:"";width:26px;height:1px;background:var(--cyan);opacity:.7}
+
+.hero h1{position:relative;isolation:isolate;margin-bottom:22px;font-weight:800;max-width:14ch;text-wrap:balance}
+/* Palavra-chave: serif editorial em itálico, vermelho escarlate, maior */
+.kw{position:relative;display:inline-block;white-space:nowrap}
+.kw-text{
+  position:relative;z-index:1;
+  font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;
+  font-size:1.22em;letter-spacing:-.01em;line-height:.9;color:var(--scarlet);
+  text-shadow:0 6px 40px rgba(235,47,51,.25);
+}
+.kw-cube,.kw-cube span{display:block}
+.kw-cube{
+  --cube:1.9em;
+  position:absolute;left:50%;top:52%;z-index:-1;pointer-events:none;
+  width:var(--cube);height:var(--cube);margin:calc(var(--cube) / -2) 0 0 calc(var(--cube) / -2);
+  perspective:900px;opacity:.5;font-size:inherit;
+}
+.kw-glow{
+  position:absolute;left:50%;top:50%;width:3.6em;height:2.2em;transform:translate(-50%,-50%);
+  z-index:-1;pointer-events:none;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(99,156,197,.38),transparent),radial-gradient(closest-side at 65% 40%,rgba(235,47,51,.18),transparent);
+  filter:blur(28px);
 }
 
-.hero-grid{
-  position:relative;z-index:2;
-  display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
-  gap:clamp(40px,5vw,76px);align-items:center;
-}
-
-.hero h1{margin-bottom:24px}
-.hero h1 strong{font-weight:800;color:var(--blue-bright)}
-
-/* Traço laranja feito à mão (SVG) — desenhado sob a palavra ao carregar.
-   box-decoration-break faz o traço acompanhar cada linha quando a frase quebra. */
-.brush{
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 26' preserveAspectRatio='none'%3E%3Cpath d='M4 17 C60 8 128 6 186 9 S268 15 296 8' fill='none' stroke='%23ff5500' stroke-width='7' stroke-linecap='round'/%3E%3Cpath d='M34 22 C104 15 190 14 282 17' fill='none' stroke='%23ff5500' stroke-width='3' stroke-linecap='round' opacity='.55'/%3E%3C/svg%3E") left 0 bottom -.04em / 0% .3em no-repeat;
-  padding-bottom:.06em;
-  -webkit-box-decoration-break:clone;box-decoration-break:clone;
-  animation:brushIn .9s .55s var(--ease) forwards;
-}
-.brush--sm{background-size:0% .42em;animation-name:brushInSm;animation-delay:.2s}
-@keyframes brushIn{to{background-size:100% .3em}}
-@keyframes brushInSm{to{background-size:100% .42em}}
-.hero .lead{max-width:34em;margin-bottom:36px}
-
-.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:40px}
-
-.hero-proof{
-  display:flex;flex-wrap:wrap;gap:12px 28px;
-  padding-top:28px;border-top:1px solid var(--line);
-}
+.hero .lead{max-width:40em;margin:0 auto 34px;text-align:center}
+.hero-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-bottom:26px}
+.hero-proof{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 26px;margin-bottom:34px}
 .hero-proof li{display:flex;align-items:center;gap:9px;font-size:.88rem;color:var(--muted)}
 .hero-proof svg{flex-shrink:0;color:var(--cyan)}
 
-/* Visual do hero — composição 3D em camadas (CSS puro, sem bibliotecas).
-   Só transform/opacity são animados: roda na GPU a 60fps.
-   A animação pausa quando o hero sai da tela (classe .is-offscreen via JS). */
-.hero-visual{
-  --cube:210px;
-  position:relative;display:flex;align-items:center;justify-content:center;
-  min-height:480px;isolation:isolate;perspective:1100px;
+/* Brush (traço manual) — usado nas citações, em Stone Blue */
+.brush{
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 26' preserveAspectRatio='none'%3E%3Cpath d='M4 17 C60 8 128 6 186 9 S268 15 296 8' fill='none' stroke='%23639cc5' stroke-width='7' stroke-linecap='round'/%3E%3Cpath d='M34 22 C104 15 190 14 282 17' fill='none' stroke='%23639cc5' stroke-width='3' stroke-linecap='round' opacity='.55'/%3E%3C/svg%3E") left 0 bottom -.04em / 0% .42em no-repeat;
+  padding-bottom:.06em;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;
+  animation:brushIn .9s .2s var(--ease) forwards;
 }
-.hero-visual-ring,.hero-glow{position:absolute;pointer-events:none}
-.hero-visual-ring{
-  width:min(100%,470px);aspect-ratio:1;border-radius:50%;
-  border:1px solid rgba(61,134,255,.26);
-  box-shadow:0 0 90px rgba(0,93,252,.20) inset;
-}
-.hero-visual-ring.is-inner{width:min(74%,350px);border-color:rgba(32,216,245,.26);border-style:dashed}
-.hero-glow{
-  width:min(80%,380px);aspect-ratio:1;border-radius:50%;z-index:0;
-  background:
-    radial-gradient(circle at 42% 40%,rgba(32,216,245,.40),transparent 58%),
-    radial-gradient(circle at 62% 64%,rgba(0,93,252,.55),transparent 62%);
-  filter:blur(38px);opacity:.85;
-}
+@keyframes brushIn{to{background-size:100% .42em}}
 
 /* Cubo */
-.cube-float{position:relative;z-index:1;transform-style:preserve-3d;animation:cubeFloat 7s ease-in-out infinite}
-.cube-tilt{transform-style:preserve-3d;transform:rotateX(-24deg) rotateZ(8deg)}
+.cube-float{position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:cubeFloat 7s ease-in-out infinite}
+.cube-tilt{width:100%;height:100%;transform-style:preserve-3d;transform:rotateX(-24deg) rotateZ(8deg)}
 .cube{
   position:relative;width:var(--cube);height:var(--cube);
-  transform-style:preserve-3d;animation:cubeSpin 22s linear infinite;
+  transform-style:preserve-3d;animation:cubeSpin 24s linear infinite;
 }
 .cube-face{
-  position:absolute;inset:0;border-radius:18px;
-  border:1px solid rgba(32,216,245,.62);
+  position:absolute;inset:0;border-radius:.12em;
+  border:1px solid rgba(99,156,197,.8);
   background:
-    linear-gradient(135deg,rgba(255,255,255,.20),rgba(255,255,255,0) 40%),
-    linear-gradient(160deg,rgba(61,134,255,.40),rgba(0,93,252,.10) 55%,rgba(32,216,245,.26));
-  box-shadow:inset 0 0 40px rgba(32,216,245,.28),inset 0 0 2px rgba(255,255,255,.4),0 0 30px rgba(0,93,252,.32);
+    linear-gradient(135deg,rgba(255,255,255,.16),rgba(255,255,255,0) 40%),
+    linear-gradient(320deg,rgba(235,47,51,.22),rgba(235,47,51,0) 38%),
+    linear-gradient(160deg,rgba(99,156,197,.30),rgba(3,32,61,.10) 60%);
+  box-shadow:inset 0 0 30px rgba(99,156,197,.30),inset 0 0 2px rgba(255,255,255,.4),0 0 24px rgba(99,156,197,.22);
 }
 .cube-face:nth-child(1){transform:translateZ(calc(var(--cube) / 2))}
 .cube-face:nth-child(2){transform:rotateY(180deg) translateZ(calc(var(--cube) / 2))}
@@ -341,9 +335,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 .cube-face:nth-child(4){transform:rotateY(-90deg) translateZ(calc(var(--cube) / 2))}
 .cube-face:nth-child(5){transform:rotateX(90deg) translateZ(calc(var(--cube) / 2))}
 .cube-face:nth-child(6){transform:rotateX(-90deg) translateZ(calc(var(--cube) / 2))}
-/* Núcleo: cubo menor com o monograma da Humanize em cada face.
-   O logo é uma máscara (não uma imagem colada): ganha o degradê da marca,
-   brilho e um reflexo que passa pela face enquanto o cubo gira. */
+/* Núcleo com o monograma da Humanize (máscara + brilho + reflexo) */
 .cube-core{
   --core:calc(var(--cube) * .5);
   position:absolute;left:50%;top:50%;width:var(--core);height:var(--core);
@@ -351,26 +343,22 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   transform-style:preserve-3d;animation:cubeSpinRev 16s linear infinite;
 }
 .cube-core .cube-face{
-  border-radius:10px;border:1.5px solid rgba(255,255,255,.55);
-  background:
-    radial-gradient(120% 120% at 30% 20%,rgba(var(--accent-3d-rgb),.55),transparent 60%),
-    linear-gradient(150deg,#0a2a6e,#06133a 70%);
-  box-shadow:inset 0 0 22px rgba(var(--accent-3d-rgb),.55),0 0 26px rgba(var(--accent-3d-rgb),.55);
+  border-radius:.07em;border:1px solid rgba(255,255,255,.5);
+  background:radial-gradient(120% 120% at 30% 20%,rgba(99,156,197,.5),transparent 60%),linear-gradient(150deg,#0a3053,#03203d 70%);
+  box-shadow:inset 0 0 18px rgba(99,156,197,.5),0 0 20px rgba(99,156,197,.45);
   overflow:hidden;
 }
 .cube-core .cube-face::before{
   content:"";position:absolute;inset:14%;
-  background:linear-gradient(115deg,#ffffff 0%,#bfefff 35%,#20d8f5 50%,#ffffff 65%,#d9c6ff 100%);
+  background:linear-gradient(115deg,#ffffff 0%,#d6e8f5 35%,#639cc5 50%,#ffffff 65%,#ffd0d1 100%);
   background-size:260% 100%;
   -webkit-mask:url(img/monograma.webp) center/contain no-repeat;
           mask:url(img/monograma.webp) center/contain no-repeat;
-  filter:drop-shadow(0 0 6px rgba(32,216,245,.9));
   animation:logoShine 4.5s ease-in-out infinite;
 }
-/* reflexo de vidro passando pela face */
 .cube-core .cube-face::after{
   content:"";position:absolute;inset:-40%;
-  background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.35) 50%,transparent 58%);
+  background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.3) 50%,transparent 58%);
   transform:translateX(-60%);animation:faceGlint 4.5s ease-in-out infinite;
 }
 .cube-core .cube-face:nth-child(1){transform:translateZ(calc(var(--core) / 2))}
@@ -387,45 +375,36 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 
 @keyframes logoShine{0%,100%{background-position:100% 0}50%{background-position:0 0}}
 @keyframes faceGlint{0%,55%{transform:translateX(-60%)}85%,100%{transform:translateX(60%)}}
-
 @keyframes cubeSpin{to{transform:rotateY(360deg) rotateX(360deg)}}
 @keyframes cubeSpinRev{to{transform:rotateY(-360deg) rotateZ(180deg)}}
-@keyframes cubeFloat{0%,100%{transform:translateY(-10px)}50%{transform:translateY(10px)}}
+@keyframes cubeFloat{0%,100%{transform:translateY(-.06em)}50%{transform:translateY(.06em)}}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 9px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 
 .hero.is-offscreen .cube,
 .hero.is-offscreen .cube-core,
 .hero.is-offscreen .cube-float,
-.hero.is-offscreen .glass-card,
+.hero.is-offscreen .pillar,
 .hero.is-offscreen .cube-core .cube-face::before,
 .hero.is-offscreen .cube-core .cube-face::after{animation-play-state:paused}
 
-/* Cards de vidro fosco que chegam mais perto e se afastam (profundidade real,
-   usando a perspectiva do .hero-visual). Os gráficos são ilustrativos: sem números. */
-.glass-card{
-  position:absolute;z-index:3;width:150px;
-  padding:11px 13px 9px;border-radius:14px;
-  background:linear-gradient(140deg,rgba(255,255,255,.13),rgba(255,255,255,.04));
+/* Barra dos 3 pilares (vidro fosco, flutuando em ritmos diferentes) */
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;width:min(760px,100%)}
+.pillar{
+  padding:12px 16px 10px;border-radius:16px;text-align:left;
+  background:linear-gradient(140deg,rgba(255,255,255,.10),rgba(255,255,255,.03));
   border:1px solid rgba(255,255,255,.15);
   backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  box-shadow:0 18px 40px rgba(0,0,0,.36),inset 0 1px 0 rgba(255,255,255,.12);
-  color:#fff;line-height:1.2;
-  animation:cardDepth 9s ease-in-out infinite;will-change:transform;
+  box-shadow:0 18px 40px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.1);
+  animation:pillarFloat 7s ease-in-out infinite;
 }
-.gc-top{display:flex;align-items:center;gap:9px}
-.gc-ico{width:26px;height:26px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:var(--gc,#20d8f5)}
-.gc-ico svg{width:14px;height:14px}
-.glass-card b{display:block;font-family:Manrope,sans-serif;font-weight:800;font-size:.84rem;color:#fff;line-height:1.2}
-.glass-card svg.gc-line{display:block;width:100%;height:30px;margin-top:8px;overflow:visible}
-
-.gc-1{--gc:#3d86ff;left:-8px;top:8%}
-.gc-2{--gc:#20d8f5;right:-12px;top:42%;animation-duration:11s;animation-delay:-4s}
-.gc-3{--gc:#3d86ff;left:4%;bottom:6%;animation-duration:10s;animation-delay:-7s}
-
-@keyframes cardDepth{
-  0%,100%{transform:translate3d(0,0,-70px);opacity:.82}
-  50%{transform:translate3d(0,-12px,70px);opacity:1}
-}
+.pillar:nth-child(2){animation-delay:-2.4s}
+.pillar:nth-child(3){animation-delay:-4.8s}
+@keyframes pillarFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.gc-top{display:flex;align-items:center;gap:10px}
+.gc-ico{width:28px;height:28px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(99,156,197,.14);border:1px solid rgba(99,156,197,.35);color:var(--stone)}
+.gc-ico svg{width:15px;height:15px}
+.pillar b{display:block;font-family:Manrope,sans-serif;font-weight:800;font-size:.88rem;color:#fff;line-height:1.2}
+.pillar svg.gc-line{display:block;width:100%;height:28px;margin-top:8px;overflow:visible}
 
 /* ============================================================
    FAIXA DE MARCAS (prova social)
@@ -462,19 +441,19 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 .vk-col--sem{background:var(--tint);border-color:var(--line-strong)}
 .vk-col--sem:hover{border-color:var(--blue-bright);box-shadow:var(--shadow-sm)}
 .vk-col--com{
-  color:#dbe7ff;border-color:rgba(255,255,255,.12);
+  color:#dce9f4;border-color:rgba(255,255,255,.12);
   background:
-    radial-gradient(120% 90% at 100% 0%,rgba(32,216,245,.28),transparent 55%),
-    linear-gradient(150deg,#005dfc,#0040b5 70%,#06307f);
+    radial-gradient(120% 90% at 100% 0%,rgba(140,184,217,.28),transparent 55%),
+    linear-gradient(150deg,#2c5d85,#0a3053 70%,#03203d);
   box-shadow:var(--shadow-blue);
 }
-.vk-col--com:hover{border-color:#20d8f5;box-shadow:0 26px 64px rgba(0,93,252,.45)}
+.vk-col--com:hover{border-color:#8cb8d9;box-shadow:0 26px 64px rgba(99,156,197,.45)}
 .vk-tag{
   display:inline-flex;align-items:center;gap:8px;
   font-size:.72rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;
   color:var(--muted);margin-bottom:14px;
 }
-.vk-col--com .vk-tag{color:#9eeeff}
+.vk-col--com .vk-tag{color:#b9d6ea}
 .vk-col h3{font-size:clamp(1.18rem,1.9vw,1.42rem);margin-bottom:20px;line-height:1.25}
 .vk-col--com h3{color:#fff}
 .vk-list li{
@@ -484,7 +463,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 .vk-col--com .vk-list li{border-top-color:rgba(255,255,255,.14);color:#fff}
 .vk-list svg{flex-shrink:0;margin-top:3px}
 .vk-col--sem .vk-list svg{color:var(--muted)}
-.vk-col--com .vk-list svg{color:#20d8f5}
+.vk-col--com .vk-list svg{color:#8cb8d9}
 .vk-arrow{
   align-self:center;width:54px;height:54px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
@@ -494,8 +473,8 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 
 .pullquote{
   position:relative;padding:30px 32px;border-radius:var(--r-md);
-  background:linear-gradient(135deg,rgba(0,93,252,.14),rgba(32,216,245,.06));
-  border:1px solid rgba(61,134,255,.3);
+  background:linear-gradient(135deg,rgba(99,156,197,.14),rgba(140,184,217,.06));
+  border:1px solid rgba(99,156,197,.3);
   font-size:1.06rem;line-height:1.7;color:var(--text);
 }
 .pullquote strong{color:var(--strong);font-weight:700}
@@ -530,7 +509,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 
 /* O primeiro e o último serviço ocupam duas colunas: quebra o ritmo de
    "10 caixas iguais" e fecha a grade sem deixar célula vazia (2+8+2 = 12). */
-.service--wide{grid-column:span 2;background:linear-gradient(120deg,rgba(0,93,252,.14),transparent 62%),var(--bg-panel)}
+.service--wide{grid-column:span 2;background:linear-gradient(120deg,rgba(99,156,197,.14),transparent 62%),var(--bg-panel)}
 .service--wide h3{font-size:clamp(1.3rem,2vw,1.6rem)}
 .service--wide p{font-size:1.01rem;color:var(--text-soft);max-width:46ch}
 
@@ -546,7 +525,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 .step::before{
   content:"";position:absolute;left:0;top:12px;width:15px;height:15px;border-radius:50%;
   background:var(--bg);border:2px solid var(--blue-bright);
-  box-shadow:0 0 0 5px var(--bg),0 0 22px rgba(0,93,252,.6);
+  box-shadow:0 0 0 5px var(--bg),0 0 22px rgba(99,156,197,.6);
   transition:background var(--t),transform var(--t);
 }
 .step:hover::before{background:var(--cyan);border-color:var(--cyan);transform:scale(1.18)}
@@ -581,7 +560,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
   background:linear-gradient(to bottom,var(--case-accent,var(--blue)),transparent);
 }
-.case:hover{border-color:rgba(61,134,255,.4);transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.case:hover{border-color:rgba(99,156,197,.4);transform:translateY(-3px);box-shadow:var(--shadow-md)}
 
 .case-head{display:flex;align-items:center;gap:16px;margin-bottom:20px}
 .case-logo{
@@ -620,9 +599,9 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   content:"";position:absolute;z-index:0;pointer-events:none;
   left:-8%;top:4%;width:52%;height:92%;
   background:
-    radial-gradient(circle at 34% 34%,rgba(255,85,0,.95),transparent 58%),
-    radial-gradient(circle at 70% 72%,rgba(0,93,252,.95),transparent 60%);
-  filter:blur(90px);opacity:.2;
+    radial-gradient(circle at 34% 34%,rgba(235,47,51,.95),transparent 58%),
+    radial-gradient(circle at 70% 72%,rgba(99,156,197,.95),transparent 60%);
+  filter:blur(90px);opacity:.16;
 }
 
 /* Composição provisória — troque .about-visual pelo <img> oficial da Ray e da Jaque
@@ -631,8 +610,8 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   position:relative;aspect-ratio:4/5;border-radius:var(--r-lg);overflow:hidden;
   border:1px solid var(--line);
   background:
-    radial-gradient(110% 80% at 22% 10%,rgba(0,93,252,.34),transparent 62%),
-    radial-gradient(90% 80% at 88% 94%,rgba(32,216,245,.14),transparent 64%),
+    radial-gradient(110% 80% at 22% 10%,rgba(99,156,197,.34),transparent 62%),
+    radial-gradient(90% 80% at 88% 94%,rgba(140,184,217,.14),transparent 64%),
     #05101f;
   display:flex;align-items:center;justify-content:center;
 }
@@ -655,14 +634,14 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 }
 .about-initials{
   position:absolute;left:0;right:0;bottom:0;padding:26px 28px;
-  background:linear-gradient(to top,rgba(3,9,20,.94),transparent);
+  background:linear-gradient(to top,rgba(2,26,51,.94),transparent);
 }
-.about-initials b{display:block;font-family:Caveat,cursive;font-size:2.1rem;color:#20d8f5;line-height:1}
-.about-initials small{display:block;font-size:.8rem;color:#c3d0e4;margin-top:4px}
+.about-initials b{display:block;font-family:Caveat,cursive;font-size:2.1rem;color:#8cb8d9;line-height:1}
+.about-initials small{display:block;font-size:.8rem;color:#c6d8e8;margin-top:4px}
 
 .people{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
 .person{padding:26px;border-radius:var(--r-md);background:var(--bg-panel);border:1px solid var(--line);transition:border-color var(--t),transform var(--t)}
-.person:hover{border-color:rgba(61,134,255,.4);transform:translateY(-3px)}
+.person:hover{border-color:rgba(99,156,197,.4);transform:translateY(-3px)}
 .person b{display:block;font-family:Manrope,sans-serif;font-weight:800;font-size:1.16rem;color:var(--strong);letter-spacing:.04em}
 .person small{display:block;font-size:.78rem;color:var(--blue-bright);margin:8px 0 12px;line-height:1.5;font-weight:600}
 .person p{font-size:.93rem;line-height:1.65;color:var(--muted)}
@@ -674,7 +653,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 /* aspas manuscritas em laranja */
 .about-signature::before{
   content:"\201C";position:absolute;left:0;top:-.42em;
-  font-family:Caveat,cursive;font-weight:700;font-size:4.2rem;line-height:1;color:var(--orange);
+  font-family:Caveat,cursive;font-weight:700;font-size:4.2rem;line-height:1;color:var(--stone);
   transform:rotate(-8deg);
 }
 
@@ -696,8 +675,8 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   position:relative;overflow:hidden;text-align:center;
   padding-block:clamp(80px,10vw,140px);
   background:
-    radial-gradient(90% 100% at 50% 0%,rgba(0,93,252,.45),transparent 62%),
-    linear-gradient(160deg,#041533,#030914 72%);
+    radial-gradient(90% 100% at 50% 0%,rgba(99,156,197,.45),transparent 62%),
+    linear-gradient(160deg,#062847,#03203d 72%);
 }
 .final-cta::before{
   content:"";position:absolute;inset:0;pointer-events:none;
@@ -712,8 +691,8 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   content:"";position:absolute;z-index:1;pointer-events:none;
   left:50%;bottom:-30%;width:min(900px,110%);height:80%;transform:translateX(-50%);
   background:
-    radial-gradient(circle at 30% 50%,rgba(255,85,0,.95),transparent 58%),
-    radial-gradient(circle at 70% 50%,rgba(0,93,252,.95),transparent 60%);
+    radial-gradient(circle at 30% 50%,rgba(235,47,51,.95),transparent 58%),
+    radial-gradient(circle at 70% 50%,rgba(99,156,197,.95),transparent 60%);
   filter:blur(90px);opacity:.16;
 }
 .final-cta h2{margin-bottom:26px}
@@ -773,34 +752,34 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 
 .theme-light,
 .theme-sky{
-  --orange-ink:#d94600;          /* laranja um tom mais fechado para ler bem no claro */
-  --orange-glow:rgba(255,85,0,.12);
-  --text:#0b1640;
-  --text-soft:#34466b;
-  --muted:#586a8c;
-  --strong:#03106a;
-  --blue-bright:#0a58d6;
-  --cyan:#08839f;
-  --line:rgba(3,16,106,.11);
-  --line-strong:rgba(3,16,106,.2);
-  --shadow-sm:0 10px 30px rgba(3,16,106,.10);
-  --shadow-md:0 24px 60px rgba(3,16,106,.16);
+  --orange-ink:#d0242a;          /* escarlate um tom mais fechado para ler bem no claro */
+  --orange-glow:rgba(235,47,51,.12);
+  --text:#0b2440;
+  --text-soft:#33506b;
+  --muted:#4f6f8c;
+  --strong:#03203d;
+  --blue-bright:#2c6a99;
+  --cyan:#2c6a99;
+  --line:rgba(3,32,61,.11);
+  --line-strong:rgba(3,32,61,.2);
+  --shadow-sm:0 10px 30px rgba(3,32,61,.10);
+  --shadow-md:0 24px 60px rgba(3,32,61,.16);
   color:var(--text-soft);
 }
 .theme-light{
   --bg:#ffffff;
-  --bg-raised:#f4f8fd;
-  --bg-panel:#f1f6fd;
-  --bg-panel-2:#e6effb;
-  --tint:rgba(0,64,181,.045);
-  --tint-hover:rgba(0,64,181,.04);
+  --bg-raised:#f3f7fb;
+  --bg-panel:#eef4f9;
+  --bg-panel-2:#e2ecf5;
+  --tint:rgba(3,32,61,.045);
+  --tint-hover:rgba(3,32,61,.04);
   background:var(--bg);
 }
 .theme-sky{
-  --bg:#d9e8ff;
-  --bg-raised:#cfe1fb;
+  --bg:#e2edf6;
+  --bg-raised:#d6e6f2;
   --bg-panel:#ffffff;
-  --bg-panel-2:#f4f8ff;
+  --bg-panel-2:#f3f7fb;
   --tint:rgba(255,255,255,.6);
   --tint-hover:rgba(255,255,255,.5);
   background:var(--bg);
@@ -810,26 +789,23 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 .brandbar.theme-light{border-block:1px solid var(--line)}
 
 /* Linha do tempo do método */
-.theme-light .step::before{box-shadow:0 0 0 5px var(--bg),0 0 16px rgba(0,93,252,.35)}
+.theme-light .step::before{box-shadow:0 0 0 5px var(--bg),0 0 16px rgba(99,156,197,.35)}
 
 
 /* CTA final em azul claro */
 .final-cta.theme-sky{
   background:
     radial-gradient(90% 100% at 50% 0%,rgba(255,255,255,.75),transparent 62%),
-    linear-gradient(160deg,#e4efff,#d3e4fd 72%);
+    linear-gradient(160deg,#eaf2f8,#d8e7f2 72%);
 }
 .final-cta.theme-sky::before{
-  background-image:linear-gradient(rgba(0,64,181,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,64,181,.06) 1px,transparent 1px);
+  background-image:linear-gradient(rgba(3,32,61,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(3,32,61,.06) 1px,transparent 1px);
 }
 
 /* ============================================================
    RESPONSIVO
    ============================================================ */
 @media (max-width:1040px){
-  .hero-grid{grid-template-columns:1fr;gap:54px}
-  /* Tablet: a imagem abre a composição. No celular (abaixo) o texto vem primeiro. */
-  .hero-visual{order:-1;min-height:0;max-width:430px;margin-inline:auto;width:100%}
   .services{grid-template-columns:1fr 1fr}
   .service:nth-child(3n){border-right:1px solid var(--line)}
   .service:nth-child(2n){border-right:0}
@@ -852,7 +828,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
     position:fixed;inset:0 0 auto;top:0;z-index:-1;
     flex-direction:column;align-items:stretch;gap:0;
     padding:104px var(--gutter) 34px;
-    background:rgba(3,9,20,.98);
+    background:rgba(2,26,51,.98);
     backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
     border-bottom:1px solid var(--line);
     transform:translateY(-102%);transition:transform .36s var(--ease);
@@ -864,7 +840,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   .nav-links .nav-menu-cta{
     display:inline-flex;align-items:center;justify-content:center;gap:10px;
     margin-top:26px;border:0;
-    min-height:54px;border-radius:var(--r-pill);background:var(--blue);color:#fff;
+    min-height:54px;border-radius:var(--r-pill);background:var(--scarlet);color:#fff;
     font-family:Manrope,sans-serif;font-weight:800;font-size:.95rem;
   }
   .menu-toggle{display:flex}
@@ -880,12 +856,20 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   .steps{grid-template-columns:1fr;gap:30px}
   .hero-actions{flex-direction:column;align-items:stretch}
   .hero-actions .btn{width:100%}
-  .hero-visual{order:0;max-width:none}
   .case{padding:24px 20px;border-radius:var(--r-md)}
   .case-figures{padding:20px}
   .footer-grid{grid-template-columns:1fr;gap:34px}
   .footer-bottom{justify-content:flex-start}
   .wa-float{width:56px;height:56px}
+}
+
+/* Luz que acompanha o cursor nos cartões (posição vem do JS em --mx/--my) */
+@media (hover:hover){
+  .case:hover,.service:hover,.person:hover,.vk-col--sem:hover,.step:hover,.pillar:hover{
+    background-image:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),rgba(99,156,197,.18),transparent 70%);
+  }
+  .case:hover::before{background:linear-gradient(to bottom,var(--scarlet),transparent)}
+  .service::after{background:linear-gradient(90deg,var(--stone),var(--scarlet))}
 }
 
 /* ============================================================
@@ -894,10 +878,10 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
    ============================================================ */
 .carousel-dots{display:none}
 @media (hover:hover){
-  .case:hover{transform:translateY(-4px);border-color:var(--blue-bright);box-shadow:var(--shadow-md),0 0 0 1px rgba(32,216,245,.22)}
-  .person:hover{transform:translateY(-4px);border-color:var(--cyan);box-shadow:var(--shadow-sm)}
-  .service:hover{box-shadow:inset 0 0 0 1px var(--blue-bright)}
-  .glass-card:hover{border-color:rgba(32,216,245,.55)}
+  .case:hover{transform:translateY(-4px);border-color:var(--stone);box-shadow:var(--shadow-md),0 0 0 1px rgba(99,156,197,.25)}
+  .person:hover{transform:translateY(-4px);border-color:var(--stone);box-shadow:var(--shadow-sm),inset 0 2px 0 var(--scarlet)}
+  .service:hover{box-shadow:inset 0 0 0 1px var(--stone)}
+  .pillar:hover{border-color:rgba(99,156,197,.6)}
 }
 
 @media (max-width:900px){
@@ -917,24 +901,16 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   .eyebrow{margin-bottom:12px}
 
   /* Hero */
-  .hero{padding:102px 0 34px}
-  .hero-grid{gap:26px}
-  .hero h1{margin-bottom:16px}
+  .hero{padding:96px 0 34px;min-height:auto}
+  .hero h1{margin-bottom:14px}
   .hero .lead{margin-bottom:22px}
-  .hero-actions{margin-bottom:22px;gap:10px}
-  .hero-proof{padding-top:18px;gap:8px 18px}
-  .hero-visual{--cube:136px;order:0;min-height:318px;max-width:none}
-  .hero-visual-ring{width:min(92%,320px)}
-  .hero-visual{min-height:380px}
-  .glass-card{width:122px;padding:8px 9px 6px;border-radius:11px}
-  .gc-top{gap:7px}
-  .gc-ico{width:20px;height:20px;border-radius:6px}
-  .gc-ico svg{width:11px;height:11px}
-  .glass-card b{font-size:.7rem}
-  .glass-card svg.gc-line{height:20px;margin-top:5px}
-  .gc-1{left:0;top:4%}
-  .gc-2{right:0;top:42%}
-  .gc-3{left:2%;bottom:4%}
+  .hero-actions{margin-bottom:18px;gap:10px;width:100%}
+  .hero-proof{gap:6px 16px;margin-bottom:22px}
+  .hero-proof li{font-size:.8rem}
+  .pillars[data-carousel] > *{flex-basis:62%}
+  .pillars{width:auto;align-self:stretch}
+  .kw-cube{--cube:1.7em}
+  .pillar{animation:none}
 
   /* Faixa de marcas */
   .brandbar{padding-block:26px}
@@ -1052,30 +1028,39 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 
   <!-- ============================ HERO ============================ -->
   <section class="hero" id="inicio">
-    <div class="wrap hero-grid">
+    <div class="wrap hero-inner">
 
-      <div class="hero-copy">
-        <span class="eyebrow">Humanize Marketing Digital</span>
+      <span class="eyebrow">Humanize Marketing Digital</span>
 
-        <h1 class="h-display">
-          Soluções digitais<br />
-          para a <strong class="brush">sua empresa.</strong>
-        </h1>
+      <h1 class="h-display">
+        Soluções digitais<br />
+        para a <span class="kw">
+          <span class="kw-glow" aria-hidden="true"></span>
+          <!-- Cubo 3D atrás da palavra-chave (decorativo) -->
+          <span class="kw-cube" aria-hidden="true">
+            <span class="cube-float"><span class="cube-tilt"><span class="cube">
+              <span class="cube-face"></span><span class="cube-face"></span><span class="cube-face"></span><span class="cube-face"></span><span class="cube-face"></span><span class="cube-face"></span>
+              <span class="cube-core"><span class="cube-face"></span><span class="cube-face"></span><span class="cube-face"></span><span class="cube-face"></span><span class="cube-face"></span><span class="cube-face"></span></span>
+            </span></span></span>
+          </span>
+          <span class="kw-text">sua empresa.</span>
+        </span>
+      </h1>
 
-        <p class="lead">
-          Humanizamos sua marca e cuidamos de toda a sua presença digital
-          para atrair mais clientes, vender mais e aumentar o faturamento
-          da sua empresa.
-        </p>
+      <p class="lead">
+        Humanizamos sua marca e cuidamos de toda a sua presença digital
+        para atrair mais clientes, vender mais e aumentar o faturamento
+        da sua empresa.
+      </p>
 
-        <div class="hero-actions">
-          <a class="btn btn--primary" href="#contato">
-            Quero crescer no digital <span class="arrow" aria-hidden="true">&#8594;</span>
-          </a>
-          <a class="btn btn--ghost" href="#cases">Ver cases e resultados</a>
-        </div>
+      <div class="hero-actions">
+        <a class="btn btn--primary" href="#contato">
+          Quero crescer no digital <span class="arrow" aria-hidden="true">&#8594;</span>
+        </a>
+        <a class="btn btn--ghost" href="#cases">Ver cases e resultados</a>
+      </div>
 
-        <ul class="hero-proof">
+      <ul class="hero-proof">
           <li>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
             Estratégia feita para o seu negócio
@@ -1089,67 +1074,48 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
             Acompanhamento próximo
           </li>
         </ul>
-      </div>
 
-      <div class="hero-visual" aria-label="O que a Humanize faz pela sua empresa" role="group">
-        <div class="hero-glow" aria-hidden="true"></div>
-        <div class="hero-visual-ring" aria-hidden="true"></div>
-        <div class="hero-visual-ring is-inner" aria-hidden="true"></div>
-
-        <!-- Cubo 3D (decorativo) -->
-        <div class="cube-float" aria-hidden="true">
-          <div class="cube-tilt">
-            <div class="cube">
-              <span class="cube-face"></span><span class="cube-face"></span><span class="cube-face"></span>
-              <span class="cube-face"></span><span class="cube-face"></span><span class="cube-face"></span>
-              <div class="cube-core">
-                <span class="cube-face"></span><span class="cube-face"></span><span class="cube-face"></span>
-                <span class="cube-face"></span><span class="cube-face"></span><span class="cube-face"></span>
-              </div>
+      <!-- Os 3 pilares (gráficos ilustrativos, sem números) -->
+      <div class="pillars" data-carousel role="region" aria-label="O que a Humanize faz pela sua empresa">
+          <div class="pillar">
+            <div class="gc-top">
+              <span class="gc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg></span>
+              <b>Aumente seu faturamento</b>
             </div>
-          </div>
-        </div>
-
-        <!-- Cards flutuantes (benefícios; gráficos ilustrativos, sem números) -->
-        <div class="glass-card gc-1">
-          <div class="gc-top">
-            <span class="gc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg></span>
-            <b>Aumente seu faturamento</b>
-          </div>
-          <svg class="gc-line" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true">
-            <defs><linearGradient id="gcSA" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3d86ff"/><stop offset=".55" stop-color="#20d8f5"/><stop offset="1" stop-color="#ff5500"/></linearGradient><linearGradient id="gcA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".4"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
-            <g style="color:var(--gc)">
-              <path d="M0 40 L28 36 L56 38 L84 28 L112 26 L140 17 L168 12 L200 3 L200 46 L0 46 Z" fill="url(#gcA)"/>
-              <polyline points="0,40 28,36 56,38 84,28 112,26 140,17 168,12 200,3" fill="none" stroke="url(#gcSA)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
-            </g>
-          </svg>
-        </div>
-        <div class="glass-card gc-2">
-          <div class="gc-top">
-            <span class="gc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></span>
-            <b>Fortaleça seu branding</b>
-          </div>
-          <svg class="gc-line" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true">
-            <defs><linearGradient id="gcSB" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3d86ff"/><stop offset=".55" stop-color="#20d8f5"/><stop offset="1" stop-color="#ff5500"/></linearGradient><linearGradient id="gcB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".4"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
-            <g style="color:var(--gc)">
-              <path d="M0 42 L30 38 L60 30 L90 32 L120 20 L150 16 L175 9 L200 5 L200 46 L0 46 Z" fill="url(#gcB)"/>
-              <polyline points="0,42 30,38 60,30 90,32 120,20 150,16 175,9 200,5" fill="none" stroke="url(#gcSB)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
-            </g>
-          </svg>
-        </div>
-        <div class="glass-card gc-3">
-          <div class="gc-top">
-            <span class="gc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.1 8.3 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.3 12 2"/></svg></span>
-            <b>Seja referência</b>
-          </div>
-          <svg class="gc-line" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true">
-            <defs><linearGradient id="gcSC" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3d86ff"/><stop offset=".55" stop-color="#20d8f5"/><stop offset="1" stop-color="#ff5500"/></linearGradient><linearGradient id="gcC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".4"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
-            <g style="color:var(--gc)">
-              <path d="M0 38 L25 40 L50 33 L80 34 L110 24 L140 21 L170 11 L200 6 L200 46 L0 46 Z" fill="url(#gcC)"/>
-              <polyline points="0,38 25,40 50,33 80,34 110,24 140,21 170,11 200,6" fill="none" stroke="url(#gcSC)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
-            </g>
-          </svg>
-        </div>
+            <svg class="gc-line" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true">
+              <defs><linearGradient id="gcSA" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#639cc5"/><stop offset=".6" stop-color="#8cb8d9"/><stop offset="1" stop-color="#eb2f33"/></linearGradient><linearGradient id="gcA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".4"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
+              <g style="color:#639cc5">
+                <path d="M0 40 L28 36 L56 38 L84 28 L112 26 L140 17 L168 12 L200 3 L200 46 L0 46 Z" fill="url(#gcA)"/>
+                <polyline points="0,40 28,36 56,38 84,28 112,26 140,17 168,12 200,3" fill="none" stroke="url(#gcSA)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+              </g>
+            </svg>
+            </div>
+            <div class="pillar">
+            <div class="gc-top">
+              <span class="gc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></span>
+              <b>Fortaleça seu branding</b>
+            </div>
+            <svg class="gc-line" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true">
+              <defs><linearGradient id="gcSB" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#639cc5"/><stop offset=".6" stop-color="#8cb8d9"/><stop offset="1" stop-color="#eb2f33"/></linearGradient><linearGradient id="gcB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".4"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
+              <g style="color:#639cc5">
+                <path d="M0 42 L30 38 L60 30 L90 32 L120 20 L150 16 L175 9 L200 5 L200 46 L0 46 Z" fill="url(#gcB)"/>
+                <polyline points="0,42 30,38 60,30 90,32 120,20 150,16 175,9 200,5" fill="none" stroke="url(#gcSB)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+              </g>
+            </svg>
+            </div>
+            <div class="pillar">
+            <div class="gc-top">
+              <span class="gc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.1 8.3 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.3 12 2"/></svg></span>
+              <b>Seja referência</b>
+            </div>
+            <svg class="gc-line" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true">
+              <defs><linearGradient id="gcSC" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#639cc5"/><stop offset=".6" stop-color="#8cb8d9"/><stop offset="1" stop-color="#eb2f33"/></linearGradient><linearGradient id="gcC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".4"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
+              <g style="color:#639cc5">
+                <path d="M0 38 L25 40 L50 33 L80 34 L110 24 L140 21 L170 11 L200 6 L200 46 L0 46 Z" fill="url(#gcC)"/>
+                <polyline points="0,38 25,40 50,33 80,34 110,24 140,21 170,11 200,6" fill="none" stroke="url(#gcSC)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+              </g>
+            </svg>
+            </div>
       </div>
 
     </div>
@@ -1386,7 +1352,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 
       <div class="cases reveal" data-carousel role="region" aria-label="Cases da Humanize">
 
-        <article class="case" style="--case-accent:#3d86ff;--case-ink:#1a5fd1">
+        <article class="case" style="--case-accent:#639cc5">
           <div>
             <div class="case-head">
               <img class="case-logo" src="img/logo-adega-do-bruninho.webp" alt="Logotipo da Adega do Bruninho" width="56" height="56" loading="lazy" />
@@ -1421,7 +1387,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
           </div>
         </article>
 
-        <article class="case" style="--case-accent:#20d8f5;--case-ink:#08839f">
+        <article class="case" style="--case-accent:#639cc5">
           <div>
             <div class="case-head">
               <img class="case-logo" src="img/logo-casa-de-embalagens-cangaiba.webp" alt="Logotipo da Casa de Embalagens Cangaíba" width="56" height="56" loading="lazy" />
@@ -1455,7 +1421,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
           </div>
         </article>
 
-        <article class="case" style="--case-accent:#8b7cff;--case-ink:#6450e0">
+        <article class="case" style="--case-accent:#639cc5">
           <div>
             <div class="case-head">
               <img class="case-logo" src="img/logo-tomo-xapo.webp" alt="Logotipo da Tomo Xapo" width="56" height="56" loading="lazy" />
@@ -1489,7 +1455,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
           </div>
         </article>
 
-        <article class="case" style="--case-accent:#f0b429;--case-ink:#a46a00">
+        <article class="case" style="--case-accent:#639cc5">
           <div>
             <div class="case-head">
               <img class="case-logo" src="img/logo-gota-de-ouro.webp" alt="Logotipo da Gota de Ouro Modas" width="56" height="56" loading="lazy" />
@@ -1572,7 +1538,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
         </div>
 
         <p class="about-signature">
-          Por trás de cada <span class="brush brush--sm">estratégia</span> existem pessoas.
+          Por trás de cada <span class="brush">estratégia</span> existem pessoas.
           E é justamente por isso que escolhemos <span class="script">Humanize</span>.
         </p>
       </div>
@@ -1585,7 +1551,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
     <div class="wrap">
       <blockquote class="reveal">
         &#8220;Cada marca tem uma história, nosso trabalho é encontrar
-        a melhor <em class="brush brush--sm">estratégia</em> para fazê-la crescer!&#8221;
+        a melhor <em class="brush">estratégia</em> para fazê-la crescer!&#8221;
       </blockquote>
     </div>
   </section>
@@ -1757,6 +1723,18 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
     };
     tabs.forEach(function (t) {
       t.addEventListener('click', function () { setTab(t.getAttribute('data-vk')); });
+    });
+  }
+
+
+  /* ---------- Luz que segue o cursor nos cartões ---------- */
+  if (window.matchMedia('(hover: hover)').matches && !reduced) {
+    document.querySelectorAll('.case, .service, .person, .vk-col--sem, .step, .pillar').forEach(function (card) {
+      card.addEventListener('pointermove', function (e) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      }, { passive: true });
     });
   }
 
