@@ -26,9 +26,14 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,700..800,100;1,9..144,700..800,100&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
 
 <style>
+@font-face{
+  font-family:"Scholar";
+  src:url(fonts/scholar.woff2) format("woff2");
+  font-weight:400;font-style:normal;font-display:swap;
+}
 /* ============================================================
    HUMANIZE — SISTEMA DE DESIGN
    Paleta extraída do logotipo oficial (azul #005DFC).
@@ -309,22 +314,24 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 
 
 .hero-inner{position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:center}
-/* Título em Fraunces (serif orgânica, eixo SOFT no máximo = curvas macias) */
+/* Título: Helvetica apertada + "lucrando no digital" em serifada editorial maior.
+   A fonte Scholar (Great Studio) é paga: quando tiver o arquivo com licença web,
+   coloque em fonts/scholar.woff2 e ela entra sozinha (ver @font-face abaixo).
+   Até lá, a Instrument Serif (Google Fonts, gratuita) faz o papel. */
 .hero h1{
-  font-family:'Fraunces',Georgia,serif;font-weight:800;color:#fff;
-  font-variation-settings:"SOFT" 100,"opsz" 144;
-  font-size:clamp(2.4rem,5.2vw,4.6rem);line-height:1.04;letter-spacing:-.025em;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:700;color:#fff;
+  font-size:clamp(2.3rem,5vw,4.4rem);line-height:1.04;letter-spacing:-.055em;
   margin-bottom:0;
 }
 .hero h1 .l1,.hero h1 .l2{display:block;opacity:0;will-change:transform}
 /* Split motion: as duas linhas entram juntas, uma de cada lado */
 .hero h1 .l1{animation:inLeft .9s .2s cubic-bezier(.16,1,.3,1) forwards}
 .hero h1 .l2{animation:inRight .9s .2s cubic-bezier(.16,1,.3,1) forwards}
-.hero h1 em{
-  font-style:italic;font-weight:700;color:var(--lime);
-  font-size:clamp(3rem,6.5vw,5.4rem);letter-spacing:-.02em;
-  font-variation-settings:"SOFT" 100,"opsz" 144;
+.hero h1 .serif{
+  font-family:"Scholar","Instrument Serif",Georgia,serif;font-weight:400;
+  font-size:1.32em;letter-spacing:-.02em;line-height:.9;
 }
+.hero h1 em{font-style:normal;color:var(--lime)}
 @keyframes inLeft{from{opacity:0;transform:translateX(-90px)}to{opacity:1;transform:translateX(0)}}
 @keyframes inRight{from{opacity:0;transform:translateX(90px)}to{opacity:1;transform:translateX(0)}}
 
@@ -869,8 +876,8 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 
   /* Hero purista no celular */
   .hero{padding:88px 0 48px}
-  .hero h1{font-size:clamp(2.2rem,9.6vw,3rem)}
-  .hero h1 em{font-size:clamp(2.6rem,11.5vw,3.5rem)}
+  .hero h1{font-size:clamp(2.1rem,9.4vw,2.9rem)}
+  .hero h1 .serif{display:block;white-space:nowrap;font-size:1.22em;margin:.04em 0 .06em}
   .touch{--hand-h:clamp(300px,100vw,440px);height:120px}
   .btn--lime{width:100%;max-width:360px}
   .intro .lead{font-size:1rem;margin-bottom:18px}
@@ -998,7 +1005,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 
     <div class="wrap hero-inner">
       <h1 class="h-display">
-        <span class="l1">Sua empresa lucrando no digital,</span>
+        <span class="l1">Sua empresa <span class="serif">lucrando no digital,</span></span>
         <span class="l2"><em>a um clique</em> de você.</span>
       </h1>
 
