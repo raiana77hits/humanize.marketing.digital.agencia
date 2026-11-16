@@ -251,117 +251,111 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 .menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* ============================================================
-   HERO — PURISTA
-   Só a frase e o clique. Fundo: "A Criação de Adão" (Michelangelo,
-   domínio público) em azul monocromático, bem apagada.
-   Para trocar a imagem: img/criacao-de-adao.jpg. Para alinhar o espaço
-   entre os dedos com o centro, ajuste --art-x / --art-y.
+   HERO — "A CRIAÇÃO" (referência editorial: w5.com.br)
+   1) As mãos de Michelangelo (domínio público) entram, uma de cada lado,
+      ocupando quase toda a seção, e param SEM se tocar.
+   2) Aparecem "Sua empresa," e "a um clique de você." com um vão no meio.
+   3) "lucrando no digital," cai letra por letra e completa a frase.
+   Ajustes rápidos: --hand-h (tamanho das mãos), --gap-top (altura do
+   espaço entre os dedos na tela). A fonte Scholar entra sozinha se o
+   arquivo fonts/scholar.woff2 existir; até lá, Instrument Serif.
    ============================================================ */
 .hero{
+  --hand-h:clamp(560px,max(96svh,72vw),1180px);
+  --gap-top:44%;
   position:relative;overflow:hidden;overflow-x:clip;isolation:isolate;
   min-height:100vh;min-height:100svh;
   display:flex;align-items:center;justify-content:center;
-  padding:96px 0 64px;text-align:center;
-  background:
-    radial-gradient(55% 45% at 50% 50%,rgba(0,93,252,.20),transparent 70%),
-    linear-gradient(180deg,#04101f 0%,#030914 60%,#030914 100%);
+  padding:110px 0 70px;text-align:center;
+  background:#030914;
 }
-/* tinta azul por cima da arte (deixa a pintura monocromática azul) */
+/* granulação de foto (como na referência) */
 .hero::before{
-  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:linear-gradient(180deg,rgba(0,64,181,.18),rgba(3,9,20,.35));
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.10;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
+/* véu azul da marca + escurecido nas bordas para o texto ler bem */
 .hero::after{
-  content:"";position:absolute;left:0;right:0;bottom:0;height:120px;pointer-events:none;z-index:-1;
-  background:linear-gradient(to bottom,transparent,var(--bg));
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(70% 60% at 50% 46%,rgba(3,9,20,0) 0%,rgba(3,9,20,.55) 70%,rgba(3,9,20,.92) 100%),
+    linear-gradient(180deg,rgba(0,64,181,.22),rgba(3,9,20,.25) 60%,#030914 100%);
 }
-/* ============================================================
-   AS MÃOS (A Criação de Adão, Michelangelo — domínio público)
-   A pintura foi cortada no espaço entre os dedos: mao-esquerda.webp e
-   mao-direita.webp. Cada metade entra pelo seu lado e para exatamente
-   no centro, recriando o espaço do quadro. A faísca acende ali: o clique.
-   --hand-h controla o tamanho; --gap-y é a altura do espaço na imagem (52,7%).
-   ============================================================ */
-.touch{
-  --hand-h:clamp(280px,42vw,600px);
-  --gap-y:.527;
-  position:relative;z-index:-1;width:100%;
-  height:clamp(80px,13vh,130px);
-  pointer-events:none;
-}
+
+/* As mãos */
+.hands{position:absolute;inset:0;z-index:-1;pointer-events:none;filter:grayscale(100%) contrast(118%) brightness(1.05);opacity:.62}
 .hand{
-  position:absolute;top:calc(50% - var(--hand-h) * var(--gap-y));
-  height:var(--hand-h);width:auto;max-width:none;
-  opacity:0;
+  position:absolute;top:calc(var(--gap-top) - var(--hand-h) * .527);
+  height:var(--hand-h);width:auto;max-width:none;opacity:0;
 }
-/* opacidade e filtro no grupo (e não em cada mão) para não aparecer
-   uma linha onde as duas metades se encontram */
-.hands{position:absolute;inset:0;opacity:.34;filter:grayscale(100%) contrast(125%) brightness(1.15)}
 .hand--l{
   right:50%;
-  -webkit-mask-image:radial-gradient(ellipse 100% 46% at 100% 52.7%,#000 30%,transparent 100%);
-          mask-image:radial-gradient(ellipse 100% 46% at 100% 52.7%,#000 30%,transparent 100%);
-  animation:handL 1.6s .25s cubic-bezier(.16,1,.3,1) forwards;
+  -webkit-mask-image:radial-gradient(ellipse 125% 47% at 100% 52.7%,#000 40%,transparent 100%);
+          mask-image:radial-gradient(ellipse 125% 47% at 100% 52.7%,#000 40%,transparent 100%);
+  animation:handL 1.5s .1s cubic-bezier(.16,1,.3,1) forwards;
 }
 .hand--r{
   left:50%;
-  -webkit-mask-image:radial-gradient(ellipse 100% 46% at 0% 52.7%,#000 30%,transparent 100%);
-          mask-image:radial-gradient(ellipse 100% 46% at 0% 52.7%,#000 30%,transparent 100%);
-  animation:handR 1.6s .25s cubic-bezier(.16,1,.3,1) forwards;
+  -webkit-mask-image:radial-gradient(ellipse 125% 47% at 0% 52.7%,#000 40%,transparent 100%);
+          mask-image:radial-gradient(ellipse 125% 47% at 0% 52.7%,#000 40%,transparent 100%);
+  animation:handR 1.5s .1s cubic-bezier(.16,1,.3,1) forwards;
 }
-@keyframes handL{from{opacity:0;transform:translateX(-45vw)}to{opacity:1;transform:translateX(0)}}
-@keyframes handR{from{opacity:0;transform:translateX(45vw)}to{opacity:1;transform:translateX(0)}}
+@keyframes handL{from{opacity:0;transform:translateX(-55vw)}to{opacity:1;transform:translateX(0)}}
+@keyframes handR{from{opacity:0;transform:translateX(55vw)}to{opacity:1;transform:translateX(0)}}
 
-
-.hero-inner{position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:center}
-/* Título: Helvetica apertada + "lucrando no digital" em serifada editorial maior.
-   A fonte Scholar (Great Studio) é paga: quando tiver o arquivo com licença web,
-   coloque em fonts/scholar.woff2 e ela entra sozinha (ver @font-face abaixo).
-   Até lá, a Instrument Serif (Google Fonts, gratuita) faz o papel. */
-.hero h1{
-  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:700;color:#fff;
-  font-size:clamp(2.3rem,5vw,4.4rem);line-height:1.04;letter-spacing:-.055em;
-  margin-bottom:0;
+/* A frase */
+.hero-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+.h-hero{
+  margin:0 0 clamp(26px,3.6vw,44px);color:#fff;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:700;letter-spacing:-.055em;line-height:.95;
+  text-shadow:0 4px 40px rgba(3,9,20,.55);
 }
-.hero h1 .l1,.hero h1 .l2{display:block;opacity:0;will-change:transform}
-/* Split motion: as duas linhas entram juntas, uma de cada lado */
-.hero h1 .l1{animation:inLeft .9s .2s cubic-bezier(.16,1,.3,1) forwards}
-.hero h1 .l2{animation:inRight .9s .2s cubic-bezier(.16,1,.3,1) forwards}
-.hero h1 .serif{
-  font-family:"Scholar","Instrument Serif",Georgia,serif;font-weight:400;
-  font-size:1.32em;letter-spacing:-.02em;line-height:.9;color:var(--lime);
-}
+.h-hero .t1,.h-hero .t2{display:block;font-size:clamp(2.6rem,6.2vw,6rem);opacity:0}
+.h-hero .t1{animation:inLeft .9s 1.15s cubic-bezier(.16,1,.3,1) forwards}
+.h-hero .t2{animation:inRight .9s 1.15s cubic-bezier(.16,1,.3,1) forwards}
 @keyframes inLeft{from{opacity:0;transform:translateX(-90px)}to{opacity:1;transform:translateX(0)}}
 @keyframes inRight{from{opacity:0;transform:translateX(90px)}to{opacity:1;transform:translateX(0)}}
 
-/* Luz difusa que respira atrás do texto e do botão */
-.hero-glow{
-  position:absolute;left:50%;top:52%;z-index:-1;pointer-events:none;
-  width:min(900px,120vw);height:min(520px,80vw);margin:calc(min(520px,80vw) / -2) 0 0 calc(min(900px,120vw) / -2);
-  border-radius:50%;
-  background:
-    radial-gradient(closest-side at 42% 45%,rgba(0,93,252,.38),transparent),
-    radial-gradient(closest-side at 60% 70%,rgba(184,255,1,.10),transparent),
-    radial-gradient(closest-side at 70% 35%,rgba(32,216,245,.16),transparent);
-  filter:blur(40px);
-  animation:floatGlow 10s ease-in-out infinite;
+/* "lucrando no digital," — enorme, cai letra por letra */
+.h-hero .big{
+  display:block;margin:.02em 0 .06em;
+  font-family:"Scholar","Instrument Serif",Georgia,serif;font-weight:400;
+  font-size:clamp(3.6rem,10.4vw,10.5rem);letter-spacing:-.025em;line-height:.88;color:var(--lime);
+  text-shadow:0 10px 60px rgba(184,255,1,.18);
 }
-.hero.is-offscreen .hero-glow{animation-play-state:paused}
-@keyframes floatGlow{
-  0%,100%{transform:translate3d(-2%,0,0) scale(1);opacity:.85}
-  50%{transform:translate3d(3%,-3%,0) scale(1.08);opacity:1}
+.h-hero .big .w{display:inline-block;white-space:nowrap}
+.h-hero .big i{
+  display:inline-block;font-style:normal;opacity:0;
+  transform:translateY(-1.1em) rotate(-10deg);
+  animation:drop .7s calc(1.9s + var(--i) * .075s) cubic-bezier(.34,1.56,.64,1) forwards;
+}
+@keyframes drop{
+  0%{opacity:0;transform:translateY(-1.1em) rotate(-10deg)}
+  60%{opacity:1}
+  100%{opacity:1;transform:translateY(0) rotate(0)}
 }
 
 .btn--lime{
   position:relative;overflow:hidden;isolation:isolate;
   min-height:60px;padding:0 34px;font-size:1rem;
   background:var(--lime);color:#030914;box-shadow:0 16px 46px rgba(184,255,1,.28);
-  opacity:0;animation:fadeUp .8s 1.6s var(--ease) forwards;
+  opacity:0;animation:fadeUp .8s 3.6s var(--ease) forwards;
 }
 .btn--lime::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s var(--ease)}
 .btn--lime:hover{transform:translateY(-2px);box-shadow:0 22px 56px rgba(184,255,1,.42)}
 .btn--lime:hover::after{transform:translateX(120%)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* "Role pra baixo" (como na referência) */
+.scroll-cue{
+  position:absolute;left:var(--gutter);bottom:28px;z-index:2;
+  display:flex;flex-direction:column;align-items:flex-start;gap:8px;
+  font-size:.78rem;font-weight:600;color:#c3d0e4;line-height:1.2;text-align:left;
+  opacity:0;animation:fadeUp .8s 3.8s var(--ease) forwards;
+}
+.scroll-cue span{width:30px;height:30px;display:flex;align-items:center;justify-content:center;background:var(--blue);color:#fff;border-radius:6px}
+.scroll-cue span svg{animation:nudge 1.8s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateY(-2px)}50%{transform:translateY(3px)}}
 
 /* ============================================================
    INTRO (o que saiu da hero): subtítulo, 3 bullets e 3 pilares
@@ -900,12 +894,13 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 
   /* Hero */
 
-  /* Hero purista no celular */
-  .hero{padding:88px 0 48px}
-  .hero h1{font-size:clamp(2.1rem,9.4vw,2.9rem)}
-  .hero h1 .serif{display:block;white-space:nowrap;font-size:1.22em;margin:.04em 0 .06em}
-  .touch{--hand-h:clamp(300px,100vw,440px);height:120px}
+  /* Hero no celular: mãos em close, palavra grande em duas linhas */
+  .hero{--hand-h:560px;--gap-top:24%;padding:96px 0 90px}
+  .h-hero .t1{font-size:clamp(2.2rem,10.5vw,3rem)}
+  .h-hero .t2{font-size:clamp(1.7rem,8.3vw,2.6rem);white-space:nowrap}
+  .h-hero .big{font-size:clamp(3.4rem,19vw,5.4rem);line-height:.9;margin:.06em 0 .1em}
   .btn--lime{width:100%;max-width:360px}
+  .scroll-cue{bottom:20px}
   .intro .lead{font-size:1rem;margin-bottom:18px}
   .hero-proof{gap:6px 16px;margin-bottom:24px}
   .hero-proof li{font-size:.82rem}
@@ -1027,30 +1022,32 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 
   <!-- ============================ HERO ============================ -->
   <section class="hero" id="inicio">
-    <div class="hero-glow" aria-hidden="true"></div>
+    <!-- As mãos de Michelangelo (decorativo) -->
+    <div class="hands" aria-hidden="true">
+      <img class="hand hand--l" src="img/mao-esquerda.webp" alt="" width="951" height="1377" fetchpriority="high" />
+      <img class="hand hand--r" src="img/mao-direita.webp" alt="" width="885" height="1377" fetchpriority="high" />
+    </div>
 
     <div class="wrap hero-inner">
-      <h1 class="h-display">
-        <span class="l1">Sua empresa <span class="serif">lucrando no digital,</span></span>
-        <span class="l2">a um clique de você.</span>
+      <h1 class="h-hero" aria-label="Sua empresa lucrando no digital, a um clique de você.">
+        <span class="t1" aria-hidden="true">Sua empresa,</span>
+        <span class="big" aria-hidden="true"><span class="w"><i style="--i:0">l</i><i style="--i:1">u</i><i style="--i:2">c</i><i style="--i:3">r</i><i style="--i:4">a</i><i style="--i:5">n</i><i style="--i:6">d</i><i style="--i:7">o</i></span> <span class="w"><i style="--i:8">n</i><i style="--i:9">o</i></span> <span class="w"><i style="--i:10">d</i><i style="--i:11">i</i><i style="--i:12">g</i><i style="--i:13">i</i><i style="--i:14">t</i><i style="--i:15">a</i><i style="--i:16">l</i><i style="--i:17">,</i></span></span>
+        <span class="t2" aria-hidden="true">a um clique de você.</span>
       </h1>
-
-      <!-- As mãos de Michelangelo se encontram aqui (decorativo) -->
-      <div class="touch" aria-hidden="true">
-        <div class="hands">
-        <img class="hand hand--l" src="img/mao-esquerda.webp" alt="" width="951" height="1377" fetchpriority="high" />
-        <img class="hand hand--r" src="img/mao-direita.webp" alt="" width="885" height="1377" fetchpriority="high" />
-        </div>
-      </div>
 
       <a class="btn btn--lime" href="https://wa.me/5511914894352?text=Ol%C3%A1!%20Quero%20falar%20com%20a%20Humanize." target="_blank" rel="noopener">
         Quero crescer no digital <span class="arrow" aria-hidden="true">&#8594;</span>
       </a>
     </div>
+
+    <a class="scroll-cue" href="#intro" aria-label="Rolar para baixo">
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></span>
+      Role<br />pra baixo
+    </a>
   </section>
 
   <!-- ============================ INTRO (apoio da hero) ============================ -->
-  <section class="intro" aria-label="O que a Humanize faz">
+  <section class="intro" id="intro" aria-label="O que a Humanize faz">
     <div class="wrap">
       <p class="lead">
           Humanizamos sua marca e cuidamos de toda a sua presença digital
