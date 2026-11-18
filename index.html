@@ -26,7 +26,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,800;1,800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,800;1,800&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
 
 <style>
 @font-face{
@@ -286,11 +286,13 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 .hero-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;width:100%;max-width:none}
 .h-hero{
   margin:0;color:#fff;
-  font-family:"Plus Jakarta Sans","DM Sans",Helvetica,Arial,sans-serif;font-weight:800;letter-spacing:-.045em;line-height:1.02;
+  font-family:"Syne","DM Sans",Helvetica,Arial,sans-serif;font-weight:800;letter-spacing:-.035em;line-height:1.08;
   text-shadow:0 4px 40px rgba(3,9,20,.6);
 }
-.h-hero span{display:block;white-space:nowrap;font-size:clamp(2rem,5.5vw,6.2rem);opacity:0;animation:fadeUp .9s .15s var(--ease) forwards}
-.h-hero .t2{font-style:italic;color:var(--lilac);padding-right:.08em;text-shadow:0 10px 60px rgba(207,124,255,.25);animation-delay:.35s}
+.h-hero span{display:block;white-space:nowrap;font-size:clamp(1.9rem,4.7vw,5.4rem);opacity:0;animation:fadeUp .9s .15s var(--ease) forwards}
+.h-hero .t2{padding-right:.08em;animation-delay:.35s}
+/* Tipografia expressiva: palavras de destaque em Instrument Serif itálico, maiores e em lilás */
+.h-hero em{font-family:"Instrument Serif",Georgia,"Times New Roman",serif;font-style:italic;font-weight:400;letter-spacing:-.01em;font-size:1.28em;line-height:.8;color:var(--lilac);text-shadow:0 10px 60px rgba(207,124,255,.28);padding:0 .04em}
 
 .btn--lime{
   position:relative;overflow:hidden;isolation:isolate;
@@ -857,7 +859,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   .hero-art img{object-position:50% 40%}
   .hero-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,9,20,.5) 0%,rgba(3,9,20,0) 20%,rgba(3,9,20,0) 55%,#030914 100%)}
   .hero::after{display:none}
-  .h-hero span{white-space:normal;font-size:clamp(1.9rem,8.8vw,2.9rem)}
+  .h-hero span{white-space:normal;font-size:clamp(1.7rem,7.6vw,2.6rem)}
   .hero-art{height:52svh}
   .btn--lime{width:100%;max-width:360px}
   .scroll-cue{bottom:20px}
@@ -995,8 +997,8 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 
     <div class="wrap hero-inner">
       <h1 class="h-hero">
-        <span class="t1">O digital conecta.</span>
-        <span class="t2">A humanização transforma.</span>
+        <span class="t1">O digital <em>conecta</em>.</span>
+        <span class="t2">A <em>humanização</em> transforma.</span>
       </h1>
     </div>
 
