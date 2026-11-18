@@ -987,6 +987,32 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   .final-cta{padding-block:56px}
   .final-cta .lead{margin-bottom:26px}
 }
+
+/* HUMANIZE — hero editorial: mãos originais em cores, tipografia legível e movimento suave. */
+.hero{--hand-h:clamp(460px, min(93svh, 68vw), 1050px);--gap-top:43%;background:#030914}
+.hero .hands{z-index:1;filter:none;opacity:1}
+.hero .hand{will-change:transform,opacity}
+.hero .hand--l,.hero .hand--r{-webkit-mask-image:none;mask-image:none}
+.hero::before{z-index:2;opacity:.055}
+.hero::after{z-index:2;background:linear-gradient(180deg,rgba(3,9,20,.18),rgba(3,9,20,.08) 48%,#030914 100%),radial-gradient(ellipse 60% 44% at 50% 55%,rgba(3,9,20,.74),rgba(3,9,20,.2) 75%,transparent)}
+.hero .hero-inner{z-index:3;width:min(1200px,calc(100% - 36px))}
+.h-hero--humanize{max-width:1150px;margin-bottom:clamp(30px,4vw,52px);line-height:1.04;letter-spacing:-.045em;text-shadow:0 3px 28px rgba(3,9,20,.9)}
+.h-hero--humanize .hero-line{display:block;opacity:0;animation:heroLineReveal .95s cubic-bezier(.16,1,.3,1) forwards}
+.h-hero--humanize .hero-line--digital{font-family:"DM Sans",Arial,sans-serif;font-weight:700;font-size:clamp(2.1rem,5.7vw,5.6rem);color:#fff;animation-delay:1.05s}
+.h-hero--humanize .hero-line--human{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(2.75rem,7.5vw,7.7rem);color:var(--lime);margin-top:.14em;animation-delay:1.55s}
+@keyframes heroLineReveal{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.hero .btn--lime{animation-delay:2.5s}
+@media(max-width:768px){
+  .hero{--hand-h:clamp(340px,95vw,550px);--gap-top:30%;padding:110px 0 90px}
+  .hero .hand--l{right:47%}
+  .hero .hand--r{left:47%}
+  .h-hero--humanize .hero-line--digital{font-size:clamp(2rem,8.5vw,3.5rem)}
+  .h-hero--humanize .hero-line--human{font-size:clamp(2.65rem,11vw,4.5rem)}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero .hand,.h-hero--humanize .hero-line,.hero .btn--lime{animation:none!important;opacity:1!important;transform:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -1029,10 +1055,9 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
     </div>
 
     <div class="wrap hero-inner">
-      <h1 class="h-hero" aria-label="Sua empresa lucrando no digital, a um clique de você.">
-        <span class="t1" aria-hidden="true">Sua empresa,</span>
-        <span class="big" aria-hidden="true"><span class="w"><i style="--i:0">l</i><i style="--i:1">u</i><i style="--i:2">c</i><i style="--i:3">r</i><i style="--i:4">a</i><i style="--i:5">n</i><i style="--i:6">d</i><i style="--i:7">o</i></span> <span class="w"><i style="--i:8">n</i><i style="--i:9">o</i></span> <span class="w"><i style="--i:10">d</i><i style="--i:11">i</i><i style="--i:12">g</i><i style="--i:13">i</i><i style="--i:14">t</i><i style="--i:15">a</i><i style="--i:16">l</i><i style="--i:17">,</i></span></span>
-        <span class="t2" aria-hidden="true">a um clique de você.</span>
+      <h1 class="h-hero h-hero--humanize">
+        <span class="hero-line hero-line--digital">O digital conecta.</span>
+        <span class="hero-line hero-line--human">A humanização transforma.</span>
       </h1>
 
       <a class="btn btn--lime" href="https://wa.me/5511914894352?text=Ol%C3%A1!%20Quero%20falar%20com%20a%20Humanize." target="_blank" rel="noopener">
