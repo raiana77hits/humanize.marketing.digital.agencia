@@ -56,6 +56,10 @@
   var sEdge = sprite(32, [[0,'rgba(255,255,255,.95)'],[.2,'rgba(255,90,230,.85)'],[.55,'rgba(210,30,255,.3)'],[1,'rgba(160,0,230,0)']]);
   var sHub  = sprite(96, [[0,'rgba(255,255,255,1)'],[.1,'rgba(255,190,255,.9)'],[.3,'rgba(230,80,255,.35)'],[1,'rgba(150,0,230,0)']], true);
 
+  var logo = new Image(), logoOk = false;
+  logo.onload = function () { logoOk = true; if (reduce) draw(-0.55, 0); };
+  logo.src = 'img/logo-circulo.webp';
+
   var W = 0, Hh = 0, dpr = 1, sc = 1;
   function size() {
     var r = cv.getBoundingClientRect();
@@ -105,7 +109,26 @@
     var ord = [];
     for (i = 0; i < T; i++) ord.push(i);
     ord.sort(function (a, b) { return sz[a] - sz[b]; });
-    for (var q = 0; q < T; q++) {
+    var logoDone = !logoOk;
+    for (var q = 0; q <= T; q++) {
+      /* a logo gira junto com o cérebro e fica no meio dele:
+         pontos de trás ficam atrás dela, pontos da frente passam por cima */
+      if (!logoDone && (q === T || sz[ord[q]] >= 0)) {
+        logoDone = true;
+        var lw = sc * 0.62, ls = Math.abs(ca); if (ls < 0.03) ls = 0.03;
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.globalAlpha = 1;
+        /* brilho suave atrás da logo */
+        var lg = ctx.createRadialGradient(cx, cy, 0, cx, cy, lw * 0.8);
+        lg.addColorStop(0, 'rgba(90,170,255,.38)'); lg.addColorStop(1, 'rgba(90,170,255,0)');
+        ctx.save(); ctx.translate(cx, cy); ctx.scale(Math.max(ls, 0.25), 1); ctx.translate(-cx, -cy);
+        ctx.fillStyle = lg; ctx.fillRect(cx - lw, cy - lw, lw * 2, lw * 2); ctx.restore();
+        ctx.save(); ctx.translate(cx, cy); ctx.scale(ls, 1);
+        ctx.drawImage(logo, -lw / 2, -lw / 2, lw, lw);
+        ctx.restore();
+        ctx.globalCompositeOperation = 'lighter';
+      }
+      if (q === T) break;
       i = ord[q];
       var depth = (sz[i] + 0.9) / 1.8; if (depth < 0) depth = 0; if (depth > 1) depth = 1;
       var al = 0.28 + 0.72 * depth, spr, sizePx;
