@@ -116,7 +116,7 @@
     'void main(){',
     '  vec4 c = uMVP * vec4(aP.xyz * uSc, 1.0);',
     '  gl_Position = c;',
-    '  gl_PointSize = (13.0 + 24.0 * aP.w) * uPx * (3.9 / c.w);',
+    '  gl_PointSize = (13.0 + 24.0 * aP.w) * uPx * (4.6 / c.w);',
     '}'
   ].join('\n');
 
@@ -266,7 +266,7 @@
 
   function draw(ang) {
     gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-    var a = W / H, D = 3.9;
+    var a = W / H, D = 4.6;
     var Pm = persp(0.36, a, 1.5, 6.5);
     var MV = mul(trans(0, 0, -D), mul(rotX(TILT), rotY(ang)));
     var MVP = mul(Pm, MV);
