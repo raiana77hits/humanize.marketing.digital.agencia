@@ -11,6 +11,7 @@
   var gl = null;
   try { gl = cv.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: !small, powerPreference: 'low-power' }); } catch (e) {}
   if (!gl) { window.__cerebroGL = false; return; }
+  if (!gl.getExtension('OES_element_index_uint')) { window.__cerebroGL = false; return; }
   window.__cerebroGL = true;
 
   function fail() {
@@ -58,24 +59,26 @@
     '  float cur = (vA.x - 0.5) * 2.0;',        /* curvatura larga: + crista, - sulco */
     '  float cur2 = (vA.y - 0.5) * 2.0;',
     '  float det = (vA.z - 0.5) * 2.0;',        /* relevo fino vindo da textura */
-    '  float crest = smoothstep(0.02, 0.55, cur + cur2 * 0.5);',
-    '  float sulc = smoothstep(0.0, -0.55, cur);',
-    '  vec3 deep = vec3(0.045, 0.008, 0.17);',
-    '  vec3 mid  = vec3(0.22, 0.045, 0.56);',
-    '  float k = clamp(0.42 + det * 0.55 + crest * 0.35 - sulc * 0.45, 0.0, 1.0);',
+    '  float crest = smoothstep(0.0, 0.5, cur + cur2 * 0.6);',
+    '  float sulc = smoothstep(0.05, -0.45, cur + cur2 * 0.4);',
+    '  vec3 deep = vec3(0.03, 0.004, 0.11);',
+    '  vec3 mid  = vec3(0.36, 0.09, 0.86);',
+    '  float k = clamp(0.50 + det * 0.9 + crest * 0.55 - sulc * 0.75, 0.0, 1.0);',
     '  vec3 base = mix(deep, mid, k);',
     '  float lam = max(dot(n, normalize(vec3(-0.35, 0.65, 0.7))), 0.0);',
-    '  base += vec3(0.30, 0.08, 0.55) * lam * 0.32;',
+    '  base += vec3(0.42, 0.12, 0.75) * lam * 0.55;',
+    '  vec3 hv = normalize(normalize(vec3(-0.35, 0.65, 0.7)) + v);',
+    '  base += vec3(0.85, 0.55, 1.0) * pow(max(dot(n, hv), 0.0), 38.0) * 0.55;',
     '  float rim = pow(fres, 2.2);',
     '  float rim2 = pow(fres, 5.0);',
     '  vec3 rimCol = mix(vec3(0.95, 0.35, 1.0), vec3(1.0, 0.85, 1.0), rim2);',
-    '  vec3 col = base + rimCol * (rim * 0.85 + rim2 * 0.6);',
-    '  col += vec3(0.85, 0.25, 1.0) * crest * (0.18 + 0.35 * fres);',
+    '  vec3 col = base + rimCol * (rim * 0.6 + rim2 * 0.5);',
+    '  col *= 1.0 - 0.55 * sulc;',
     '  if (uBack > 0.5) {',
     '    vec3 b = (mid * 0.55 + rimCol * rim * 0.7) * (0.45 + 0.55 * k);',
     '    gl_FragColor = vec4(b, max(b.r, max(b.g, b.b)));',
     '  } else {',
-    '    float a = clamp(0.40 + 0.55 * rim + 0.15 * crest, 0.0, 1.0);',
+    '    float a = clamp(0.66 + 0.34 * rim, 0.0, 1.0);',
     '    gl_FragColor = vec4(col * a, a);',   /* alfa pré-multiplicado */
     '  }',
     '}'
@@ -102,7 +105,7 @@
     'void main(){',
     '  float g = exp(-vSide * vSide * 3.2);',
     '  float core = exp(-vSide * vSide * 16.0);',
-    '  vec3 c = vec3(0.95, 0.25, 1.0) * g * 0.5 + vec3(1.0, 0.75, 1.0) * core * 0.3;',
+    '  vec3 c = vec3(0.95, 0.25, 1.0) * g * 0.34 + vec3(1.0, 0.75, 1.0) * core * 0.22;',
     '  gl_FragColor = vec4(c, max(c.r, max(c.g, c.b)));',
     '}'
   ].join('\n');
@@ -177,7 +180,8 @@
     var pos = new Int16Array(ab, o, nv * 3); o += nv * 6;
     var nor = new Int8Array(ab, o, nv * 4); o += nv * 4;
     var att = new Uint8Array(ab, o, nv * 4); o += nv * 4;
-    var idx = new Uint16Array(ab, o, nt * 3); o += nt * 6; o += pad4(nt * 6);
+    o += pad4(nv * 14);
+    var idx = new Uint32Array(ab, o, nt * 3); o += nt * 12;
     var nod = new Int16Array(ab, o, nn * 4); o += nn * 8;
     var seg = new Int16Array(ab, o, nl * 6);
     nIdx = nt * 3; nNode = nn; nSeg = nl;
@@ -278,7 +282,7 @@
     gl.uniformMatrix4fv(U(P.brain, 'uMV'), false, MV); gl.uniformMatrix4fv(U(P.brain, 'uP'), false, Pm);
     gl.uniform1f(U(P.brain, 'uSc'), SC); gl.uniform1f(U(P.brain, 'uBack'), 1);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buf.idx);
-    gl.drawElements(gl.TRIANGLES, nIdx, gl.UNSIGNED_SHORT, 0);
+    gl.drawElements(gl.TRIANGLES, nIdx, gl.UNSIGNED_INT, 0);
     gl.disable(gl.CULL_FACE);
 
     /* 2) logo azul dentro do cérebro (gira junto; 3 camadas dão volume) */
@@ -289,7 +293,7 @@
       gl.uniform1i(U(P.logo, 'uTex'), 0);
       gl.uniformMatrix4fv(U(P.logo, 'uMVP'), false, MVP);
       gl.uniform1f(U(P.logo, 'uSize'), 0.27);
-      var zs = [-0.016, 0, 0.016], is = [0.35, 0.75, 0.35];
+      var zs = [-0.016, 0, 0.016], is = [0.25, 0.5, 0.25];
       for (i = 0; i < 3; i++) {
         gl.uniform3f(U(P.logo, 'uPos'), 0, 0.07, zs[i]); gl.uniform1f(U(P.logo, 'uI'), is[i]);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
@@ -306,18 +310,18 @@
     attr(P.brain, 'aA', buf.att, 4, gl.UNSIGNED_BYTE, true, 0, 0);
     gl.uniform1f(U(P.brain, 'uBack'), 0);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buf.idx);
-    gl.drawElements(gl.TRIANGLES, nIdx, gl.UNSIGNED_SHORT, 0);
+    gl.drawElements(gl.TRIANGLES, nIdx, gl.UNSIGNED_INT, 0);
     gl.disable(gl.CULL_FACE);
 
     /* 3b) reforço do brilho da logo por cima da superfície (sem profundidade) */
     if (tex) {
-      gl.disable(gl.DEPTH_TEST); gl.blendFunc(gl.ONE, gl.ONE);
+      gl.disable(gl.DEPTH_TEST); gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
       gl.useProgram(P.logo);
       attr(P.logo, 'aQ', buf.quad, 2, gl.FLOAT, false, 0, 0);
       gl.bindTexture(gl.TEXTURE_2D, tex);
       gl.uniformMatrix4fv(U(P.logo, 'uMVP'), false, MVP);
       gl.uniform1f(U(P.logo, 'uSize'), 0.27);
-      gl.uniform3f(U(P.logo, 'uPos'), 0, 0.07, 0); gl.uniform1f(U(P.logo, 'uI'), 0.30);
+      gl.uniform3f(U(P.logo, 'uPos'), 0, 0.07, 0); gl.uniform1f(U(P.logo, 'uI'), 0.8);
       gl.drawArrays(gl.TRIANGLES, 0, 6);
       gl.enable(gl.DEPTH_TEST);
     }
@@ -329,7 +333,7 @@
     attr(P.line, 'aB', buf.line, 3, gl.FLOAT, false, 32, 12);
     attr(P.line, 'aS', buf.line, 2, gl.FLOAT, false, 32, 24);
     gl.uniformMatrix4fv(U(P.line, 'uMVP'), false, MVP); gl.uniform1f(U(P.line, 'uSc'), SC);
-    gl.uniform2f(U(P.line, 'uRes'), W, H); gl.uniform1f(U(P.line, 'uW'), 1.9 * dpr);
+    gl.uniform2f(U(P.line, 'uRes'), W, H); gl.uniform1f(U(P.line, 'uW'), 1.6 * dpr);
     gl.drawArrays(gl.TRIANGLES, 0, nSeg * 6);
 
     /* 5) estrelas nos nós */
