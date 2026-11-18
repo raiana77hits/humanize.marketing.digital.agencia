@@ -59,7 +59,8 @@
 
   var logo = new Image(), logoOk = false;
   logo.onload = function () { logoOk = true; if (reduce) draw(-0.55, 0); };
-  logo.src = 'img/logo-circulo.webp';
+  /* logo dentro do cérebro: desligada por enquanto (basta reativar a linha abaixo)
+  logo.src = 'img/logo-circulo.webp'; */
 
   var W = 0, Hh = 0, dpr = 1, sc = 1;
   function size() {

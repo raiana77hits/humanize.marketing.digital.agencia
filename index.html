@@ -854,7 +854,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   /* Hero */
 
   /* Hero no celular: mãos em close no topo, título embaixo */
-  .hero{padding:0 0 118px;justify-content:flex-end}
+  .hero{padding:0 0 clamp(190px,27svh,250px);justify-content:flex-end}
   .hero-art{bottom:auto;height:56svh}
   .hero-art img{object-position:50% 40%}
   .hero-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,9,20,.5) 0%,rgba(3,9,20,0) 20%,rgba(3,9,20,0) 55%,#030914 100%)}
