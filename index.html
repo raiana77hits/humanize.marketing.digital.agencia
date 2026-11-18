@@ -432,6 +432,22 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   box-shadow:var(--shadow-sm);
 }
 
+/* A virada de chave: a seção cabe exatamente na tela (altura da tela menos o cabeçalho fixo) */
+#virada{
+  min-height:calc(100svh - 92px);display:flex;flex-direction:column;justify-content:center;
+  padding-block:clamp(10px,2.6svh,34px);
+}
+#virada .section-head{margin-bottom:clamp(12px,2.6svh,36px)}
+#virada .h-section{font-size:clamp(1.45rem,min(3.9vw,5.6svh),3.1rem)}
+#virada .section-head .lead{margin-top:clamp(6px,1.3svh,18px);font-size:clamp(.88rem,min(1.35vw,2.1svh),1.14rem);line-height:1.5}
+#virada .vk-grid{margin-bottom:0}
+#virada .vk-col{padding:clamp(12px,2.6svh,34px) clamp(18px,3vw,40px)}
+#virada .vk-tag{margin-bottom:clamp(4px,1.2svh,14px)}
+#virada .vk-col h3{font-size:clamp(1rem,min(1.9vw,3svh),1.42rem);margin-bottom:clamp(4px,1.5svh,18px)}
+#virada .vk-list li{padding:clamp(4px,1.1svh,13px) 0;font-size:clamp(.8rem,min(1.2vw,2svh),.98rem);line-height:1.4}
+@media (min-width:901px) and (max-height:700px){#virada .vk-tag{display:none}}
+
+
 .pullquote{
   position:relative;padding:30px 32px;border-radius:var(--r-md);
   background:linear-gradient(135deg,rgba(0,93,252,.14),rgba(32,216,245,.06));
@@ -1043,7 +1059,6 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
     <div class="wrap">
 
       <div class="section-head reveal">
-        <span class="eyebrow eyebrow--blue">A virada de chave</span>
         <h2 class="h-section">Estar no digital é obrigação. Vender pelo digital é estratégia.</h2>
         <p class="lead">
           Se a sua empresa se reconhece em alguma dessas situações,
@@ -1084,11 +1099,6 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
             </ul>
           </article>
         </div>
-
-        <p class="pullquote">
-          É isso que a Humanize faz: <strong>humanizamos sua marca e estruturamos
-          o seu digital</strong> para transformar presença em clientes, vendas e faturamento.
-        </p>
       </div>
 
     </div>
