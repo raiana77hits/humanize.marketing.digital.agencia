@@ -219,7 +219,9 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 .nav-bar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:84px;transition:height var(--t)}
 .site-header.is-stuck .nav-bar{height:72px}
 
-.brand{display:flex;align-items:center;flex-shrink:0}
+.nav-bar{justify-content:flex-start}
+.nav-cta{margin-left:auto}
+.brand{display:flex;align-items:center;flex-shrink:0;margin-right:clamp(20px,2.6vw,40px)}
 .brand img{height:52px;width:auto;transition:height var(--t)}
 .site-header.is-stuck .brand img{height:42px}
 @media (max-width:768px){.brand img{height:46px}.site-header.is-stuck .brand img{height:38px}}
