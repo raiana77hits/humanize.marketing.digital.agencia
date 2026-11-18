@@ -3,6 +3,7 @@
    A forma vem do contorno do cérebro da arte; a logo fica no centro (HTML, sem mexer na cor).
    Pausa fora da tela, respeita "reduzir movimento" e usa menos pontos no celular. */
 (function () {
+  if (window.__cerebroGL) return; /* o WebGL (cerebro-gl.js) já cuida do cérebro */
   var cv = document.getElementById('cerebro-canvas');
   if (!cv || !cv.getContext) return;
   var ctx = cv.getContext('2d');
