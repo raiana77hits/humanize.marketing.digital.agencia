@@ -26,7 +26,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,800;1,800&display=swap" rel="stylesheet" />
 
 <style>
 @font-face{
@@ -251,110 +251,54 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 .menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* ============================================================
-   HERO — "A CRIAÇÃO" (referência editorial: w5.com.br)
-   1) As mãos de Michelangelo (domínio público) entram, uma de cada lado,
-      ocupando quase toda a seção, e param SEM se tocar.
-   2) Aparecem "Sua empresa," e "a um clique de você." com um vão no meio.
-   3) "lucrando no digital," cai letra por letra e completa a frase.
-   Ajustes rápidos: --hand-h (tamanho das mãos), --gap-top (altura do
-   espaço entre os dedos na tela). A fonte Scholar entra sozinha se o
-   arquivo fonts/scholar.woff2 existir; até lá, Instrument Serif.
+   HERO — arte "Conexão Humana" (mãos de Michelangelo + anel verde-limão)
+   Arte estática em img/hero-arte.webp (desktop) e img/hero-arte-m.webp
+   (celular: close nas mãos, título embaixo). Título em Plus Jakarta Sans
+   ExtraBold; a 2ª linha em itálico verde-limão.
    ============================================================ */
 .hero{
-  --hand-h:clamp(560px,max(96svh,72vw),1180px);
-  --gap-top:44%;
-  position:relative;overflow:hidden;overflow-x:clip;isolation:isolate;
+  position:relative;overflow:hidden;isolation:isolate;
   min-height:100vh;min-height:100svh;
-  display:flex;align-items:center;justify-content:center;
-  padding:110px 0 70px;text-align:center;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+  padding:120px 0 clamp(110px,15svh,150px);text-align:center;
   background:#030914;
 }
-/* granulação de foto (como na referência) */
-.hero::before{
-  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.10;mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-/* véu azul da marca + escurecido nas bordas para o texto ler bem */
+.hero-art,.hero-art img{position:absolute;inset:0;width:100%;height:100%;z-index:-2;display:block}
+.hero-art img{object-fit:cover;object-position:50% 30%}
+/* escurece o rodapé da arte para o título ler bem */
 .hero::after{
-  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:
-    radial-gradient(70% 60% at 50% 46%,rgba(3,9,20,0) 0%,rgba(3,9,20,.55) 70%,rgba(3,9,20,.92) 100%),
-    linear-gradient(180deg,rgba(0,64,181,.22),rgba(3,9,20,.25) 60%,#030914 100%);
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(3,9,20,.35) 0%,rgba(3,9,20,0) 22%,rgba(3,9,20,0) 44%,rgba(3,9,20,.55) 72%,rgba(3,9,20,.9) 100%);
 }
-
-/* As mãos */
-.hands{position:absolute;inset:0;z-index:-1;pointer-events:none;filter:grayscale(100%) contrast(118%) brightness(1.05);opacity:.62}
-.hand{
-  position:absolute;top:calc(var(--gap-top) - var(--hand-h) * .527);
-  height:var(--hand-h);width:auto;max-width:none;opacity:0;
-}
-.hand--l{
-  right:50%;
-  -webkit-mask-image:radial-gradient(ellipse 125% 47% at 100% 52.7%,#000 40%,transparent 100%);
-          mask-image:radial-gradient(ellipse 125% 47% at 100% 52.7%,#000 40%,transparent 100%);
-  animation:handL 1.5s .1s cubic-bezier(.16,1,.3,1) forwards;
-}
-.hand--r{
-  left:50%;
-  -webkit-mask-image:radial-gradient(ellipse 125% 47% at 0% 52.7%,#000 40%,transparent 100%);
-          mask-image:radial-gradient(ellipse 125% 47% at 0% 52.7%,#000 40%,transparent 100%);
-  animation:handR 1.5s .1s cubic-bezier(.16,1,.3,1) forwards;
-}
-@keyframes handL{from{opacity:0;transform:translateX(-55vw)}to{opacity:1;transform:translateX(0)}}
-@keyframes handR{from{opacity:0;transform:translateX(55vw)}to{opacity:1;transform:translateX(0)}}
-
-/* A frase */
-.hero-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+.hero-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;width:100%;max-width:none}
 .h-hero{
-  margin:0 0 clamp(26px,3.6vw,44px);color:#fff;
-  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:700;letter-spacing:-.055em;line-height:.95;
-  text-shadow:0 4px 40px rgba(3,9,20,.55);
+  margin:0 0 clamp(26px,3.4vw,40px);color:#fff;
+  font-family:"Plus Jakarta Sans","DM Sans",Helvetica,Arial,sans-serif;font-weight:800;letter-spacing:-.045em;line-height:1.02;
+  text-shadow:0 4px 40px rgba(3,9,20,.6);
 }
-.h-hero .t1,.h-hero .t2{display:block;font-size:clamp(2.6rem,6.2vw,6rem);opacity:0}
-.h-hero .t1{animation:inLeft .9s 1.15s cubic-bezier(.16,1,.3,1) forwards}
-.h-hero .t2{animation:inRight .9s 1.15s cubic-bezier(.16,1,.3,1) forwards}
-@keyframes inLeft{from{opacity:0;transform:translateX(-90px)}to{opacity:1;transform:translateX(0)}}
-@keyframes inRight{from{opacity:0;transform:translateX(90px)}to{opacity:1;transform:translateX(0)}}
-
-/* "lucrando no digital," — enorme, cai letra por letra */
-.h-hero .big{
-  display:block;margin:.02em 0 .06em;
-  font-family:"Scholar","Instrument Serif",Georgia,serif;font-weight:400;
-  font-size:clamp(3.6rem,10.4vw,10.5rem);letter-spacing:-.025em;line-height:.88;color:var(--lime);
-  text-shadow:0 10px 60px rgba(184,255,1,.18);
-}
-.h-hero .big .w{display:inline-block;white-space:nowrap}
-.h-hero .big i{
-  display:inline-block;font-style:normal;opacity:0;
-  transform:translateY(-1.1em) rotate(-10deg);
-  animation:drop .7s calc(1.9s + var(--i) * .075s) cubic-bezier(.34,1.56,.64,1) forwards;
-}
-@keyframes drop{
-  0%{opacity:0;transform:translateY(-1.1em) rotate(-10deg)}
-  60%{opacity:1}
-  100%{opacity:1;transform:translateY(0) rotate(0)}
-}
+.h-hero span{display:block;white-space:nowrap;font-size:clamp(2rem,5.5vw,6.2rem);opacity:0;animation:fadeUp .9s .15s var(--ease) forwards}
+.h-hero .t2{font-style:italic;color:var(--lime);padding-right:.08em;text-shadow:0 10px 60px rgba(184,255,1,.22);animation-delay:.35s}
 
 .btn--lime{
   position:relative;overflow:hidden;isolation:isolate;
   min-height:60px;padding:0 34px;font-size:1rem;
   background:var(--lime);color:#030914;box-shadow:0 16px 46px rgba(184,255,1,.28);
-  opacity:0;animation:fadeUp .8s 3.6s var(--ease) forwards;
+  opacity:0;animation:fadeUp .8s .6s var(--ease) forwards;
 }
 .btn--lime::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s var(--ease)}
 .btn--lime:hover{transform:translateY(-2px);box-shadow:0 22px 56px rgba(184,255,1,.42)}
 .btn--lime:hover::after{transform:translateX(120%)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 
-/* "Role pra baixo" (como na referência) */
+/* "Role pra baixo" */
 .scroll-cue{
-  position:absolute;left:var(--gutter);bottom:28px;z-index:2;
-  display:flex;flex-direction:column;align-items:flex-start;gap:8px;
-  font-size:.78rem;font-weight:600;color:#c3d0e4;line-height:1.2;text-align:left;
-  opacity:0;animation:fadeUp .8s 3.8s var(--ease) forwards;
+  position:absolute;left:50%;bottom:22px;z-index:2;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  font-size:.78rem;font-weight:600;color:#fff;line-height:1.2;text-align:center;
+  opacity:0;animation:fadeUp .8s .9s var(--ease) forwards;
 }
-.scroll-cue span{width:30px;height:30px;display:flex;align-items:center;justify-content:center;background:var(--blue);color:#fff;border-radius:6px}
-.scroll-cue span svg{animation:nudge 1.8s ease-in-out infinite}
+.scroll-cue svg{display:block}
+.scroll-cue .arr{animation:nudge 1.8s ease-in-out infinite}
 @keyframes nudge{0%,100%{transform:translateY(-2px)}50%{transform:translateY(3px)}}
 
 /* ============================================================
@@ -894,11 +838,14 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 
   /* Hero */
 
-  /* Hero no celular: mãos em close, palavra grande em duas linhas */
-  .hero{--hand-h:560px;--gap-top:24%;padding:96px 0 90px}
-  .h-hero .t1{font-size:clamp(2.2rem,10.5vw,3rem)}
-  .h-hero .t2{font-size:clamp(1.7rem,8.3vw,2.6rem);white-space:nowrap}
-  .h-hero .big{font-size:clamp(3.4rem,19vw,5.4rem);line-height:.9;margin:.06em 0 .1em}
+  /* Hero no celular: mãos em close no topo, título embaixo */
+  .hero{padding:0 0 118px;justify-content:flex-end}
+  .hero-art{bottom:auto;height:56svh}
+  .hero-art img{object-position:50% 40%}
+  .hero-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,9,20,.5) 0%,rgba(3,9,20,0) 20%,rgba(3,9,20,0) 55%,#030914 100%)}
+  .hero::after{display:none}
+  .h-hero span{white-space:normal;font-size:clamp(1.9rem,8.8vw,2.9rem)}
+  .hero-art{height:52svh}
   .btn--lime{width:100%;max-width:360px}
   .scroll-cue{bottom:20px}
   .intro .lead{font-size:1rem;margin-bottom:18px}
@@ -1022,17 +969,16 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 
   <!-- ============================ HERO ============================ -->
   <section class="hero" id="inicio">
-    <!-- As mãos de Michelangelo (decorativo) -->
-    <div class="hands" aria-hidden="true">
-      <img class="hand hand--l" src="img/mao-esquerda.webp" alt="" width="1585" height="2295" fetchpriority="high" />
-      <img class="hand hand--r" src="img/mao-direita.webp" alt="" width="1475" height="2295" fetchpriority="high" />
-    </div>
+    <!-- Arte de fundo (decorativa) -->
+    <picture class="hero-art" aria-hidden="true">
+      <source media="(max-width:767px)" srcset="img/hero-arte-m.webp" />
+      <img src="img/hero-arte.webp" alt="" width="2400" height="1350" fetchpriority="high" />
+    </picture>
 
     <div class="wrap hero-inner">
-      <h1 class="h-hero" aria-label="Sua empresa lucrando no digital, a um clique de você.">
-        <span class="t1" aria-hidden="true">Sua empresa,</span>
-        <span class="big" aria-hidden="true"><span class="w"><i style="--i:0">l</i><i style="--i:1">u</i><i style="--i:2">c</i><i style="--i:3">r</i><i style="--i:4">a</i><i style="--i:5">n</i><i style="--i:6">d</i><i style="--i:7">o</i></span> <span class="w"><i style="--i:8">n</i><i style="--i:9">o</i></span> <span class="w"><i style="--i:10">d</i><i style="--i:11">i</i><i style="--i:12">g</i><i style="--i:13">i</i><i style="--i:14">t</i><i style="--i:15">a</i><i style="--i:16">l</i><i style="--i:17">,</i></span></span>
-        <span class="t2" aria-hidden="true">a um clique de você.</span>
+      <h1 class="h-hero">
+        <span class="t1">O digital conecta.</span>
+        <span class="t2">A humanização transforma.</span>
       </h1>
 
       <a class="btn btn--lime" href="https://wa.me/5511914894352?text=Ol%C3%A1!%20Quero%20falar%20com%20a%20Humanize." target="_blank" rel="noopener">
@@ -1041,8 +987,9 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
     </div>
 
     <a class="scroll-cue" href="#intro" aria-label="Rolar para baixo">
-      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></span>
-      Role<br />pra baixo
+      <svg width="22" height="34" viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1.5" y="1.5" width="19" height="31" rx="9.5"/><line x1="11" y1="8" x2="11" y2="14" stroke-linecap="round"/></svg>
+      Role pra baixo
+      <svg class="arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
     </a>
   </section>
 
