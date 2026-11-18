@@ -286,6 +286,21 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 .h-hero span{display:block;white-space:nowrap;font-size:clamp(2rem,5.5vw,6.2rem);opacity:0;animation:fadeUp .9s .15s var(--ease) forwards}
 .h-hero .t2{font-style:italic;color:var(--lilac);padding-right:.08em;text-shadow:0 10px 60px rgba(240,90,40,.25);animation-delay:.35s}
 
+/* Arte "Lua e Esfera": texto à esquerda, cores tiradas da própria imagem */
+.hero{background:#011932}
+.hero::after{display:none}
+.h-hero{text-shadow:none}
+.h-hero .t1{color:#fbdeb1}                 /* bege da lua */
+.h-hero .t2{color:#f05a28;text-shadow:none}/* laranja da paleta */
+@media (min-width:769px){
+  .hero{display:block;padding:0}
+  .hero-art img{object-position:50% 50%}
+  .hero-inner{position:absolute;left:7vw;top:11.5%;width:auto;max-width:44vw;margin:0;padding:0;align-items:flex-start;text-align:left}
+  .h-hero{margin:0 0 clamp(16px,1.3vw,22px)}
+  .h-hero span{white-space:normal;font-size:clamp(1.8rem,3.6vw,4.2rem)}
+  .hero-inner .btn--lime{min-height:54px;padding:0 28px}
+}
+
 .btn--lime{
   position:relative;overflow:hidden;isolation:isolate;
   min-height:60px;padding:0 34px;font-size:1rem;
@@ -850,7 +865,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   .hero{padding:0 0 118px;justify-content:flex-end}
   .hero-art{bottom:auto;height:56svh}
   .hero-art img{object-position:50% 40%}
-  .hero-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,45,86,.5) 0%,rgba(15,45,86,0) 20%,rgba(15,45,86,0) 55%,#0f2d56 100%)}
+  .hero-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(1,25,50,.92) 0%,rgba(1,25,50,.6) 11%,rgba(1,25,50,0) 24%,rgba(1,25,50,0) 55%,#011932 100%)}
   .hero::after{display:none}
   .h-hero span{white-space:normal;font-size:clamp(1.9rem,8.8vw,2.9rem)}
   .hero-art{height:52svh}
