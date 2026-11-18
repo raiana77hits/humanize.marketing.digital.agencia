@@ -26,9 +26,14 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,800;1,800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,800;1,800&family=Fredoka:wght@600&display=swap" rel="stylesheet" />
 
 <style>
+@font-face{
+  font-family:"Ohno Softie";
+  src:url(fonts/ohno-softie.woff2) format("woff2");
+  font-weight:400;font-style:normal;font-display:swap;
+}
 @font-face{
   font-family:"Scholar";
   src:url(fonts/scholar.woff2) format("woff2");
@@ -283,8 +288,23 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   font-family:"Plus Jakarta Sans","DM Sans",Helvetica,Arial,sans-serif;font-weight:800;letter-spacing:-.045em;line-height:1.02;
   text-shadow:0 4px 40px rgba(3,9,20,.6);
 }
-.h-hero span{display:block;white-space:nowrap;font-size:clamp(2rem,5.5vw,6.2rem);opacity:0;animation:fadeUp .9s .15s var(--ease) forwards}
-.h-hero .t2{font-style:italic;color:var(--lilac);padding-right:.08em;text-shadow:0 10px 60px rgba(207,124,255,.25);animation-delay:.35s}
+.h-hero > span{display:block;white-space:nowrap;font-size:clamp(2rem,5.5vw,6.2rem);color:#fff;opacity:0;animation:fadeUp .9s .15s var(--ease) forwards}
+.h-hero .t2{animation-delay:.35s}
+/* palavra "transforma." — Ohno Softie, 20% maior, cor #03203D */
+.h-hero .word{font-family:"Ohno Softie","Fredoka","Nunito",system-ui,sans-serif;font-weight:600;font-size:1.2em;color:#03203D;text-shadow:none;line-height:1;
+  /* contorno branco fino: sem ele o #03203D some no fundo escuro */
+  -webkit-text-stroke:.05em #fff;paint-order:stroke fill}
+
+/* Computador: texto em escada, abaixo da mão esquerda.
+   A 2ª frase começa onde a 1ª termina (coluna 2 da grade). */
+@media (min-width:901px){
+  .hero-inner{align-items:flex-start}
+  .h-hero{display:grid;grid-template-columns:max-content max-content;justify-content:start;align-items:baseline;margin-left:13vw}
+  .h-hero > span{font-size:clamp(1.8rem,3.4vw,4.2rem)}
+  .h-hero .t1{grid-column:1;grid-row:1}
+  .h-hero .t2{grid-column:2;grid-row:2}
+  .hero-inner .btn--lime{margin-left:13vw}
+}
 
 .btn--lime{
   position:relative;overflow:hidden;isolation:isolate;
@@ -851,7 +871,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   .hero-art img{object-position:50% 40%}
   .hero-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,9,20,.5) 0%,rgba(3,9,20,0) 20%,rgba(3,9,20,0) 55%,#030914 100%)}
   .hero::after{display:none}
-  .h-hero span{white-space:normal;font-size:clamp(1.9rem,8.8vw,2.9rem)}
+  .h-hero > span{white-space:normal;font-size:clamp(1.9rem,8.8vw,2.9rem)}
   .hero-art{height:52svh}
   .btn--lime{width:100%;max-width:360px}
   .scroll-cue{bottom:20px}
@@ -985,7 +1005,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
     <div class="wrap hero-inner">
       <h1 class="h-hero">
         <span class="t1">O digital conecta.</span>
-        <span class="t2">A humanização transforma.</span>
+        <span class="t2">A humanização <span class="word">transforma.</span></span>
       </h1>
 
       <a class="btn btn--lime" href="https://wa.me/5511914894352?text=Ol%C3%A1!%20Quero%20falar%20com%20a%20Humanize." target="_blank" rel="noopener">
