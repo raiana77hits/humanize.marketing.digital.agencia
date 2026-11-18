@@ -273,11 +273,11 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 .hero-art,.hero-art img{position:absolute;inset:0;width:100%;height:100%;z-index:-2;display:block}
 .hero-art img{object-fit:cover;object-position:50% 30%}
 
-/* Cérebro com a logo girando entre as mãos (vídeo em loop; o preto vira transparente com mix-blend-mode) */
-.cerebro{position:absolute;left:50%;top:37.2%;width:clamp(300px,31vw,560px);aspect-ratio:716/534;transform:translate(-50%,-50%);z-index:0;pointer-events:none;mix-blend-mode:screen}
-.cerebro::before{content:"";position:absolute;inset:-14%;border-radius:50%;background:radial-gradient(closest-side,rgba(150,40,230,.30),rgba(110,10,200,.10) 62%,transparent)}
-.cerebro video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain}
-@media (max-width:767px){.cerebro{top:21%;width:min(78vw,340px)}}
+/* Cérebro 3D girando entre as mãos (canvas em js/cerebro-3d.js) + logo no centro */
+.cerebro{position:absolute;left:50%;top:37.2%;width:clamp(290px,29vw,540px);aspect-ratio:1/.95;transform:translate(-50%,-50%);z-index:0;pointer-events:none}
+.cerebro canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.cerebro::before{content:"";position:absolute;inset:-18%;border-radius:50%;background:radial-gradient(closest-side,rgba(150,40,230,.34),rgba(110,10,200,.12) 60%,transparent);filter:blur(6px)}
+@media (max-width:767px){.cerebro{top:20.5%;width:min(74vw,340px)}}
 /* escurece o rodapé da arte para o título ler bem */
 .hero::after{
   content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
@@ -990,9 +990,7 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 
     <!-- Cérebro 3D girando (canvas) com a logo da Humanize no centro -->
     <div class="cerebro" aria-hidden="true">
-      <video id="cerebro-video" muted loop playsinline autoplay preload="auto" poster="img/cerebro-logo-poster.webp" width="716" height="534">
-        <source src="img/cerebro-logo.mp4" type="video/mp4" />
-      </video>
+      <canvas id="cerebro-canvas"></canvas>
     </div>
 
     <div class="wrap hero-inner">
@@ -1719,6 +1717,6 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
 })();
 </script>
 
-<script src="js/cerebro-video.js" defer></script>
+<script src="js/cerebro-3d.js" defer></script>
 </body>
 </html>
