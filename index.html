@@ -1013,6 +1013,44 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   .hero .hand,.h-hero--humanize .hero-line,.hero .btn--lime{animation:none!important;opacity:1!important;transform:none!important}
 }
 
+
+/* HUMANIZE — segunda etapa: hero verdadeiramente full bleed */
+.hero{
+  min-height:100svh;width:100%;max-width:none;margin:0;
+  padding:clamp(110px,14svh,165px) 0 clamp(80px,11svh,120px);
+  background:#030914;
+}
+.hero .hands{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;z-index:1;opacity:1}
+.hero .hand{top:6%;height:70%;width:auto;object-fit:contain;max-width:none}
+.hero .hand--l{right:49%}
+.hero .hand--r{left:49%}
+.hero::before{opacity:.14;z-index:2}
+.hero::after{
+  z-index:2;
+  background:
+    radial-gradient(circle at 50% 32%,rgba(184,255,1,.16) 0,rgba(184,255,1,.04) 9%,transparent 25%),
+    radial-gradient(ellipse 80% 65% at 50% 46%,transparent 22%,rgba(3,9,20,.36) 75%,#030914 100%),
+    linear-gradient(180deg,rgba(3,9,20,.05) 0%,rgba(3,9,20,.08) 34%,rgba(3,9,20,.64) 67%,#030914 100%);
+}
+.hero .hero-inner{position:relative;z-index:4;justify-content:flex-end;min-height:calc(100svh - clamp(190px,25svh,285px));padding-top:clamp(210px,38svh,410px)}
+.h-hero--humanize{width:100%;max-width:1400px;margin-inline:auto}
+.h-hero--humanize .hero-line--digital{font-size:clamp(2.4rem,6.1vw,6.4rem)}
+.h-hero--humanize .hero-line--human{font-family:"DM Sans",Arial,sans-serif;font-weight:700;font-style:italic;font-size:clamp(2.25rem,6.1vw,6.4rem);letter-spacing:-.065em}
+.hero .scroll-cue{z-index:4}
+@media(max-width:768px){
+  .hero{padding:110px 0 100px;min-height:100svh}
+  .hero .hand{top:12%;height:46%}
+  .hero .hand--l{right:47%}
+  .hero .hand--r{left:47%}
+  .hero .hero-inner{min-height:calc(100svh - 210px);padding-top:36svh;justify-content:flex-end}
+  .h-hero--humanize .hero-line--digital{font-size:clamp(2rem,8vw,3.4rem)}
+  .h-hero--humanize .hero-line--human{font-size:clamp(2rem,8vw,3.4rem)}
+}
+@media(max-width:420px){
+  .hero .hand{height:40%;top:16%}
+  .hero .hero-inner{padding-top:34svh}
+}
+
 </style>
 </head>
 <body>
