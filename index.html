@@ -58,6 +58,7 @@
      10% VERDE-LIMÃO — só no destaque do título, no CTA da hero,
      nas métricas dos cases e na bolinha ativa dos carrosséis. */
   --lime:#8a00c4;
+  --lilac:#cf7cff;           /* lilás claro: texto e botão da hero (boa leitura no fundo escuro) */
   --lime-glow:rgba(138,0,196,.35);
   --lime-ink:#0a2000;
 
@@ -283,16 +284,16 @@ h1,h2,h3,h4{font-family:Manrope,system-ui,Arial,sans-serif;color:var(--text);lin
   text-shadow:0 4px 40px rgba(3,9,20,.6);
 }
 .h-hero span{display:block;white-space:nowrap;font-size:clamp(2rem,5.5vw,6.2rem);opacity:0;animation:fadeUp .9s .15s var(--ease) forwards}
-.h-hero .t2{font-style:italic;color:var(--lime);padding-right:.08em;text-shadow:0 10px 60px rgba(138,0,196,.22);animation-delay:.35s}
+.h-hero .t2{font-style:italic;color:var(--lilac);padding-right:.08em;text-shadow:0 10px 60px rgba(207,124,255,.25);animation-delay:.35s}
 
 .btn--lime{
   position:relative;overflow:hidden;isolation:isolate;
   min-height:60px;padding:0 34px;font-size:1rem;
-  background:var(--lime);color:#fff;box-shadow:0 16px 46px rgba(138,0,196,.28);
+  background:var(--lilac);color:#030914;box-shadow:0 16px 46px rgba(207,124,255,.30);
   opacity:0;animation:fadeUp .8s .6s var(--ease) forwards;
 }
 .btn--lime::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s var(--ease)}
-.btn--lime:hover{transform:translateY(-2px);box-shadow:0 22px 56px rgba(138,0,196,.42)}
+.btn--lime:hover{transform:translateY(-2px);box-shadow:0 22px 56px rgba(207,124,255,.45)}
 .btn--lime:hover::after{transform:translateX(120%)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 
